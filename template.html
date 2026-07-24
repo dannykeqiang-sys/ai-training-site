@@ -83,8 +83,6 @@ a { color: inherit; }
 .sidebar { width: 320px; min-width: 320px; background: var(--bg-side); border-right: 1px solid var(--border); overflow-y: auto; padding-bottom: 24px; }
 .sidebar-header { padding: 16px 20px 8px; display: flex; align-items: center; justify-content: space-between; }
 .sidebar-header h2 { font-size: 16px; font-weight: 700; }
-.pip-toggle { font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
-.pip-toggle input { accent-color: var(--blue); }
 .chapter-title { font-size: 14px; font-weight: 700; padding: 6px 20px; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
 .chapter-title .chevron, .group-title .chevron { font-size: 10px; transition: transform .2s; display: inline-block; }
 .group-title { font-size: 13px; font-weight: 600; padding: 5px 20px 3px; cursor: pointer; display: flex; align-items: center; gap: 5px; user-select: none; }
@@ -96,26 +94,6 @@ a { color: inherit; }
 .file-item.active { color: var(--blue); font-weight: 500; }
 .file-item .completed-icon { margin-left: auto; font-size: 13px; }
 .content-area { flex: 1; overflow-y: auto; padding: 32px 48px; background: #fff; }
-
-/* Video player */
-.video-container { background: #000; border-radius: 8px; margin-bottom: 32px; position: relative; overflow: hidden; aspect-ratio: 16/7; }
-.video-container video { width: 100%; height: 100%; object-fit: contain; display: block; }
-.video-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; background: rgba(0,0,0,.25); transition: opacity .3s; }
-.video-overlay.hidden { opacity: 0; pointer-events: none; }
-.play-btn { width: 60px; height: 60px; background: rgba(255,255,255,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: transform .2s; }
-.video-overlay:hover .play-btn { transform: scale(1.1); }
-.play-btn::after { content: ''; border-style: solid; border-width: 11px 0 11px 19px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
-.video-controls { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px; display: flex; align-items: center; gap: 10px; background: linear-gradient(transparent, rgba(0,0,0,.6)); opacity: 0; transition: opacity .25s; }
-.video-container:hover .video-controls { opacity: 1; }
-.vc-btn { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 2px 6px; }
-.vc-progress { flex: 1; height: 4px; background: rgba(255,255,255,.3); border-radius: 2px; cursor: pointer; position: relative; }
-.vc-progress-fill { height: 100%; background: var(--blue); border-radius: 2px; width: 0%; position: relative; }
-.vc-progress-fill::after { content: ''; position: absolute; right: -5px; top: -3px; width: 10px; height: 10px; background: #fff; border-radius: 50%; opacity: 0; transition: opacity .15s; }
-.vc-progress:hover .vc-progress-fill::after { opacity: 1; }
-.vc-time { color: #fff; font-size: 12px; font-variant-numeric: tabular-nums; min-width: 80px; text-align: center; }
-.playback-rate-group { display: flex; gap: 2px; }
-.rate-btn { background: rgba(255,255,255,.15); color: #fff; border: none; border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor: pointer; }
-.rate-btn.active { background: rgba(255,255,255,.4); font-weight: 600; }
 
 /* Article markdown */
 .article-content { line-height: 28px; font-size: 16px; max-width: 860px; }
@@ -317,8 +295,6 @@ a { color: inherit; }
   .article-content h3 { font-size: 17px; }
   .article-content pre { padding: 14px 16px; font-size: 12.5px; }
   .article-content th, .article-content td { padding: 7px 12px; }
-  .video-container { aspect-ratio: 16/9; margin-bottom: 24px; }
-  .vc-time { display: none; }
   .practice-header, .practice-body { padding-left: 16px; padding-right: 16px; }
   .pq-option { padding: 9px 12px; font-size: 13.5px; }
 
@@ -337,7 +313,6 @@ a { color: inherit; }
 @media (max-width: 420px) {
   .user-greeting { display: none; }
   .hero-btns { flex-direction: column; }
-  .playback-rate-group { display: none; }
   .pq-header { gap: 6px; }
 }
 </style>
@@ -367,7 +342,7 @@ a { color: inherit; }
           <button class="btn-secondary" onclick="navigate('exam')">在线考试</button>
         </div>
       </div>
-      <div class="hero-img"><img src="images/hero-image.svg" alt="hero"></div>
+      <div class="hero-img"><img src="images/hero-image.svg" alt="hero" decoding="async"></div>
     </div>
     <div class="learning-outcome">学完后，你将建立 LLM 原理、提示工程、上下文管理、Token 经济学与安全红线的系统认知。在此基础上，你将用 Agent 模式自主完成跨文件重构和功能开发；用 Skills 定制团队专属工作流；用 MCP 协议连接代码图谱、数据库等内部工具；用 Hooks 自动化重复审查动作；用安全准则识别 AI 代码的隐藏风险、避免生产事故。最终，从"逐行写代码"的执行者，成长为"拆解需求、定义规则、审阅产出"的 AI 时代研发者。</div>
     <div class="progress-card">
@@ -418,7 +393,6 @@ a { color: inherit; }
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <h2>📚 培训教程</h2>
-      <label class="pip-toggle"><input type="checkbox" id="pip-toggle"> 视频画中画</label>
     </div>
     <div id="sidebar-tree"></div>
   </aside>
@@ -484,7 +458,7 @@ function inlineMd(s) {
   s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
   s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, url) => {
     const local = 'images/' + url.split('/').pop();
-    return `<img src="${local}" alt="${alt}" loading="lazy" onclick="openLightbox(this.src)">`;
+    return `<img src="${local}" alt="${alt}" loading="lazy" decoding="async" onclick="openLightbox(this.src)">`;
   });
   s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   return s;
@@ -676,18 +650,6 @@ function loadTutorial(file) {
   }
 
   container.innerHTML = `
-    <div class="video-container" id="vc-${base}">
-      <video id="video-${base}" preload="metadata" src="videos/${base}.mp4"></video>
-      <div class="video-overlay" id="vo-${base}" onclick="toggleVideo('${base}')"><div class="play-btn"></div></div>
-      <div class="video-controls">
-        <button class="vc-btn" onclick="toggleVideo('${base}')">⏯</button>
-        <div class="vc-progress" onclick="seekVideo(event,'${base}')"><div class="vc-progress-fill" id="vpf-${base}"></div></div>
-        <span class="vc-time" id="vt-${base}">0:00 / 0:00</span>
-        <div class="playback-rate-group">
-          ${[0.5,1,1.5,2].map(r => `<button class="rate-btn ${r===1?'active':''}" onclick="setRate(this,${r},'${base}')">${r}x</button>`).join('')}
-        </div>
-      </div>
-    </div>
     <article class="article-content">${renderMarkdown(md)}</article>
     ${practiceHtml}
     <section class="comments-section">
@@ -700,7 +662,6 @@ function loadTutorial(file) {
     </section>
   `;
   container.scrollTop = 0;
-  setupVideoEvents(base);
 
   // mark completed after viewing
   if (!state.completed.has(file)) {
@@ -711,47 +672,6 @@ function loadTutorial(file) {
     updateProgress();
   }
 }
-
-/* ===== VIDEO ===== */
-function setupVideoEvents(base) {
-  const v = document.getElementById('video-' + base);
-  if (!v) return;
-  v.addEventListener('timeupdate', () => {
-    if (v.duration) {
-      document.getElementById('vpf-' + base).style.width = (v.currentTime / v.duration * 100) + '%';
-      document.getElementById('vt-' + base).textContent = fmtTime(v.currentTime) + ' / ' + fmtTime(v.duration);
-    }
-  });
-  v.addEventListener('ended', () => document.getElementById('vo-' + base).classList.remove('hidden'));
-}
-function fmtTime(s) {
-  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
-  return m + ':' + String(sec).padStart(2, '0');
-}
-function toggleVideo(base) {
-  const v = document.getElementById('video-' + base);
-  const vo = document.getElementById('vo-' + base);
-  if (v.paused) { v.play(); vo.classList.add('hidden'); }
-  else { v.pause(); vo.classList.remove('hidden'); }
-}
-function seekVideo(e, base) {
-  const v = document.getElementById('video-' + base);
-  const rect = e.currentTarget.getBoundingClientRect();
-  v.currentTime = (e.clientX - rect.left) / rect.width * v.duration;
-}
-function setRate(btn, rate, base) {
-  document.getElementById('video-' + base).playbackRate = rate;
-  btn.parentElement.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-document.getElementById('pip-toggle').addEventListener('change', function() {
-  if (this.checked && state.currentTutorial) {
-    const v = document.getElementById('video-' + state.currentTutorial.replace('.md',''));
-    if (v && v.requestPictureInPicture) v.requestPictureInPicture().catch(() => showToast('画中画需要视频播放中'));
-  } else if (document.pictureInPictureElement) {
-    document.exitPictureInPicture();
-  }
-});
 
 /* ===== QUESTIONS (practice + exam) ===== */
 function renderQuestion(q, idx, prefix) {
