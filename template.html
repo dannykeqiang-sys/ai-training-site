@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 技能培训认证考试</title>
+<link rel="icon" href="images/favicon.ico">
+<style>
+:root {
+  --blue: rgb(52, 81, 178);
+  --blue-light: rgb(232, 236, 255);
+  --blue-border: rgb(224, 231, 255);
+  --text: rgb(60, 60, 67);
+  --text-dim: rgb(103, 103, 108);
+  --text-faint: rgb(140, 140, 145);
+  --bg-side: rgb(246, 246, 247);
+  --border: rgb(226, 226, 227);
+  --border-light: rgb(224, 224, 224);
+  --green: #34c759;
+  --red: #ff3b30;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px; color: var(--text); background: #fff;
+  height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+}
+a { color: inherit; }
+
+/* ===== Top Nav ===== */
+.tab-nav { height: 70px; display: flex; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border-light); flex-shrink: 0; background: #fff; z-index: 100; }
+.nav-tabs { display: flex; align-items: center; gap: 4px; }
+.logo-link { display: flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 700; font-size: 18px; margin-right: 24px; cursor: pointer; }
+.nav-logo-emoji { font-size: 22px; }
+.tab-btn { color: rgb(102,102,102); font-size: 15px; padding: 8px 20px; text-decoration: none; border-radius: 8px; cursor: pointer; transition: background .15s, color .15s; user-select: none; }
+.tab-btn:hover { background: rgb(240,240,242); }
+.tab-btn.active { background: var(--blue); color: #fff; font-weight: 500; }
+.user-greeting { margin-left: auto; font-size: 14px; color: var(--text-dim); }
+
+/* ===== Page container ===== */
+.page { display: none; flex: 1; overflow: hidden; }
+.page.active { display: flex; }
+
+/* ===== HOME PAGE ===== */
+.home-page { flex-direction: column; overflow-y: auto; position: relative; }
+.danmaku-layer { position: relative; height: 120px; overflow: hidden; flex-shrink: 0; background: linear-gradient(180deg, rgb(250,250,252) 0%, #fff 100%); }
+.danmaku-item { position: absolute; white-space: nowrap; font-size: 13px; color: var(--text-dim); background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; box-shadow: 0 1px 4px rgba(0,0,0,.05); animation: danmaku-scroll linear forwards; will-change: transform; }
+@keyframes danmaku-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-100vw - 400px)); } }
+.home-inner { max-width: 960px; margin: 0 auto; padding: 24px 32px 64px; width: 100%; }
+.hero { display: flex; align-items: center; gap: 40px; margin-bottom: 32px; }
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+.hero-text .sub { font-size: 15px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
+.hero-img { width: 260px; flex-shrink: 0; }
+.hero-img img { width: 100%; }
+.hero-btns { display: flex; gap: 12px; }
+.btn-primary { background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 12px 32px; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity .15s, transform .1s; }
+.btn-primary:hover { opacity: .88; }
+.btn-primary:active { transform: scale(.97); }
+.btn-secondary { background: #fff; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 8px; padding: 12px 32px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s; }
+.btn-secondary:hover { background: var(--blue-light); }
+.learning-outcome { background: var(--bg-side); border-radius: 12px; padding: 20px 24px; font-size: 14px; line-height: 1.8; color: var(--text-dim); margin-bottom: 32px; }
+.progress-card { border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+.progress-card .pc-title { font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+.progress-bar-wrap { height: 8px; background: var(--bg-side); border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+.progress-bar-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width .6s cubic-bezier(.22,.9,.28,1); }
+.progress-meta { font-size: 13px; color: var(--text-dim); }
+.chapter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.chapter-card { border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; cursor: pointer; transition: box-shadow .2s, transform .15s, border-color .2s; position: relative; }
+.chapter-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.07); transform: translateY(-2px); border-color: var(--blue); }
+.chapter-card.locked { opacity: .55; cursor: default; }
+.chapter-card.locked:hover { box-shadow: none; transform: none; border-color: var(--border); }
+.chapter-card .cc-emoji { font-size: 28px; margin-bottom: 8px; }
+.chapter-card .cc-name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+.chapter-card .cc-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.chapter-card .cc-lock { position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--text-faint); background: var(--bg-side); border-radius: 10px; padding: 2px 10px; }
+.exam-stats { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--text-dim); margin-bottom: 16px; }
+.exam-stats span { display: flex; align-items: center; gap: 6px; }
+.history-link { font-size: 14px; color: var(--blue); cursor: pointer; text-decoration: underline; }
+
+/* ===== TUTORIALS PAGE ===== */
+.tutorials-page { flex-direction: row; }
+.sidebar { width: 320px; min-width: 320px; background: var(--bg-side); border-right: 1px solid var(--border); overflow-y: auto; padding-bottom: 24px; }
+.sidebar-header { padding: 16px 20px 8px; display: flex; align-items: center; justify-content: space-between; }
+.sidebar-header h2 { font-size: 16px; font-weight: 700; }
+.pip-toggle { font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.pip-toggle input { accent-color: var(--blue); }
+.chapter-title { font-size: 14px; font-weight: 700; padding: 6px 20px; cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none; }
+.chapter-title .chevron, .group-title .chevron { font-size: 10px; transition: transform .2s; display: inline-block; }
+.group-title { font-size: 13px; font-weight: 600; padding: 5px 20px 3px; cursor: pointer; display: flex; align-items: center; gap: 5px; user-select: none; }
+.collapsible.collapsed .chevron { transform: rotate(0deg); }
+.collapsible:not(.collapsed) .chevron { transform: rotate(90deg); }
+.collapsed-content { display: none; }
+.file-item { padding: 4px 16px 4px 38px; font-size: 14px; color: var(--text-dim); cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background .1s; }
+.file-item:hover { background: rgba(0,0,0,.04); }
+.file-item.active { color: var(--blue); font-weight: 500; }
+.file-item .completed-icon { margin-left: auto; font-size: 13px; }
+.content-area { flex: 1; overflow-y: auto; padding: 32px 48px; background: #fff; }
+
+/* Video player */
+.video-container { background: #000; border-radius: 8px; margin-bottom: 32px; position: relative; overflow: hidden; aspect-ratio: 16/7; }
+.video-container video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.video-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; background: rgba(0,0,0,.25); transition: opacity .3s; }
+.video-overlay.hidden { opacity: 0; pointer-events: none; }
+.play-btn { width: 60px; height: 60px; background: rgba(255,255,255,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: transform .2s; }
+.video-overlay:hover .play-btn { transform: scale(1.1); }
+.play-btn::after { content: ''; border-style: solid; border-width: 11px 0 11px 19px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.video-controls { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px; display: flex; align-items: center; gap: 10px; background: linear-gradient(transparent, rgba(0,0,0,.6)); opacity: 0; transition: opacity .25s; }
+.video-container:hover .video-controls { opacity: 1; }
+.vc-btn { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 2px 6px; }
+.vc-progress { flex: 1; height: 4px; background: rgba(255,255,255,.3); border-radius: 2px; cursor: pointer; position: relative; }
+.vc-progress-fill { height: 100%; background: var(--blue); border-radius: 2px; width: 0%; position: relative; }
+.vc-progress-fill::after { content: ''; position: absolute; right: -5px; top: -3px; width: 10px; height: 10px; background: #fff; border-radius: 50%; opacity: 0; transition: opacity .15s; }
+.vc-progress:hover .vc-progress-fill::after { opacity: 1; }
+.vc-time { color: #fff; font-size: 12px; font-variant-numeric: tabular-nums; min-width: 80px; text-align: center; }
+.playback-rate-group { display: flex; gap: 2px; }
+.rate-btn { background: rgba(255,255,255,.15); color: #fff; border: none; border-radius: 4px; padding: 3px 8px; font-size: 12px; cursor: pointer; }
+.rate-btn.active { background: rgba(255,255,255,.4); font-weight: 600; }
+
+/* Article markdown */
+.article-content { line-height: 28px; font-size: 16px; max-width: 860px; }
+.article-content h1 { font-size: 32px; font-weight: 600; margin: 0 0 16px; line-height: 1.3; }
+.article-content h2 { font-size: 24px; font-weight: 600; margin: 36px 0 14px; line-height: 1.4; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.article-content h3 { font-size: 18px; font-weight: 600; margin: 26px 0 10px; }
+.article-content h4 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+.article-content p { margin: 12px 0; }
+.article-content ul, .article-content ol { margin: 12px 0; padding-left: 26px; }
+.article-content li { margin: 6px 0; }
+.article-content li::marker { color: var(--text-dim); }
+.article-content strong { font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; }
+.article-content a:hover { text-decoration: underline; }
+.article-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+.article-content table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+.article-content th { background: var(--bg-side); padding: 8px 16px; font-weight: 600; border: 1px solid var(--border); text-align: left; }
+.article-content td { padding: 8px 16px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+.article-content pre { background: var(--bg-side); padding: 20px 24px; border-radius: 8px; font-family: 'SF Mono','Fira Code','JetBrains Mono',Menlo,monospace; font-size: 13.5px; line-height: 1.65; overflow-x: auto; margin: 16px 0; white-space: pre; }
+.article-content code.inline { background: var(--bg-side); border-radius: 4px; padding: 2px 6px; font-family: 'SF Mono',Menlo,monospace; font-size: 0.88em; color: rgb(180,60,60); }
+.article-content blockquote { border-left: 3px solid var(--blue); background: rgb(248,249,255); border-radius: 0 8px 8px 0; padding: 12px 18px; margin: 16px 0; color: var(--text-dim); }
+.article-content blockquote p { margin: 4px 0; }
+.article-content img { max-width: 100%; border-radius: 8px; margin: 18px 0; box-shadow: 0 2px 12px rgba(0,0,0,.06); cursor: zoom-in; }
+
+/* Practice */
+.practice-section { background: rgb(248,249,255); border: 1px solid var(--blue-border); border-radius: 10px; margin: 40px 0 16px; overflow: hidden; max-width: 860px; }
+.practice-header { padding: 20px 24px 12px; }
+.practice-title { font-size: 18px; font-weight: 700; }
+.practice-body { padding: 0 24px 24px; }
+.practice-question { margin-bottom: 28px; }
+.practice-question:last-child { margin-bottom: 0; }
+.pq-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.pq-num { font-weight: 700; font-size: 15px; }
+.pq-type-tag { background: var(--blue-light); color: var(--blue); font-size: 12px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+.pq-title { font-weight: 600; font-size: 15px; }
+.pq-stem { margin: 8px 0 12px; font-size: 15px; line-height: 1.6; }
+.pq-options { display: flex; flex-direction: column; gap: 8px; }
+.pq-option { padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5; transition: border-color .15s, background .15s; background: #fff; }
+.pq-option:hover { border-color: var(--blue); background: rgb(248,249,255); }
+.pq-option.selected { border-color: var(--blue); background: var(--blue-light); }
+.pq-option.correct { border-color: var(--green); background: #f0fdf4; }
+.pq-option.wrong { border-color: var(--red); background: #fef2f2; }
+.pq-option.disabled { pointer-events: none; }
+.pq-indicator { width: 22px; height: 22px; border: 2px solid rgb(200,200,205); border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--text-dim); transition: all .15s; }
+.pq-option.selected .pq-indicator { border-color: var(--blue); background: var(--blue); color: #fff; }
+.pq-option.correct .pq-indicator { border-color: var(--green); background: var(--green); color: #fff; }
+.pq-option.wrong .pq-indicator { border-color: var(--red); background: var(--red); color: #fff; }
+.pq-option-text { flex: 1; }
+.pq-explanation { margin-top: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; font-size: 13.5px; line-height: 1.7; color: var(--text-dim); display: none; }
+.pq-explanation.show { display: block; animation: fadeIn .3s; }
+.pq-explanation strong { color: var(--text); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* Comments */
+.comments-section { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 24px; max-width: 860px; }
+.comments-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.comments-empty { color: var(--text-faint); font-size: 14px; margin-bottom: 20px; }
+.comment-input textarea { width: 100%; min-height: 80px; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; font-size: 14px; font-family: inherit; resize: vertical; outline: none; transition: border-color .15s; }
+.comment-input textarea:focus { border-color: var(--blue); }
+.comment-input-actions { display: flex; justify-content: flex-end; margin-top: 12px; }
+.btn-submit { background: var(--blue); color: #fff; border: none; border-radius: 6px; padding: 8px 24px; font-size: 14px; cursor: pointer; transition: opacity .15s; }
+.btn-submit:hover { opacity: .85; }
+
+/* ===== EXAM PAGE ===== */
+.exam-page { flex-direction: column; overflow-y: auto; }
+.exam-inner { max-width: 860px; margin: 0 auto; padding: 32px; width: 100%; }
+.exam-select h1 { font-size: 28px; font-weight: 700; margin-bottom: 24px; }
+.exam-chapter { border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 20px; transition: border-color .2s, box-shadow .2s; }
+.exam-chapter.available { cursor: pointer; }
+.exam-chapter.available:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+.exam-chapter.locked { opacity: .55; }
+.ec-info { flex: 1; }
+.ec-info .ec-name { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.ec-info .ec-desc { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 6px; }
+.ec-info .ec-meta { font-size: 12px; color: var(--text-faint); }
+.ec-action { flex-shrink: 0; }
+.ec-lock-tag { font-size: 12px; color: var(--text-faint); background: var(--bg-side); border-radius: 10px; padding: 4px 12px; }
+.exam-rules { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; color: var(--text-dim); margin: 24px 0; padding: 16px 20px; background: var(--bg-side); border-radius: 10px; }
+
+/* Exam taking */
+.exam-taking { display: none; }
+.exam-taking.active { display: block; }
+.exam-progress-bar { position: sticky; top: 0; background: #fff; padding: 16px 0 12px; border-bottom: 1px solid var(--border); z-index: 10; margin-bottom: 24px; }
+.epb-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.epb-count { font-weight: 700; }
+.epb-bar { height: 6px; background: var(--bg-side); border-radius: 3px; overflow: hidden; }
+.epb-fill { height: 100%; background: var(--blue); border-radius: 3px; transition: width .4s cubic-bezier(.22,.9,.28,1); }
+.exam-question-card { border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+.eqc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.eqc-num { font-weight: 800; font-size: 17px; color: var(--blue); }
+.eqc-module { font-size: 12px; color: var(--text-faint); background: var(--bg-side); border-radius: 10px; padding: 2px 10px; }
+.eqc-diff { font-size: 12px; border-radius: 10px; padding: 2px 10px; }
+.eqc-diff.easy { background: #f0fdf4; color: #16a34a; }
+.eqc-diff.medium { background: #fffbeb; color: #d97706; }
+.eqc-diff.hard { background: #fef2f2; color: #dc2626; }
+.eqc-stem { font-size: 15.5px; line-height: 1.7; margin-bottom: 16px; font-weight: 500; }
+.exam-nav { display: flex; justify-content: space-between; align-items: center; margin: 24px 0 48px; }
+.btn-ghost { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 24px; font-size: 14px; cursor: pointer; color: var(--text-dim); transition: border-color .15s; }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+/* Exam result */
+.exam-result { display: none; text-align: center; padding: 48px 0; }
+.exam-result.active { display: block; }
+.result-score { font-size: 72px; font-weight: 800; color: var(--blue); line-height: 1; }
+.result-score.fail { color: var(--red); }
+.result-label { font-size: 18px; font-weight: 600; margin: 12px 0 8px; }
+.result-sub { font-size: 14px; color: var(--text-dim); margin-bottom: 32px; }
+.result-actions { display: flex; gap: 12px; justify-content: center; }
+.result-review { max-width: 860px; margin: 40px auto 0; text-align: left; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Toast */
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: rgb(40,40,45); color: #fff; border-radius: 8px; padding: 10px 24px; font-size: 14px; z-index: 999; transition: transform .35s cubic-bezier(.22,.9,.28,1), opacity .3s; opacity: 0; pointer-events: none; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* Image lightbox */
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 500; display: none; align-items: center; justify-content: center; cursor: zoom-out; }
+.lightbox.show { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
+
+/* ===== Table horizontal scroll wrapper ===== */
+.table-wrap { overflow-x: auto; margin: 16px 0; -webkit-overflow-scrolling: touch; }
+.table-wrap table { margin: 0; min-width: 520px; }
+
+/* ===== Sidebar drawer (mobile) ===== */
+.sidebar-toggle {
+  display: none;
+  position: fixed; bottom: 22px; left: 22px; z-index: 200;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--blue); color: #fff; border: none;
+  font-size: 22px; cursor: pointer;
+  box-shadow: 0 6px 20px rgba(52,81,178,.4);
+  align-items: center; justify-content: center;
+  transition: transform .2s cubic-bezier(.22,.9,.28,1), box-shadow .2s;
+}
+.sidebar-toggle:active { transform: scale(.92); }
+.scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,30,.45); z-index: 149; opacity: 0; transition: opacity .3s; }
+.scrim.show { display: block; opacity: 1; }
+
+/* ===== Ultrawide (>=1600px) ===== */
+@media (min-width: 1600px) {
+  .home-inner { max-width: 1120px; }
+  .article-content, .practice-section, .comments-section { max-width: 980px; }
+  .exam-inner { max-width: 1000px; }
+  .content-area { padding: 40px 64px; }
+}
+
+/* ===== Tablet (<=1024px) ===== */
+@media (max-width: 1024px) {
+  .content-area { padding: 28px 32px; }
+  .hero { gap: 28px; }
+  .hero-img { width: 200px; }
+  .chapter-grid { gap: 12px; }
+}
+
+/* ===== Mobile drawer breakpoint (<=900px) ===== */
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed; top: 70px; left: 0; bottom: 0; z-index: 150;
+    width: 300px; min-width: 300px;
+    transform: translateX(-105%);
+    transition: transform .38s cubic-bezier(.22,.9,.28,1);
+    box-shadow: 6px 0 28px rgba(0,0,0,.14);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-toggle { display: flex; }
+}
+
+/* ===== Mobile (<=768px) ===== */
+@media (max-width: 768px) {
+  .tab-nav { padding: 12px 14px; height: 62px; }
+  .logo-link { margin-right: 10px; font-size: 16px; }
+  .nav-logo-emoji { font-size: 19px; }
+  .tab-btn { padding: 7px 12px; font-size: 14px; }
+  .user-greeting { font-size: 12px; }
+  .sidebar { top: 62px; }
+
+  .danmaku-layer { height: 88px; }
+  .danmaku-item { font-size: 12px; padding: 3px 11px; }
+  .home-inner { padding: 20px 16px 56px; }
+  .hero { flex-direction: column-reverse; gap: 18px; margin-bottom: 24px; text-align: center; }
+  .hero-img { width: 150px; }
+  .hero-text h1 { font-size: clamp(24px, 6.5vw, 32px); }
+  .hero-text .sub { font-size: 14px; }
+  .hero-btns { justify-content: center; }
+  .btn-primary, .btn-secondary { padding: 11px 24px; font-size: 14px; }
+  .learning-outcome { padding: 16px 18px; font-size: 13px; }
+  .chapter-grid { grid-template-columns: 1fr; }
+  .exam-stats { gap: 12px 18px; font-size: 13px; }
+
+  .content-area { padding: 20px 16px 80px; }
+  .article-content { font-size: 15px; line-height: 26px; }
+  .article-content h1 { font-size: 26px; }
+  .article-content h2 { font-size: 21px; }
+  .article-content h3 { font-size: 17px; }
+  .article-content pre { padding: 14px 16px; font-size: 12.5px; }
+  .article-content th, .article-content td { padding: 7px 12px; }
+  .video-container { aspect-ratio: 16/9; margin-bottom: 24px; }
+  .vc-time { display: none; }
+  .practice-header, .practice-body { padding-left: 16px; padding-right: 16px; }
+  .pq-option { padding: 9px 12px; font-size: 13.5px; }
+
+  .exam-inner { padding: 20px 16px 60px; }
+  .exam-select h1 { font-size: 23px; }
+  .exam-chapter { flex-direction: column; align-items: stretch; gap: 12px; padding: 16px 18px; }
+  .ec-action { align-self: flex-end; }
+  .exam-question-card { padding: 18px 16px; }
+  .result-score { font-size: 56px; }
+  .result-actions { flex-direction: column; align-items: stretch; }
+  .exam-nav { flex-direction: column-reverse; gap: 12px; align-items: stretch; }
+  .exam-nav .btn-primary, .exam-nav .btn-ghost { width: 100%; text-align: center; }
+}
+
+/* ===== Small phones (<=420px) ===== */
+@media (max-width: 420px) {
+  .user-greeting { display: none; }
+  .hero-btns { flex-direction: column; }
+  .playback-rate-group { display: none; }
+  .pq-header { gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<nav class="tab-nav">
+  <div class="nav-tabs">
+    <a class="logo-link" onclick="navigate('')"><span class="nav-logo-emoji">🎓</span>首页</a>
+    <a class="tab-btn" id="nav-tutorials" onclick="navigate('tutorials')">📚 教程</a>
+    <a class="tab-btn" id="nav-exam" onclick="navigate('exam')">🎯 考试</a>
+  </div>
+  <span class="user-greeting">你好，莫启言</span>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="page home-page" id="page-home">
+  <div class="danmaku-layer" id="danmaku-layer"></div>
+  <div class="home-inner">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>虎鲸AI技能培训认证</h1>
+        <div class="sub">32 个知识点 · 培训教程 + 在线考试，一站式学习 AI 知识体系</div>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="navigate('tutorials')">开始学习</button>
+          <button class="btn-secondary" onclick="navigate('exam')">在线考试</button>
+        </div>
+      </div>
+      <div class="hero-img"><img src="images/hero-image.svg" alt="hero"></div>
+    </div>
+    <div class="learning-outcome">学完后，你将建立 LLM 原理、提示工程、上下文管理、Token 经济学与安全红线的系统认知。在此基础上，你将用 Agent 模式自主完成跨文件重构和功能开发；用 Skills 定制团队专属工作流；用 MCP 协议连接代码图谱、数据库等内部工具；用 Hooks 自动化重复审查动作；用安全准则识别 AI 代码的隐藏风险、避免生产事故。最终，从"逐行写代码"的执行者，成长为"拆解需求、定义规则、审阅产出"的 AI 时代研发者。</div>
+    <div class="progress-card">
+      <div class="pc-title">📚 学习进度 <span id="progress-text">0/32 (0%)</span></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="progress-meta">LLM 基础、提示工程、AI 研发工具、安全伦理、研发新范式、RAG、SFT、Agent、Harness</div>
+    </div>
+    <div class="chapter-grid">
+      <div class="chapter-card" onclick="navigate('tutorials')">
+        <div class="cc-emoji">📖</div>
+        <div class="cc-name">通识</div>
+        <div class="cc-desc">8 大知识域 · 32 个知识点</div>
+      </div>
+      <div class="chapter-card locked">
+        <div class="cc-emoji">🔧</div>
+        <div class="cc-name">AI 编码方法论与实战</div>
+        <div class="cc-desc">AI 编码方法论，以真实开发场景和痛点为线索，系统学习 AI 编码的思维方式，并用 Qoder 演示每种思路的落地</div>
+        <span class="cc-lock">🔒 即将开放</span>
+      </div>
+      <div class="chapter-card locked">
+        <div class="cc-emoji">📐</div>
+        <div class="cc-name">规范与实践</div>
+        <div class="cc-desc">AI Coding 工程实践、运维规范、性能优化、踩坑案例、团队制度</div>
+        <span class="cc-lock">🔒 即将开放</span>
+      </div>
+      <div class="chapter-card locked">
+        <div class="cc-emoji">🎯</div>
+        <div class="cc-name">专用领域</div>
+        <div class="cc-desc">AI 前端研发、AI 测试、算法、Agent 框架</div>
+        <span class="cc-lock">🔒 即将开放</span>
+      </div>
+    </div>
+    <div class="exam-stats">
+      <span>📝 30 道选择题</span>
+      <span>⭐ 满分 100 分，90分通过</span>
+      <span>🎯 覆盖 32 个知识点</span>
+      <span>🔄 可以反复考试</span>
+      <span>⏱️ 考试不计时</span>
+    </div>
+    <span class="history-link" onclick="showToast('暂无考试历史记录')">查看历史记录</span>
+  </div>
+</div>
+
+<!-- TUTORIALS PAGE -->
+<div class="page tutorials-page" id="page-tutorials">
+  <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleDrawer()" aria-label="打开目录">☰</button>
+  <div class="scrim" id="scrim" onclick="toggleDrawer(false)"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>📚 培训教程</h2>
+      <label class="pip-toggle"><input type="checkbox" id="pip-toggle"> 视频画中画</label>
+    </div>
+    <div id="sidebar-tree"></div>
+  </aside>
+  <main class="content-area" id="tutorial-content"></main>
+</div>
+
+<!-- EXAM PAGE -->
+<div class="page exam-page" id="page-exam">
+  <div class="exam-inner">
+    <div class="exam-select" id="exam-select">
+      <h1>选择考试范围</h1>
+      <div id="exam-chapters"></div>
+      <div class="exam-rules">
+        <span>📝 30 道选择题</span><span>⭐ 满分 100 分，90分通过</span><span>🎯 覆盖 32 个知识点</span><span>🔄 可以反复考试</span><span>⏱️ 考试不计时</span>
+      </div>
+      <span class="history-link" onclick="showToast('暂无考试历史记录')">查看历史记录</span>
+    </div>
+    <div class="exam-taking" id="exam-taking">
+      <div class="exam-progress-bar">
+        <div class="epb-top">
+          <span class="epb-count" id="exam-count">第 1 / 30 题</span>
+          <span id="exam-answered" style="color:var(--text-dim);font-size:13px;">已答 0 题</span>
+        </div>
+        <div class="epb-bar"><div class="epb-fill" id="exam-fill" style="width:0%"></div></div>
+      </div>
+      <div id="exam-questions"></div>
+      <div class="exam-nav">
+        <button class="btn-ghost" onclick="confirmExitExam()">退出考试</button>
+        <button class="btn-primary" id="exam-submit-btn" onclick="submitExam()">交卷</button>
+      </div>
+    </div>
+    <div class="exam-result" id="exam-result"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')"><img id="lightbox-img" src=""></div>
+
+<script>
+/* ===== DATA (injected at build) ===== */
+const DATA = __DATA_PLACEHOLDER__;
+
+/* ===== STATE ===== */
+const state = {
+  currentTutorial: null,
+  completed: new Set(JSON.parse(localStorage.getItem('completed') || '[]')),
+  examQuestions: [],
+  examAnswers: {},
+  examSubmitted: false,
+};
+
+/* ===== MARKDOWN RENDERER ===== */
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function inlineMd(s) {
+  s = escapeHtml(s);
+  s = s.replace(/`([^`]+)`/g, '<code class="inline">$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, url) => {
+    const local = 'images/' + url.split('/').pop();
+    return `<img src="${local}" alt="${alt}" loading="lazy" onclick="openLightbox(this.src)">`;
+  });
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return s;
+}
+function renderMarkdown(md) {
+  const lines = md.split('\n');
+  let html = '';
+  let i = 0;
+  let inList = null; // 'ul' | 'ol'
+  const closeList = () => { if (inList) { html += `</${inList}>`; inList = null; } };
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // fenced code
+    if (line.trim().startsWith('```')) {
+      closeList();
+      const buf = [];
+      i++;
+      while (i < lines.length && !lines[i].trim().startsWith('```')) { buf.push(lines[i]); i++; }
+      i++; // skip closing
+      html += `<pre>${escapeHtml(buf.join('\n'))}</pre>`;
+      continue;
+    }
+    // table
+    if (line.trim().startsWith('|') && i + 1 < lines.length && /^\|[\s\-:|]+\|$/.test(lines[i+1].trim())) {
+      closeList();
+      const header = line.trim().slice(1, -1).split('|').map(c => c.trim());
+      i += 2;
+      const rows = [];
+      while (i < lines.length && lines[i].trim().startsWith('|')) {
+        rows.push(lines[i].trim().slice(1, -1).split('|').map(c => c.trim()));
+        i++;
+      }
+      html += '<div class="table-wrap"><table><thead><tr>' + header.map(h => `<th>${inlineMd(h)}</th>`).join('') + '</tr></thead><tbody>';
+      html += rows.map(r => '<tr>' + r.map(c => `<td>${inlineMd(c)}</td>`).join('') + '</tr>').join('');
+      html += '</tbody></table></div>';
+      continue;
+    }
+    // headings
+    const hm = line.match(/^(#{1,4})\s+(.+)/);
+    if (hm) {
+      closeList();
+      const lvl = hm[1].length;
+      html += `<h${lvl}>${inlineMd(hm[2])}</h${lvl}>`;
+      i++; continue;
+    }
+    // hr
+    if (/^---+$/.test(line.trim())) { closeList(); html += '<hr>'; i++; continue; }
+    // blockquote
+    if (line.trim().startsWith('> ')) {
+      closeList();
+      const buf = [];
+      while (i < lines.length && lines[i].trim().startsWith('> ')) { buf.push(lines[i].trim().slice(2)); i++; }
+      html += '<blockquote>' + buf.map(b => `<p>${inlineMd(b)}</p>`).join('') + '</blockquote>';
+      continue;
+    }
+    // unordered list
+    if (/^\s*[-*]\s+/.test(line)) {
+      if (inList !== 'ul') { closeList(); html += '<ul>'; inList = 'ul'; }
+      html += `<li>${inlineMd(line.replace(/^\s*[-*]\s+/, ''))}</li>`;
+      i++; continue;
+    }
+    // ordered list
+    if (/^\s*\d+\.\s+/.test(line)) {
+      if (inList !== 'ol') { closeList(); html += '<ol>'; inList = 'ol'; }
+      html += `<li>${inlineMd(line.replace(/^\s*\d+\.\s+/, ''))}</li>`;
+      i++; continue;
+    }
+    // empty line
+    if (line.trim() === '') { closeList(); i++; continue; }
+    // paragraph
+    closeList();
+    html += `<p>${inlineMd(line)}</p>`;
+    i++;
+  }
+  closeList();
+  return html;
+}
+
+/* ===== ROUTING ===== */
+function navigate(path) {
+  location.hash = '#/' + path;
+}
+function router() {
+  const hash = location.hash.replace(/^#\//, '');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+  if (hash.startsWith('tutorials')) {
+    document.getElementById('page-tutorials').classList.add('active');
+    document.getElementById('nav-tutorials').classList.add('active');
+    const file = hash.split('/')[1];
+    if (file && DATA.contents[file]) loadTutorial(file);
+    else if (!state.currentTutorial) loadTutorial(Object.values(DATA.structure)[0][0]);
+  } else if (hash.startsWith('exam')) {
+    document.getElementById('page-exam').classList.add('active');
+    document.getElementById('nav-exam').classList.add('active');
+    renderExamSelect();
+  } else {
+    document.getElementById('page-home').classList.add('active');
+    updateProgress();
+  }
+}
+window.addEventListener('hashchange', router);
+
+/* ===== HOME: DANMAKU ===== */
+const danmakuTemplates = {
+  100: ['{n}：满分达成！建议保送','{n} 绝绝子！满分神仙！','{n} 这满分，我直接跪着看','{n}：满分？基操勿6','{n} YYDS！永远的神！','{n} 满分！这题我会，全都会！','{n}：离谱！一题不错？！','{n} 封神了！全场起立！'],
+  90: ['{n}：这波操作666','{n} 任务完成，收工！','{n}：90+稳稳的','{n} 稳如老狗！'],
+  60: ['{n}：60分万岁的精神继承者（虽然90+）','{n}：这波不亏，及格万岁','{n} 险过！心脏都要跳出来了'],
+};
+function makeDanmakuText(u) {
+  const tier = u.avgScore >= 100 ? 100 : u.avgScore >= 90 ? 90 : 60;
+  const tpl = danmakuTemplates[tier];
+  const t = tpl[Math.floor(Math.random() * tpl.length)].replace('{n}', u.name);
+  const prefix = u.avgScore >= 100 ? '💯 👑 ' : u.avgScore >= 90 ? '🌟 ' : '😮💨 ';
+  return prefix + t;
+}
+let danmakuTimer = null;
+function startDanmaku() {
+  const layer = document.getElementById('danmaku-layer');
+  layer.innerHTML = '';
+  let idx = 0;
+  function spawn() {
+    const u = DATA.danmaku[idx % DATA.danmaku.length];
+    idx++;
+    const el = document.createElement('div');
+    el.className = 'danmaku-item';
+    el.textContent = makeDanmakuText(u);
+    el.style.top = (8 + Math.random() * 72) + 'px';
+    el.style.left = '100vw';
+    const dur = 14 + Math.random() * 10;
+    el.style.animationDuration = dur + 's';
+    layer.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+  for (let k = 0; k < 6; k++) setTimeout(spawn, k * 900);
+  danmakuTimer = setInterval(spawn, 2200);
+}
+
+/* ===== HOME: PROGRESS ===== */
+function updateProgress() {
+  const n = state.completed.size;
+  const pct = Math.round(n / 32 * 100);
+  document.getElementById('progress-text').textContent = `${n}/32 (${pct}%)`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+/* ===== TUTORIALS ===== */
+function buildSidebar() {
+  const tree = document.getElementById('sidebar-tree');
+  let html = '<div class="chapter-title collapsible" onclick="toggleCollapse(this)">📖 通识</div><div class="collapse-body">';
+  for (const [group, files] of Object.entries(DATA.structure)) {
+    html += `<div class="group-title collapsible" onclick="toggleCollapse(this)">${group}</div><div class="collapse-body">`;
+    for (const f of files) {
+      const done = state.completed.has(f);
+      html += `<div class="file-item" data-file="${f}" onclick="navigate('tutorials/${f}')">${DATA.titles[f]}${done ? '<span class="completed-icon">✅</span>' : ''}</div>`;
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  tree.innerHTML = html;
+}
+function toggleCollapse(el) {
+  el.classList.toggle('collapsed');
+  const body = el.nextElementSibling;
+  if (body && body.classList.contains('collapse-body')) body.classList.toggle('collapsed-content');
+}
+function markActiveFile(f) {
+  document.querySelectorAll('.file-item').forEach(el => el.classList.toggle('active', el.dataset.file === f));
+}
+
+function loadTutorial(file) {
+  state.currentTutorial = file;
+  markActiveFile(file);
+  toggleDrawer(false);
+  const base = file.replace('.md', '');
+  const md = DATA.contents[file];
+  const practice = DATA.practice[file];
+  const container = document.getElementById('tutorial-content');
+
+  let practiceHtml = '';
+  if (practice && practice.questions && practice.questions.length) {
+    practiceHtml = `<section class="practice-section">
+      <div class="practice-header"><div class="practice-title">📝 课后练习（选做；不影响学习进度）</div></div>
+      <div class="practice-body">${practice.questions.map((q, qi) => renderQuestion(q, qi, 'practice-' + base)).join('')}</div>
+    </section>`;
+  }
+
+  container.innerHTML = `
+    <div class="video-container" id="vc-${base}">
+      <video id="video-${base}" preload="metadata" src="videos/${base}.mp4"></video>
+      <div class="video-overlay" id="vo-${base}" onclick="toggleVideo('${base}')"><div class="play-btn"></div></div>
+      <div class="video-controls">
+        <button class="vc-btn" onclick="toggleVideo('${base}')">⏯</button>
+        <div class="vc-progress" onclick="seekVideo(event,'${base}')"><div class="vc-progress-fill" id="vpf-${base}"></div></div>
+        <span class="vc-time" id="vt-${base}">0:00 / 0:00</span>
+        <div class="playback-rate-group">
+          ${[0.5,1,1.5,2].map(r => `<button class="rate-btn ${r===1?'active':''}" onclick="setRate(this,${r},'${base}')">${r}x</button>`).join('')}
+        </div>
+      </div>
+    </div>
+    <article class="article-content">${renderMarkdown(md)}</article>
+    ${practiceHtml}
+    <section class="comments-section">
+      <div class="comments-title">💬 评论 (0)</div>
+      <div class="comments-empty">暂无评论，来抢沙发吧</div>
+      <div class="comment-input">
+        <textarea placeholder="写下你的评论..."></textarea>
+        <div class="comment-input-actions"><button class="btn-submit" onclick="showToast('评论功能为本地演示，不会保存')">发表</button></div>
+      </div>
+    </section>
+  `;
+  container.scrollTop = 0;
+  setupVideoEvents(base);
+
+  // mark completed after viewing
+  if (!state.completed.has(file)) {
+    state.completed.add(file);
+    localStorage.setItem('completed', JSON.stringify([...state.completed]));
+    buildSidebar();
+    markActiveFile(file);
+    updateProgress();
+  }
+}
+
+/* ===== VIDEO ===== */
+function setupVideoEvents(base) {
+  const v = document.getElementById('video-' + base);
+  if (!v) return;
+  v.addEventListener('timeupdate', () => {
+    if (v.duration) {
+      document.getElementById('vpf-' + base).style.width = (v.currentTime / v.duration * 100) + '%';
+      document.getElementById('vt-' + base).textContent = fmtTime(v.currentTime) + ' / ' + fmtTime(v.duration);
+    }
+  });
+  v.addEventListener('ended', () => document.getElementById('vo-' + base).classList.remove('hidden'));
+}
+function fmtTime(s) {
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+function toggleVideo(base) {
+  const v = document.getElementById('video-' + base);
+  const vo = document.getElementById('vo-' + base);
+  if (v.paused) { v.play(); vo.classList.add('hidden'); }
+  else { v.pause(); vo.classList.remove('hidden'); }
+}
+function seekVideo(e, base) {
+  const v = document.getElementById('video-' + base);
+  const rect = e.currentTarget.getBoundingClientRect();
+  v.currentTime = (e.clientX - rect.left) / rect.width * v.duration;
+}
+function setRate(btn, rate, base) {
+  document.getElementById('video-' + base).playbackRate = rate;
+  btn.parentElement.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+document.getElementById('pip-toggle').addEventListener('change', function() {
+  if (this.checked && state.currentTutorial) {
+    const v = document.getElementById('video-' + state.currentTutorial.replace('.md',''));
+    if (v && v.requestPictureInPicture) v.requestPictureInPicture().catch(() => showToast('画中画需要视频播放中'));
+  } else if (document.pictureInPictureElement) {
+    document.exitPictureInPicture();
+  }
+});
+
+/* ===== QUESTIONS (practice + exam) ===== */
+function renderQuestion(q, idx, prefix) {
+  const typeTag = q.isMultiSelect ? '多选题' : '单选题';
+  return `<div class="practice-question" data-qid="${q.id}" data-answer='${JSON.stringify(q.answer)}' data-multi="${q.isMultiSelect}">
+    <div class="pq-header">
+      <span class="pq-num">${idx + 1}.</span>
+      <span class="pq-type-tag">${typeTag}</span>
+      ${q.title ? `<span class="pq-title">${escapeHtml(q.title)}</span>` : ''}
+    </div>
+    <div class="pq-stem">${escapeHtml(q.stem)}</div>
+    <div class="pq-options">${q.options.map(o => `
+      <div class="pq-option" data-key="${o.key}" onclick="selectOption(this,'${prefix}')">
+        <span class="pq-indicator">${o.key}</span>
+        <span class="pq-option-text">${escapeHtml(o.text)}</span>
+      </div>`).join('')}
+    </div>
+    ${q.explanation ? `<div class="pq-explanation"><strong>解析：</strong>${inlineMd(q.explanation)}</div>` : ''}
+  </div>`;
+}
+function selectOption(el, prefix) {
+  const q = el.closest('.practice-question');
+  const isMulti = q.dataset.multi === 'true';
+  if (q.classList.contains('answered') && prefix.startsWith('practice')) return;
+
+  if (prefix.startsWith('exam')) {
+    // exam mode: allow changing answers, no immediate feedback
+    if (isMulti) { el.classList.toggle('selected'); }
+    else {
+      q.querySelectorAll('.pq-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+    const qid = q.dataset.qid;
+    const selected = [...q.querySelectorAll('.pq-option.selected')].map(o => o.dataset.key).sort();
+    if (selected.length) state.examAnswers[qid] = selected;
+    else delete state.examAnswers[qid];
+    updateExamProgress();
+    return;
+  }
+
+  // practice mode: immediate feedback
+  q.classList.add('answered');
+  const answer = JSON.parse(q.dataset.answer);
+  const key = el.dataset.key;
+  q.querySelectorAll('.pq-option').forEach(o => o.classList.add('disabled'));
+  if (answer.includes(key)) el.classList.add('correct');
+  else {
+    el.classList.add('wrong');
+    q.querySelectorAll('.pq-option').forEach(o => { if (answer.includes(o.dataset.key)) o.classList.add('correct'); });
+  }
+  const exp = q.querySelector('.pq-explanation');
+  if (exp) exp.classList.add('show');
+}
+
+/* ===== EXAM ===== */
+const examChapters = [
+  { id:'ch1', name:'第一章 · 通识', desc:'LLM 基础、提示工程、AI 工具概览、安全伦理、研发新范式、RAG、SFT、Agent、Harness', count:189, modules:32, available:true },
+  { id:'ch2', name:'第二章 · AI 编码方法论与实战', desc:'将在下一阶段开放', count:107, modules:16, available:false },
+  { id:'ch3', name:'第三章 · 规范与实践', desc:'将在下一阶段开放', count:88, modules:14, available:false },
+  { id:'ch4', name:'第四章 · 专用领域', desc:'将在下一阶段开放', count:147, modules:11, available:false },
+];
+function renderExamSelect() {
+  document.getElementById('exam-select').style.display = 'block';
+  document.getElementById('exam-taking').classList.remove('active');
+  document.getElementById('exam-result').classList.remove('active');
+  const wrap = document.getElementById('exam-chapters');
+  wrap.innerHTML = examChapters.map(c => `
+    <div class="exam-chapter ${c.available ? 'available' : 'locked'}" ${c.available ? 'onclick="startExam()"' : ''}>
+      <div class="ec-info">
+        <div class="ec-name">${c.name}</div>
+        <div class="ec-desc">${c.desc}</div>
+        <div class="ec-meta">从 ${c.count} 题中随机抽取 30 题</div>
+      </div>
+      <div class="ec-action">${c.available ? '<button class="btn-primary">开始考试</button>' : '<span class="ec-lock-tag">🔒 即将开放</span>'}</div>
+    </div>`).join('');
+}
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function startExam() {
+  state.examQuestions = shuffle(DATA.questions).slice(0, 30);
+  state.examAnswers = {};
+  state.examSubmitted = false;
+  document.getElementById('exam-select').style.display = 'none';
+  document.getElementById('exam-result').classList.remove('active');
+  const taking = document.getElementById('exam-taking');
+  taking.classList.add('active');
+  document.getElementById('exam-questions').innerHTML = state.examQuestions.map((q, i) => renderQuestion(q, i, 'exam')).join('');
+  updateExamProgress();
+  document.getElementById('page-exam').scrollTop = 0;
+}
+function updateExamProgress() {
+  const answered = Object.keys(state.examAnswers).length;
+  document.getElementById('exam-answered').textContent = `已答 ${answered} / 30 题`;
+  document.getElementById('exam-fill').style.width = (answered / 30 * 100) + '%';
+  document.getElementById('exam-submit-btn').textContent = answered >= 30 ? '交卷' : `交卷（还有 ${30 - answered} 题未答）`;
+}
+function confirmExitExam() {
+  if (confirm('确定要退出考试吗？答题进度将不会保存。')) {
+    renderExamSelect();
+  }
+}
+function submitExam() {
+  const answered = Object.keys(state.examAnswers).length;
+  if (answered < 30 && !confirm(`还有 ${30 - answered} 题未作答，确定要交卷吗？`)) return;
+  state.examSubmitted = true;
+
+  let correct = 0;
+  const review = state.examQuestions.map((q, i) => {
+    const userAns = state.examAnswers[q.id] || [];
+    const isCorrect = JSON.stringify(userAns) === JSON.stringify(q.answer);
+    if (isCorrect) correct++;
+    return { q, i, userAns, isCorrect };
+  });
+  const score = Math.round(correct / 30 * 100);
+  const pass = score >= 90;
+
+  document.getElementById('exam-taking').classList.remove('active');
+  const result = document.getElementById('exam-result');
+  result.classList.add('active');
+  result.innerHTML = `
+    <div class="result-score ${pass ? '' : 'fail'}">${score}</div>
+    <div class="result-label">${pass ? '🎉 恭喜通过！' : '😢 未通过'}</div>
+    <div class="result-sub">答对 ${correct} / 30 题 · ${pass ? '已达到 90 分通过线' : '距离 90 分通过线还差 ' + (90 - score) + ' 分，再试一次吧'}</div>
+    <div class="result-actions">
+      <button class="btn-primary" onclick="startExam()">再考一次</button>
+      <button class="btn-secondary" onclick="renderExamSelect()">返回选择</button>
+    </div>
+    <div class="result-review">
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:16px;">答题回顾</h2>
+      ${review.map(r => `
+        <div class="exam-question-card" style="border-color:${r.isCorrect ? 'var(--green)' : 'var(--red)'}">
+          <div class="eqc-header">
+            <span class="eqc-num">${r.i + 1}</span>
+            <span class="eqc-module">${escapeHtml(r.q.moduleName)}</span>
+            <span style="font-size:13px;color:${r.isCorrect ? 'var(--green)' : 'var(--red)'};font-weight:600;">${r.isCorrect ? '✓ 正确' : '✗ 错误'}</span>
+          </div>
+          <div class="eqc-stem">${escapeHtml(r.q.stem)}</div>
+          <div class="pq-options">${r.q.options.map(o => {
+            const isAns = r.q.answer.includes(o.key);
+            const isUser = r.userAns.includes(o.key);
+            let cls = 'pq-option disabled';
+            if (isAns) cls += ' correct';
+            else if (isUser) cls += ' wrong';
+            return `<div class="${cls}"><span class="pq-indicator">${o.key}</span><span class="pq-option-text">${escapeHtml(o.text)}${isUser && !isAns ? '（你的选择）' : ''}${isAns ? '（正确答案）' : ''}</span></div>`;
+          }).join('')}</div>
+          ${r.q.explanation ? `<div class="pq-explanation show"><strong>解析：</strong>${inlineMd(r.q.explanation)}</div>` : ''}
+        </div>`).join('')}
+    </div>
+  `;
+  document.getElementById('page-exam').scrollTop = 0;
+}
+
+/* ===== UTILS ===== */
+function toggleDrawer(open) {
+  const sb = document.getElementById('sidebar');
+  const scrim = document.getElementById('scrim');
+  if (!sb || !scrim) return;
+  if (open === undefined) open = !sb.classList.contains('open');
+  sb.classList.toggle('open', open);
+  scrim.classList.toggle('show', open);
+}
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('show');
+}
+
+/* ===== INIT ===== */
+buildSidebar();
+startDanmaku();
+updateProgress();
+window.addEventListener('resize', () => { if (window.innerWidth > 900) toggleDrawer(false); });
+if (!location.hash) location.hash = '#/';
+router();
+</script>
+</body>
+</html>

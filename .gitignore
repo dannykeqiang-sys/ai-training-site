@@ -1,0 +1,5 @@
+# Exclude large video files (601MB, 32 MP4s)
+videos/
+
+# macOS
+.DS_Store
