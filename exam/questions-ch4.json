@@ -1,0 +1,5969 @@
+[
+  {
+    "id": "D-AI-Frontend-Development-07e17aad",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "D2C 多阶段流水线",
+    "stem": "针对 D2C（Design to Code）的多阶段流水线，哪一项步骤顺序更合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "设计稿 → 直接生成最终组件代码（跳过结构化与约束绑定） → 如需维护再从代码中反推 AST/组件树用于分析"
+      },
+      {
+        "key": "B",
+        "text": "先快速产出页面代码 → 再对结果进行图层语义识别与分组 → 在末端阶段再尝试拼接 Design System 以减少重写成本"
+      },
+      {
+        "key": "C",
+        "text": "设计稿（Sketch/Figma 等） → 图层分割与语义识别 → Design Token 提取 → 注入 Design System 约束 → 生成中间 AST/组件树 → 目标框架代码（React/Vue）"
+      },
+      {
+        "key": "D",
+        "text": "设计稿 → 基于位图像素级标注直接映射到运行时渲染结构（跳过 AST/组件树），后续通过运行时规则修正样式"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "工业级 D2C 一般采用\"像素/图层解析 → 语义结构化 → token 提取与 Design System 约束绑定 → AST/组件树 → 目标代码生成\"的多阶段管线，便于约束一致性与可维护性。",
+    "source": "- [Oneday Pixelator](https://ata.atatech.org/articles/11020474017)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-d5653dd9",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "图层语义识别",
+    "stem": "在\"图层语义识别\"阶段，哪种信息组合最有助于将 UI 片段映射到已有组件库？",
+    "options": [
+      {
+        "key": "A",
+        "text": "基于像素颜色直方图和纹理分布的低层视觉特征对比，忽略层级与交互信息"
+      },
+      {
+        "key": "B",
+        "text": "主要依赖图层命名和层级深度进行匹配，必要时再人工介入调整"
+      },
+      {
+        "key": "C",
+        "text": "以导出的 PNG 切图与标注为依据进行模板匹配，无需考虑组件状态或变体"
+      },
+      {
+        "key": "D",
+        "text": "结合文案/图标、层级与栅格对齐关系、交互态（hover/active）、约束规则等多模态线索"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "需要融合视觉、结构与交互等多模态信号进行语义识别，才能稳定映射到组件级别并匹配库中变体。",
+    "source": "[Oneday Pixelator](https://ata.atatech.org/articles/11020474017)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-7e6d1eaf",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "Design System 约束注入",
+    "stem": "\"Design System 约束注入\"的正确工程化做法是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "允许自由生成多样样式，后续再统一人工 Review 对齐 DS，避免生成阶段过早约束"
+      },
+      {
+        "key": "B",
+        "text": "将生成节点映射到 DS 组件与允许的变体/尺寸/色板；无法映射时输出受限模板并标记人工复核"
+      },
+      {
+        "key": "C",
+        "text": "在生成末端仅替换颜色变量与字体等基础样式，不对组件变体或可用性约束做处理"
+      },
+      {
+        "key": "D",
+        "text": "完全依赖 QA 阶段的人工核对与修复，不在管线中设置自动化约束"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "通过 DS 白名单与变体约束实现\"生成即合规\"，对未匹配项降级并引导人工兜底，保证一致性与可维护性。",
+    "source": "[解锁前端 AI Coding](https://ata.atatech.org/articles/11020529256)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-d45c2693",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "P2C/R2C 多阶段流水线",
+    "stem": "P2C/R2C 的多阶段流水线最佳实践是什么?",
+    "options": [
+      {
+        "key": "A",
+        "text": "PRD 结构化解析（用户故事/验收标准/交互流程）→ 组件树与数据契约规划 → 代码脚手架 → 逐步补全 → 基于验收标准生成/对齐测试 → 产出 PR"
+      },
+      {
+        "key": "B",
+        "text": "采用\"测试先行\"让模型先生成用例，再据此反向推断需求细节并逐步完善 PRD"
+      },
+      {
+        "key": "C",
+        "text": "将 PRD 文档全文直接输入模型一次性生成脚手架与实现代码，测试与验收在后续迭代补齐"
+      },
+      {
+        "key": "D",
+        "text": "先实现关键前端模块以便快速演示，再补齐 PRD 并回填相关测试"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "R2C 强调对需求的结构化建模与阶段化编排，结合验收标准闭环到测试与 PR，降低返工。",
+    "source": "- [R2C MCP Server](https://open.aone.alibaba-inc.com/mcp/server/r2c-mcp-server)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-c69893aa",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "Server Component + Streaming",
+    "stem": "Server Component + Streaming 适用的生成式 UI 场景是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "在客户端一次性获取并渲染体量较大的 JSON 描述，通过单次请求避免分块传输与占位组件"
+      },
+      {
+        "key": "B",
+        "text": "仅当页面完全没有外部数据依赖时才适用，以减少服务端压力"
+      },
+      {
+        "key": "C",
+        "text": "主要用于静态站点生成（SSG）的构建期渲染，线上不建议使用分块与占位"
+      },
+      {
+        "key": "D",
+        "text": "LLM 生成延迟较高、结果可逐步确定的页面分块，借助 streaming 与 Suspense 渐进呈现"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "服务端分块渲染结合流式传输与 Suspense 能在高延迟、逐步确定结果的场景下提升交互体验与首屏速度。",
+    "source": "[Next.js Streaming/Suspense 文档](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-17ac7e59",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LLM→UI 组件映射协议",
+    "stem": "LLM→UI 组件映射协议与 JSON Schema 组件注册表的正确做法？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让模型输出受 JSON Schema 约束的组件描述（组件名/props/children），由运行时根据注册表安全解析与渲染"
+      },
+      {
+        "key": "B",
+        "text": "让模型以自由文本输出 HTML/JS 片段，再由前端直接 innerHTML 注入以提高开发速度"
+      },
+      {
+        "key": "C",
+        "text": "模型仅返回组件名，由前端在运行时为其填充默认属性与子节点，避免传输过多结构"
+      },
+      {
+        "key": "D",
+        "text": "通过字符串模板拼接 DOM 片段并插入页面，等上线后再逐步加固校验逻辑"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "以 Schema 约束的组件协议可实现安全校验、版本控制与可控渲染，是生成式 UI 的关键基座。",
+    "source": "- [AG-UI 协议](https://github.com/ag-ui-protocol/ag-ui)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-131b3558",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "未知组件的运行时兜底",
+    "stem": "未知或不安全组件描述的运行时兜底策略是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "按注册表进行 Schema 校验与白名单过滤，无法匹配时回退到安全占位组件"
+      },
+      {
+        "key": "B",
+        "text": "在开发环境进行告警或报错提示，生产环境保持渲染以减少对用户的影响"
+      },
+      {
+        "key": "C",
+        "text": "为兼顾性能默认直接渲染，等发现问题再通过监控进行定位与回滚"
+      },
+      {
+        "key": "D",
+        "text": "对无法识别的字段进行忽略并继续渲染，确保页面主体功能不受影响"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "基于 Schema 的严格校验与白名单机制可防止注入与崩溃，并提供安全的回退路径。",
+    "source": "- [AG-UI 协议](https://github.com/ag-ui-protocol/ag-ui)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-092cd74f",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "v0、bolt.new 与 Claude Artifacts",
+    "stem": "v0、bolt.new 与 Claude Artifacts 的产品形态对比",
+    "options": [
+      {
+        "key": "A",
+        "text": "v0 主要面向 UI/代码生成探索，当前仅能输出纯文本，不提供生成代码或预览的能力"
+      },
+      {
+        "key": "B",
+        "text": "Claude Artifacts 支持在对话中以\"工件面板\"形式编辑/预览产物"
+      },
+      {
+        "key": "C",
+        "text": "bolt.new 由于依赖服务端构建，不支持在浏览器内实时运行与热重载前端代码"
+      },
+      {
+        "key": "D",
+        "text": "三者产品形态与交互模式基本一致，可视为同类工具的不同品牌"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Claude Artifacts 提供对话中的可编辑工件；v0 与 bolt.new 均支持从自然语言到代码/界面的生成，但能力与形态不同，bolt.new 依赖浏览器内运行环境。",
+    "source": "- [Anthropic Claude Artifacts 文档](https://docs.anthropic.com/claude/docs/artifacts)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-18503d82",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "自然语言到数据可视化",
+    "stem": "自然语言到数据可视化的工程化路径",
+    "options": [
+      {
+        "key": "A",
+        "text": "让模型生成 Vega/Vega-Lite 等图表规范（JSON），前端基于规范渲染并校验"
+      },
+      {
+        "key": "B",
+        "text": "让模型返回图表图片 URL，由前端直接展示，可减少前端渲染复杂度但不便于复现"
+      },
+      {
+        "key": "C",
+        "text": "直接 innerHTML 注入 SVG/Canvas 片段，借助浏览器容错机制快速呈现"
+      },
+      {
+        "key": "D",
+        "text": "仅返回数据表格与描述性统计，由前端工程师手工选择图表类型以确保准确性"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "采用标准化可验证的可视化规范（如 Vega-Lite）承载设计，有利于复现、审查与安全约束。",
+    "source": "[Vega-Lite 官方文档](https://vega.github.io/vega-lite/)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-f288cabd",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "渐进式渲染与错误兜底",
+    "stem": "渐进式渲染与错误兜底的组合方式，哪项更合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "等所有区块完全生成后再统一渲染，避免页面出现占位或布局抖动"
+      },
+      {
+        "key": "B",
+        "text": "使用 Suspense 边界与流式返回，Schema 校验失败则子树降级为占位/错误块，页面不整体阻塞"
+      },
+      {
+        "key": "C",
+        "text": "出错时将异常吞掉并继续渲染剩余内容，以保证用户可见的页面元素最大化"
+      },
+      {
+        "key": "D",
+        "text": "一旦发生解析或渲染异常即返回全页 500，便于统一定位问题"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "通过流式与边界化的错误处理实现\"部分可用\"，提升鲁棒性与用户体验。",
+    "source": "[Next.js Streaming/Suspense 文档](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-2a295fcb",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "AI pre-review 的落地",
+    "stem": "在\"AI pre-review 与审查意见转代码修复\"的落地中，下列哪项更符合工程实践？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将 AI 审查接入 PR 流水线，对 diff 进行建议与自动补丁（需人审），失败时产出可追溯工件"
+      },
+      {
+        "key": "B",
+        "text": "作为团队内本地脚本在开发者环境运行，不纳入 PR 流程，以减少 CI 复杂度"
+      },
+      {
+        "key": "C",
+        "text": "为提高效率由 AI 直接合并 PR，后续再进行回归测试以节省审阅成本"
+      },
+      {
+        "key": "D",
+        "text": "仅在发布后运行 AI 审查，以验证线上变更是否符合规范与安全要求"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "将 AI 审查嵌入 PR 阶段，输出建议/补丁并保留审计工件，是兼顾效率与安全的可控做法。",
+    "source": "- [SDD + Harness 研发模式](https://ata.atatech.org/articles/11020657220)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-228b63ff",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "AI 驱动测试与验收标准",
+    "stem": "\"AI 驱动测试用例生成（单元/集成/E2E）\"与验收标准的关系，哪项更合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "与验收标准无关，主要依赖模型泛化能力与历史用例模板自动生成"
+      },
+      {
+        "key": "B",
+        "text": "以 PRD 的验收标准为约束生成可追踪的测试（traceability），作为回归与验收的契约"
+      },
+      {
+        "key": "C",
+        "text": "以覆盖率为主要目标自动生成用例，覆盖越高越能代表质量越好"
+      },
+      {
+        "key": "D",
+        "text": "主要生成 UI 快照与截图对比用例，减少逻辑层面的断言复杂度"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "将验收标准结构化并映射到测试用例与检查点，形成需求-测试闭环与可追踪性。",
+    "source": "[SDD + Harness](https://ata.atatech.org/articles/11020657220)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-32759168",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "CI/CD 中嵌入 AI 审查",
+    "stem": "将 AI 审查节点嵌入 CI/CD 时，下列哪项是更稳妥的策略？",
+    "options": [
+      {
+        "key": "A",
+        "text": "为追求自动化效率，所有 AI 建议与修复由流水线直接落库合并"
+      },
+      {
+        "key": "B",
+        "text": "在具备 AI 审查后可替代单元测试，简化测试阶段配置与维护"
+      },
+      {
+        "key": "C",
+        "text": "仅在流水线失败或覆盖率下降时才触发 AI 审查，以节约算力成本"
+      },
+      {
+        "key": "D",
+        "text": "diff→ 静态检查 →AI 风险识别与修复建议 → 输出补丁与报告 → 人审后 apply→ 流水线继续"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "AI 作为\"辅助/验证者\"角色提供建议与补丁，人审把关后再进入后续阶段，避免引入新缺陷。",
+    "source": "- [AI 研发流程全自动化实践](https://ata.atatech.org/articles/12020608126)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-0ef9ffe2",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "ROI 计算与效能度量",
+    "stem": "关于 ROI 计算与效能度量，下列更合理的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "以模型产出次数或生成文件数作为主要指标，能够直观体现产能"
+      },
+      {
+        "key": "B",
+        "text": "关注 token 与推理成本，成本越低说明 ROI 越高"
+      },
+      {
+        "key": "C",
+        "text": "基于 DORA 指标（Lead Time、变更失败率等）与人工时节省、缺陷率变化，结合 token/推理成本进行 A/B 评估"
+      },
+      {
+        "key": "D",
+        "text": "以 PR 数量与合并速度为核心指标，其他质量维度可在后续观察"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "ROI 应综合效能与质量指标，并计入模型成本进行对照实验，避免单一指标失真。",
+    "source": "- [DORA 指标](https://dora.dev)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-eebbeb3d",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "AI 友好的组件粒度",
+    "stem": "\"AI 友好的组件粒度与代码架构\"更推荐哪项？",
+    "options": [
+      {
+        "key": "A",
+        "text": "以小而纯的组件/函数、强类型 props、明确 I/O、配套 Story/示例，便于检索与重用"
+      },
+      {
+        "key": "B",
+        "text": "将业务与展示逻辑集中于大型组件，减少组件间接口定义的复杂度"
+      },
+      {
+        "key": "C",
+        "text": "广泛使用隐式全局状态与事件总线，降低组件间参数传递成本"
+      },
+      {
+        "key": "D",
+        "text": "通过魔法字符串与动态注入实现高扩展性，减少类型与接口约束"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "小而纯的组件与清晰的 I/O 边界让模型更易理解与改写，配套示例提升生成质量与可复用性。",
+    "source": "[Storybook 文档](https://storybook.js.org/docs)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-05a8e2a0",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "AI 自动修复的闭环",
+    "stem": "当\"AI 自动修复补丁\"在 CI 中导致用例失败时，更妥���的闭环是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "为保证进度可先合并，后续再集中修复失败用例"
+      },
+      {
+        "key": "B",
+        "text": "自动回滚/打标签保留补丁快照，汇总失败日志与差异上下文回馈下一轮 AI 修复，超过重试阈值转人工处理"
+      },
+      {
+        "key": "C",
+        "text": "为避免反复打扰开发流程，关闭 AI 自动修复能力，改由人工排查解决"
+      },
+      {
+        "key": "D",
+        "text": "直接删除不稳定用例以恢复流水线绿色状态，待版本发布后再逐步补齐"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "通过自动回滚与失败上下文反馈形成可追溯闭环，兼顾效率与安全，避免引入回归缺陷。",
+    "source": "- [AI 研发流程全自动化实践](https://ata.atatech.org/articles/12020608126)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-210e9ec2",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "AI Agent 操控 Web 的可机读线索",
+    "stem": "为便于 AI Agent 操控 Web 应用，应在页面/组件上提供哪些\"可机读\"线索？",
+    "options": [
+      {
+        "key": "A",
+        "text": "语义化 DOM（role/name）、WAI-ARIA 标注、稳定 data-\\* 属性（如 data-action、data-resource-id）、可检索文本标签"
+      },
+      {
+        "key": "B",
+        "text": "主要依赖像素坐标与节点在屏幕中的相对位置，稳定性由分辨率适配保证"
+      },
+      {
+        "key": "C",
+        "text": "采用随机生成的元素 id 与动态 class，提高反爬能力同时兼顾自动化可用性"
+      },
+      {
+        "key": "D",
+        "text": "优先通过 CSS 类名和层级选择器定位元素，减少 DOM 属性污染"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "语义化与可访问性标注可提升定位可靠性，稳定 data-\\* 属性支持协议化控制与自动化回放。",
+    "source": "- [WAI-ARIA 规范](https://www.w3.org/TR/wai-aria-1.2/)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-21e4fd12",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Computer Use 的特点",
+    "stem": "\"Computer Use\"相较传统脚本化自动化（Selenium/Playwright）的特点是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "基于模型的感知-行动闭环，可观测屏幕/DOM 并执行高层操作，适合非脚本化/变化频繁场景，但需沙箱与权限控制"
+      },
+      {
+        "key": "B",
+        "text": "主要适合表单填写与简单点击等重复任务，复杂流程仍需脚本框架实现"
+      },
+      {
+        "key": "C",
+        "text": "与脚本化自动化基本等同，主要差异在于脚本语言与执行环境不同"
+      },
+      {
+        "key": "D",
+        "text": "由于安全限制通常只能离线运行，难以接入真实系统进行端到端操作"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Computer Use 让模型直接操控计算机/浏览器进行任务编排，但必须配套权限、隔离与审计控制。",
+    "source": "[Anthropic Computer Use 文档](https://docs.anthropic.com/claude/docs/computer-use)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-6a58b32a",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Browser-use UI 自动化测试",
+    "stem": "基于 Browser-use 的 UI 自动化测试更合理的编排模式是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "以稳定脚本为核心，逐步硬编码点击与输入序列，减少决策分支对测试的干扰"
+      },
+      {
+        "key": "B",
+        "text": "每一步操作均由人工确认通过后再继续，确保过程完全可控"
+      },
+      {
+        "key": "C",
+        "text": "主要依赖截图或像素差异进行回归校验，弱化 DOM 层的结构化断言"
+      },
+      {
+        "key": "D",
+        "text": "提供高层任务/断言 → Agent 选择操作 → 验证 DOM 状态 → 失败重试与回退 → 记录可复现轨迹"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Agent 化测试强调目标-行动-观测的闭环与可复现日志，提升在动态页面中的稳健性。",
+    "source": "- [browser-use 概览](https://deepwiki.com/browser-use/browser-use)"
+  },
+  {
+    "id": "D-AI-Frontend-Development-295b63ee",
+    "module": "AI-Frontend-Development",
+    "moduleName": "AI 驱动的前端研发与交付",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Agent 操控 Web 的安全控制",
+    "stem": "为降低 Agent 操控 Web 应用时的数据外泄与误操作风险，下列哪项是更有效的工程控制？",
+    "options": [
+      {
+        "key": "A",
+        "text": "在可信团队内部完全信任模型行为，无需额外访问或网络限制"
+      },
+      {
+        "key": "B",
+        "text": "Egress 允许名单/域名白名单、请求代理脱敏（PII 掩码）、会话限时/操作确认、对高危动作（删除/转账）启用显式授权"
+      },
+      {
+        "key": "C",
+        "text": "通过团队规范口头约定不许泄露敏感数据，必要时由审查同学抽检"
+      },
+      {
+        "key": "D",
+        "text": "仅在日志中标注敏感词出现位置，便于事后审计与追责"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "通过对网络出口、敏感数据与操作权限进行硬性约束与审计，才能保障 Computer Use/RPA 的安全。",
+    "source": "[Anthropic Computer Use 安全实践](https://docs.anthropic.com/claude/docs/computer-use)"
+  },
+  {
+    "id": "D-AI-System-Testing-Fundamentals-549dc4f7",
+    "module": "AI-System-Testing-Fundamentals",
+    "moduleName": "AI 系统测试基础",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "AI 系统测试中\"输出不确定性\"挑战的核心表现",
+    "stem": "在测试 AI 系统时，以下哪项最准确地描述了\"输出不确定性\"这一独特挑战？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 系统的输出结果与预期需求文档不完全一致"
+      },
+      {
+        "key": "B",
+        "text": "AI 系统的错误日志格式不统一，难以解析"
+      },
+      {
+        "key": "C",
+        "text": "AI 系统的响应时间在不同负载下波动较大"
+      },
+      {
+        "key": "D",
+        "text": "相同输入在相同条件下可能产生不同的输出结果"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "AI 系统（尤其是基于大语言模型的系统）具有非确定性特征。即使输入完全相同、运行环境一致，模型也可能因内部的随机采样机制（如 temperature 参数）产生不同的输出。这与传统软件测试中\"相同输入必然产生相同输出\"的假设根本不同，使得传统的断言式测试方法难以直接应用。测试人员需要采用概率性评估、语义相似度匹配等新的验证策略。",
+    "source": "[ISTQB CT-GenAI Syllabus](https://www.istqb.org/certifications/certified-tester-generative-ai-testing)"
+  },
+  {
+    "id": "D-AI-System-Testing-Fundamentals-7127ad3c",
+    "module": "AI-System-Testing-Fundamentals",
+    "moduleName": "AI 系统测试基础",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "LLM 驱动的测试基础设施架构层次",
+    "stem": "在 LLM 驱动的测试基础设施中，负责与用户直接交互、展示测试结果并接收测试指令的是哪一层？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前端交互层"
+      },
+      {
+        "key": "B",
+        "text": "LLM 层"
+      },
+      {
+        "key": "C",
+        "text": "后端服务层"
+      },
+      {
+        "key": "D",
+        "text": "数据源层"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "LLM 驱动的测试基础设施通常分为四层：前端交互层（负责用户界面展示、测试指令输入、结果可视化）、后端服务层（处理业务逻辑、调度测试任务、管理测试流程）、LLM 层（集成大语言模型能力、执行推理任务）、数据源层（存储测试数据、测试用例、历史结果）。前端交互层是用户与测试系统交互的入口，直接影响测试效率和用户体验。",
+    "source": "[NIST AI RMF](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)"
+  },
+  {
+    "id": "D-AI-System-Testing-Fundamentals-c7f91fff",
+    "module": "AI-System-Testing-Fundamentals",
+    "moduleName": "AI 系统测试基础",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "\"AI for Testing\"与\"Testing for AI\"的核心区别",
+    "stem": "以下关于\"AI for Testing\"和\"Testing for AI\"两种范式的描述，哪项是正确的？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI for Testing 是指使用 AI 技术来测试 AI 系统本身"
+      },
+      {
+        "key": "B",
+        "text": "AI for Testing 中 AI 扮演测试执行者角色，Testing for AI 中 AI 是被测对象"
+      },
+      {
+        "key": "C",
+        "text": "Testing for AI 是指利用 AI 能力提升传统软件测试的效率"
+      },
+      {
+        "key": "D",
+        "text": "两种范式在实践中的评测方法和风险类型完全相同"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "\"AI for Testing\"是指将 AI 技术应用于软件测试过程，AI 作为测试工具或辅助手段，帮助生成测试用例、执行测试、分析结果等，提升测试效率。\"Testing for AI\"则是指专门针对 AI 系统（尤其是基于 LLM 的系统）进行测试，评估其质量、安全性、可靠性等，AI 系统本身是被测对象。两种范式在 AI 角色、风险类型、评测方法等方面存在显著差异，需要不同的测试策略和工具。",
+    "source": "[ISTQB CT-GenAI Syllabus](https://www.istqb.org/certifications/certified-tester-generative-ai-testing)"
+  },
+  {
+    "id": "D-AI-System-Testing-Fundamentals-7afd94d1",
+    "module": "AI-System-Testing-Fundamentals",
+    "moduleName": "AI 系统测试基础",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "AI 系统模型退化风险的触发因素",
+    "stem": "在 AI 系统的持续运行过程中，以下哪项最可能导致模型性能退化（Model Degradation）？",
+    "options": [
+      {
+        "key": "A",
+        "text": "测试覆盖率从 85% 下降到 70%"
+      },
+      {
+        "key": "B",
+        "text": "系统的并发用户数超过设计容量"
+      },
+      {
+        "key": "C",
+        "text": "生产环境的数据分布与训练数据分布产生显著偏移"
+      },
+      {
+        "key": "D",
+        "text": "前端交互层的响应延迟增加"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "模型退化（也称为概念漂移或数据漂移）是 AI 系统特有的风险。当生产环境中实际数据的分布与模型训练时的数据分布发生显著变化时，模型的预测准确性和整体性能会逐步下降。例如，用户行为模式变化、市场环境变化、新出现的术语或概念等都可能导致数据分布偏移。这种退化往往是渐进的，传统的功能测试可能无法及时发现，需要建立持续监控机制和定期的性能评估流程，使用代表性的实时数据进行回归测试。",
+    "source": "[NIST AI RMF](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)"
+  },
+  {
+    "id": "D-AI-System-Testing-Fundamentals-6fe7523b",
+    "module": "AI-System-Testing-Fundamentals",
+    "moduleName": "AI 系统测试基础",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "AI 系统测试中覆盖率挑战的多维分析",
+    "stem": "在测试 AI 系统时，传统的代码覆盖率指标面临哪些挑战？（选择所有适用项）",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 系统的决策路径往往是非线性的，难以用传统的分支覆盖率衡量"
+      },
+      {
+        "key": "B",
+        "text": "大语言模型的参数空间极其庞大，穷尽测试所有输入组合不现实"
+      },
+      {
+        "key": "C",
+        "text": "AI 系统的输出质量评估依赖主观判断，缺乏客观的覆盖率度量标准"
+      },
+      {
+        "key": "D",
+        "text": "AI 系统的测试只需要关注功能正确性，无需考虑安全性、公平性等维度"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "AI 系统测试的覆盖率挑战是多维度的。首先，AI 系统（特别是神经网络）的决策过程是高度非线性的，传统的分支覆盖、路径覆盖等指标难以有效衡量测试的充分性（选项 A 正确）。其次，LLM 等模型的输入空间几乎是无限的，无法像传统软件那样通过有限测试用例实现高覆盖率（选项 B 正确）。第三，AI 系统输出的\"正确性\"往往是主观的、语义层面的，难以用简单的二值判断（对/错）来评估，这给覆盖率度量带来了根本性困难（选项 C 正确）。选项 D 错误，因为 AI 系统测试必须综合考虑功能正确性、安全性、公平性、鲁棒性、可解释性等多个质量维度。",
+    "source": "[ISTQB CT-GenAI Syllabus](https://www.istqb.org/certifications/certified-tester-generative-ai-testing), [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)"
+  },
+  {
+    "id": "D-AI-System-Testing-Fundamentals-f9285de9",
+    "module": "AI-System-Testing-Fundamentals",
+    "moduleName": "AI 系统测试基础",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "\"Testing for AI\"范式的风险类型与评测方法",
+    "stem": "在\"Testing for AI\"范式中，以下哪些属于需要重点关注的风险类型及其对应的评测方法？（选择所有适用项）",
+    "options": [
+      {
+        "key": "A",
+        "text": "提示注入攻击风险——通过对抗性测试评估系统对恶意提示的防御能力"
+      },
+      {
+        "key": "B",
+        "text": "代码复杂度风险——使用圈复杂度指标评估 AI 生成代码的可维护性"
+      },
+      {
+        "key": "C",
+        "text": "幻觉风险——通过事实核查测试评估模型输出的准确性和可靠性"
+      },
+      {
+        "key": "D",
+        "text": "偏见与公平性风险——使用多样性数据集测试模型在不同群体上的表现差异"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "\"Testing for AI\"范式需要关注 AI 系统特有的多种风险。提示注入攻击（Prompt Injection）是 LLM 应用面临的主要安全威胁，需要通过红队测试和对抗性输入来评估防御能力（选项 A 正确）。幻觉（Hallucination）是 LLM 的典型问题，模型可能生成看似合理但实际错误的内容，需要通过事实核查、知识图谱验证等方法进行评估（选项 C 正确）。偏见与公平性风险源于训练数据或模型本身的偏差，需要使用包含不同人口统计特征的测试数据集进行系统性测试（选项 D 正确）。选项 B 中的代码复杂度风险主要针对传统软件开发，虽然 AI 生成的代码也需要审查，但圈复杂度等指标不是\"Testing for AI\"范式特有的核心评测方法。",
+    "source": "[OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/), [ISTQB CT-GenAI Syllabus](https://www.istqb.org/certifications/certified-tester-generative-ai-testing)"
+  },
+  {
+    "id": "D-AI-Testing-Engineering-432f4893",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "B 端测试团队在\"自然语言用例 → Playwright 测试\"实践中，选择了\"NL → 编译 → spec.ts → Playwright 执行\"的方案，而非\"AI 实时驱动 Playwright\"。从软件测试工程化的角度，这种\"编译型\"方案相比\"AI 实时驱动\"方案的核心优势，最根本的原因是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 实时驱动无法处理复杂的 UI 交互"
+      },
+      {
+        "key": "B",
+        "text": "AI 实时驱动的 Playwright 无法在 CI/CD 环境中运行"
+      },
+      {
+        "key": "C",
+        "text": "编译型方案不需要任何 AI 能力"
+      },
+      {
+        "key": "D",
+        "text": "编译型方案将 AI 的不确定性限制在编译阶段，执行阶段是确定性的传统自动化测试，具备可重复性和可预测性"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "编译型方案的本质是将 AI 的\"不确定性\"封装在编译阶段，产出的 spec.ts 是确定性的、可读的、可版本控制的测试代码。执行阶段完全不依赖 AI，具备传统自动化测试的所有优点。这符合软件工程中\"关注点分离\"的原则。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-1227bfe4",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从测试覆盖率理论的角度，以下关于\"AI 生成测试用例覆盖率\"的说法，哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "覆盖率应从需求覆盖、代码覆盖、风险覆盖三个维度综合评估，单一维度的覆盖率数字不足以反映测试充分性"
+      },
+      {
+        "key": "B",
+        "text": "AI 生成的用例覆盖率 80% 意味着剩余 20% 的功能点不需要测试"
+      },
+      {
+        "key": "C",
+        "text": "多轮优化从 50% 提升到 80%，体现了\"人在回路\"（Human-in-the-Loop）对 AI 生成质量的持续提升作用"
+      },
+      {
+        "key": "D",
+        "text": "覆盖率的提升应关注边际效益，从 80% 提升到 95% 的成本可能远高于从 50% 到 80%"
+      },
+      {
+        "key": "E",
+        "text": "AI 生成的用例只要覆盖了所有功能点编号，就等同于实现了完整的需求覆盖"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "测试覆盖率是多维概念（A 正确）；多轮优化体现了 HITL 的价值（C 正确）；覆盖率的边际成本递增（D 正确）。B 错误：未覆盖的 20% 可能是高风险区域；E 错误：覆盖功能点编号不等于覆盖需求的完整语义。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-608cb9f4",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "团队的 QRAFT Integration Runner 采用声明式 YAML 定义测试流程，其中设计了三层断言模型：L1 返回值断言、L2 数据库状态断言、L3 副作用断言。从测试验证理论的角度，这三层断言模型的设计体现了什么核心测试原则？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "测试应尽可能在 UI 层进行，因为 UI 最接近用户真实体验"
+      },
+      {
+        "key": "B",
+        "text": "所有断言都应由 AI 自动生成，人工不应干预"
+      },
+      {
+        "key": "C",
+        "text": "测试验证应分层进行，从直接输出到内部状态再到外部影响，逐层深入以确保全面性"
+      },
+      {
+        "key": "D",
+        "text": "L3 副作用断言是最重要的，应优先实施"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "三层断言模型体现了\"测试金字塔\"和\"纵深验证\"的思想。L1 验证接口的直接返回值；L2 验证数据库等内部状态的变化；L3 验证对外部系统的影响。这种分层设计确保了即使某一层通过，其他层仍能捕获不同类别的缺陷。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-efbbcb61",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从 AI 测试落地的工程挑战角度，以下哪些因素是影响 AI 自动化测试端到端通过率的关键瓶颈？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "测试环境的稳定性和数据一致性——AI 生成的用例对环境假设较强，环境波动直接导致执行失败"
+      },
+      {
+        "key": "B",
+        "text": "AI 生成用例的可调试性不足——当执行失败时，难以快速定位是 AI 生成问题还是环境问题"
+      },
+      {
+        "key": "C",
+        "text": "测试数据的准备和清理机制不完善——AI 生成的用例可能依赖特定数据状态，缺乏自动化的数据保障"
+      },
+      {
+        "key": "D",
+        "text": "LLM 的推理速度太慢，无法满足测试执行的时效要求"
+      },
+      {
+        "key": "E",
+        "text": "测试用例的优先级划分不合理，P0/P1/P2 比例失衡"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "测试环境稳定性（A）、可调试性不足（B）、数据保障缺失（C）是 AI 测试落地的主要瓶颈。D 错误：编译型方案的执行阶段不依赖 LLM；E 错误：优先级划分影响的是测试策略而非端到端通过率。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-2580a253",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "剧本测试团队在 AI 自动化 Claw 提效实践中，设计了\"三重门禁\"防假绿机制：Playwright UI 断言 + Log 字段校验 + 视觉截图 AI 审核。从测试可靠性的角度，\"三重门禁\"机制最核心的价值是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "提高测试执行速度"
+      },
+      {
+        "key": "B",
+        "text": "减少对人工测试的依赖"
+      },
+      {
+        "key": "C",
+        "text": "通过多维度交叉验证，降低单一验证方式的误判风险，提升测试结果的可信度"
+      },
+      {
+        "key": "D",
+        "text": "降低 LLM 的调用成本"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "\"三重门禁\"是一种纵深验证策略。三者从不同维度验证同一功能，任何单一维度的误判都能被其他维度捕获。这显著降低了\"假绿\"（测试通过但实际有缺陷）的风险。这与软件测试中\"Defense in Depth\"（纵深防御）原则一致。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-9598a5c7",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从人机协作测试的角度，以下关于\"脚本与 AI 混合执行\"策略的说法，哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "确定性操作（如数据准备、环境配置、固定流程点击）应由脚本执行，因为脚本的执行结果可预测、可重复、成本低"
+      },
+      {
+        "key": "B",
+        "text": "AI 适合承担需要语义理解、视觉判断、上下文推理的验证任务，这些是传统脚本难以实现的"
+      },
+      {
+        "key": "C",
+        "text": "--step 断点机制允许在脚本和 AI 之间灵活切换，支持调试和问题定位"
+      },
+      {
+        "key": "D",
+        "text": "所有测试步骤都应交给 AI 执行，以实现最大程度的自动化"
+      },
+      {
+        "key": "E",
+        "text": "混合执行策略的核心思想是\"让合适的工具做合适的事\"，发挥脚本的稳定性和 AI 的灵活性各自优势"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "确定性操作由脚本执行（A 正确）；AI 适合语义理解和视觉判断（B 正确）；断点机制支持调试（C 正确）；混合执行发挥各自优势（E 正确）。D 错误：全部交给 AI 执行会引入不必要的成本、延迟和不确定性。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-cb4d5312",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "从 AI 评测工程化的角度，为什么 AI 评测脚本需要严格规范返回值格式，而不是让 LLM 自由输出评测结果？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "LLM 的自由输出无法被程序化解析和聚合，难以实现自动化评测流水线和量化分析"
+      },
+      {
+        "key": "B",
+        "text": "LLM 无法理解评测任务的要求"
+      },
+      {
+        "key": "C",
+        "text": "规范返回值可以降低 LLM 的 Token 消耗"
+      },
+      {
+        "key": "D",
+        "text": "Groovy 语言不支持处理非结构化文本"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "AI 评测是一个工程化系统，需要将评测结果纳入自动化流水线：解析 → 聚合 → 统计 → 可视化 → 告警。如果 LLM 自由输出，每次输出的格式、字段、表述都可能不同，无法被下游系统稳定解析。严格的返回值规范确保了评测结果的结构化和机器可读性。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Engineering-27562a21",
+    "module": "AI-Testing-Engineering",
+    "moduleName": "AI 测试工程化实践",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "行业调查数据表明，当前大多数测试团队使用 AI 的主要场景是自动生成测试用例（约 70%），而将 AI 用于风险分析和质量策略制定的比例很低（不足 20%）。这反映了什么问题？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 在测试生成方面已经非常成熟，在策略决策方面还有待发展，因此当前的使用分布是合理的"
+      },
+      {
+        "key": "B",
+        "text": "AI 本身更适合处理生成类任务，不适合进行决策分析，这一分工符合技术规律"
+      },
+      {
+        "key": "C",
+        "text": "测试团队缺乏足够的数据来支撑 AI 进行策略决策，因此只能先从生成用例开始"
+      },
+      {
+        "key": "D",
+        "text": "大多数团队将 AI 作为\"效率放大器\"使用——聚焦于提升测试产出数量，而非利用 AI 重构质量工程的决策逻辑"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "行业陷入了\"用新工具做旧事情\"的陷阱，将 AI 视为加速器而非变革引擎。真正的变革在于重构测试的思维模型：从\"跑更多的用例\"转向\"更聪明地决定测什么、不测什么\"。",
+    "source": "State of Testing 2026 Report - \"The Systemic Trap\""
+  },
+  {
+    "id": "D-AI-Testing-Methods-17bb9f23",
+    "module": "AI-Testing-Methods",
+    "moduleName": "AI 测试方法论",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 AI 系统（如自动驾驶、图像识别）的测试中，常使用\"神经元覆盖率\"来衡量测试充分性。近年来的实证研究表明，关于这一指标以下哪项说法是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "神经元覆盖率越高，模型对各类异常输入的鲁棒性就一定越强"
+      },
+      {
+        "key": "B",
+        "text": "神经元覆盖率指标在设计上有根本性错误，不应在 AI 测试中继续使用"
+      },
+      {
+        "key": "C",
+        "text": "神经元覆盖率与传统代码覆盖率原理完全一致，因此可直接套用传统软件测试的覆盖准则"
+      },
+      {
+        "key": "D",
+        "text": "单纯追求高神经元覆盖率并不能保证更好的缺陷检测效果，覆盖率指标的实际价值需要更审慎地评估"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "实证研究发现覆盖率导向的方法在缺陷检测上并不优于梯度驱动方法。A 错误：覆盖率与鲁棒性之间不存在严格的单调关系。C 错误：DNN 的非线性、不可解释特性决定了不能直接套用传统覆盖准则。D 错误：反思结论是\"需要审慎使用\"，而非\"完全错误/弃用\"。",
+    "source": "SANER 2022 *Revisiting Neuron Coverage Metrics and Quality of DNNs*"
+  },
+  {
+    "id": "D-AI-Testing-Methods-ce763e3d",
+    "module": "AI-Testing-Methods",
+    "moduleName": "AI 测试方法论",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在测试 AI 系统时，常面临\"测试 oracle\"难题——缺少标注数据来判断模型输出是否正确。差分测试是应对该问题的经典方法。以下关于差分测试的描述，哪一项是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "差分测试通过向输入添加随机噪声来观察模型输出是否发生变化，以此判断模型是否正确"
+      },
+      {
+        "key": "B",
+        "text": "差分测试要求对待测模型的每一层神经元激活值进行逐一比对，以发现内部表示的异常"
+      },
+      {
+        "key": "C",
+        "text": "差分测试利用多个功能相似的模型对同一输入进行推理，若它们的输出存在显著差异，则说明至少有一个模型对该输入的处理可能有问题"
+      },
+      {
+        "key": "D",
+        "text": "差分测试的核心是对同一模型在不同训练阶段的表现进行对比，判断模型是否过拟合"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "差分测试用多个功能等价的系统互为 oracle，是解决 AI 测试中标注缺失问题的经典方案。A 描述的是对抗样本生成或模糊测试的思路；C 混淆了差分测试与白盒覆盖分析；D 描述的是模型版本对比或回归测试。",
+    "source": "SOSP 2017 *DeepXplore*"
+  },
+  {
+    "id": "D-AI-Testing-Methods-50a1764e",
+    "module": "AI-Testing-Methods",
+    "moduleName": "AI 测试方法论",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "有一种 AI 测试方法的核心思想是：好的测试用例应该与训练数据\"适度不同\"——既不能与训练数据完全一致（毫无新意），也不能偏离太远（可能是无效输入）。该方法通过分析模型内部中间层神经元对输入的激活模式，来衡量输入与训练数据分布的偏离程度。这种方法是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "基于输出置信度的异常检测方法，仅依赖模型最终输出的概率值"
+      },
+      {
+        "key": "B",
+        "text": "基于神经元激活轨迹的测试充分性度量，通过计算输入在模型内部表示上与训练数据的差异来评估测试用例的质量"
+      },
+      {
+        "key": "C",
+        "text": "基于代码覆盖率的白盒测试方法，统计哪些代码分支被执行"
+      },
+      {
+        "key": "D",
+        "text": "基于 ground truth 标签的测试方法，依赖人工标注来判断测试用例是否有效"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "该类方法使用训练数据的激活轨迹构建参考分布，评估新输入的\"意外程度\"。A 错误：该方法不是基于 softmax 置信度，而是基于中间层激活值的轨迹分析。C 错误：该方法不涉及代码覆盖率。D 错误：该方法的一个关键优势恰恰是不需要 ground truth 标注。",
+    "source": "ICSE 2019 *Guiding Deep Learning System Testing Using Surprise Adequacy*"
+  },
+  {
+    "id": "D-AI-Testing-Methods-6d3dc9bb",
+    "module": "AI-Testing-Methods",
+    "moduleName": "AI 测试方法论",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "Metamorphic Testing（蜕变测试）是 AI 测试中的一种重要方法。其基本思路是：对输入施加某种语义保持的变换（如对图像调整亮度），理论上输出应保持一致，若不一致则说明模型存在缺陷。以下哪项关于 Metamorphic Testing 的理解是错误的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "Metamorphic Testing 适用于难以定义精确 oracle 的场景，如自动驾驶中对图像的分类任务"
+      },
+      {
+        "key": "B",
+        "text": "在 Metamorphic Testing 中，变换必须能够保持输入的语义，使得期望输出不变"
+      },
+      {
+        "key": "C",
+        "text": "Metamorphic Testing 要求每次测试时重新训练模型，以验证模型更新后的一致性"
+      },
+      {
+        "key": "D",
+        "text": "一旦检测到输出发生了不符合预期的变化，就说明模型对该输入存在潜在缺陷"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Metamorphic Testing 不需要重新训练模型——它对已有模型执行测试，验证已有模型的一致性。A、B、C 均正确描述了 Metamorphic Testing 的原理和应用场景。",
+    "source": "ISSTA 2019 *DeepHunter*"
+  },
+  {
+    "id": "D-AI-Testing-Methods-6dbfd65a",
+    "module": "AI-Testing-Methods",
+    "moduleName": "AI 测试方法论",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "相比传统软件，测试 AI 系统时面临一个根本性难题：AI 的输出通常是概率值或连续值，而非精确的\"对/错\"，传统测试中\"预期结果 = 实际结果\"的判断逻辑往往失效。以下哪一项是应对该问题的有效方法？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "提高数据标注的预算，确保所有测试用例都有 ground truth 标签"
+      },
+      {
+        "key": "B",
+        "text": "该问题只存在于强化学习场景中，监督学习不需要特别处理"
+      },
+      {
+        "key": "C",
+        "text": "放弃对 AI 系统输出的验证，仅检查代码层面的异常（如崩溃、内存泄漏）"
+      },
+      {
+        "key": "D",
+        "text": "引入 Metamorphic Testing 和差分测试等替代 oracle 策略，不需要依赖精确的 ground truth 也能发现缺陷"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Metamorphic Testing 和差分测试是 ISTQB AI 测试认证中明确列为解决 oracle 问题的核心方法。A 成本过高且不现实；C 过于消极；D 错误：oracle 问题也广泛存在于监督学习中。",
+    "source": "ISTQB CT-AI Syllabus (Chapter 4: AI Testing Methods)"
+  },
+  {
+    "id": "D-AI-Testing-Risk-and-Security-bec5cd94",
+    "module": "AI-Testing-Risk-and-Security",
+    "moduleName": "AI 测试风险防控与安全",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "一个已部署的信用评分 AI 模型在上线初期表现良好，但 6 个月后准确率显著下降。最可能的原因是什么？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "模型的代码出现了回归缺陷"
+      },
+      {
+        "key": "B",
+        "text": "数据漂移（Data Drift）——真实世界的数据分布发生了变化，与训练数据不再匹配"
+      },
+      {
+        "key": "C",
+        "text": "服务器硬件性能下降导致推理延迟"
+      },
+      {
+        "key": "D",
+        "text": "测试用例设计不充分导致遗漏了缺陷"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "数据漂移是 AI 模型部署后性能衰减的最常见原因。随着时间推移，真实世界的数据分布可能发生变化，使得训练数据不再具有代表性，导致模型预测准确率下降。这要求测试团队建立持续监控机制，定期评估模型性能。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Risk-and-Security-26b4a1fd",
+    "module": "AI-Testing-Risk-and-Security",
+    "moduleName": "AI 测试风险防控与安全",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "根据 OWASP LLM Top 10 和 NIST AI RMF 的安全原则，以下哪些措施是防范 AI Agent\"过度授权\"（Excessive Agency, LLM08）风险的必要手段？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "遵循最小权限原则，Agent 的工具权限应按任务需求精确授予，而非\"一把全开\""
+      },
+      {
+        "key": "B",
+        "text": "对写操作（如数据修改、配置变更）设置人工确认或二次审批机制"
+      },
+      {
+        "key": "C",
+        "text": "Agent 的外部网络请求应做白名单限制，防止被诱导访问恶意地址"
+      },
+      {
+        "key": "D",
+        "text": "为了提升效率，应赋予 Agent 所有可用工具的完整权限，减少权限检查的开销"
+      },
+      {
+        "key": "E",
+        "text": "建立 Agent 执行的全链路审计日志，支持事后追溯和异常检测"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "最小权限原则（A）、写操作人工确认（B）、网络白名单（C）、全链路审计（E）都是防范过度授权风险的必要手段。D 错误：这恰恰是 LLM08 风险的典型成因。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Risk-and-Security-21f9aea8",
+    "module": "AI-Testing-Risk-and-Security",
+    "moduleName": "AI 测试风险防控与安全",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "从 AI 评测可靠性的角度，以下哪种方法最适合缓解 LLM-as-Judge 的\"过度自信\"问题？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "完全放弃 LLM 评判，改用纯人工评审"
+      },
+      {
+        "key": "B",
+        "text": "使用更大的 LLM 作为评判者"
+      },
+      {
+        "key": "C",
+        "text": "采用\"确定性规则检查 + LLM 智能评判\"的双轨评分体系，当确定性检查未通过时直接标记为低分，跳过 LLM 评判"
+      },
+      {
+        "key": "D",
+        "text": "增加 LLM 评判的次数，取平均分"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "双轨评分体系是经过验证的有效方案。确定性规则检查提供了客观的、无歧义的基线。只有通过了确定性检查的内容才进入 LLM 评判环节，这避免了 LLM 对明显不合格的内容给出高分。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Risk-and-Security-a76a2a32",
+    "module": "AI-Testing-Risk-and-Security",
+    "moduleName": "AI 测试风险防控与安全",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从 AI 安全运营的角度，以下哪些是 AI 系统线上质量巡检应包含的核心要素？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "实时监控 AI 系统的输出质量指标（如准确率、响应时间、异常率），设置阈值告警"
+      },
+      {
+        "key": "B",
+        "text": "建立问题分级标准（如 P0-P3），明确各级别的响应时限和处理流程"
+      },
+      {
+        "key": "C",
+        "text": "定期回顾 BadCase，分析根因并推动模型/Prompt/知识库的迭代优化"
+      },
+      {
+        "key": "D",
+        "text": "仅在用户投诉时才启动问题排查，无需主动巡检"
+      },
+      {
+        "key": "E",
+        "text": "建立跨团队协作机制，确保 AI 问题能及时流转到对应的责任方"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "实时监控（A）、问题分级（B）、BadCase 闭环（C）、跨团队协作（E）都是 AI 系统线上质量巡检的核心要素。D 错误：被动响应模式无法满足 AI 系统的质量保障需求。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Risk-and-Security-9712d0b9",
+    "module": "AI-Testing-Risk-and-Security",
+    "moduleName": "AI 测试风险防控与安全",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "从 AI 系统可解释性和根因分析的角度，AI 归因分析的最大挑战是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "计算成本过高"
+      },
+      {
+        "key": "B",
+        "text": "归因分析的算法过于复杂"
+      },
+      {
+        "key": "C",
+        "text": "LLM 的归因结果本身可能存在幻觉，需要人工验证和校准，形成\"AI 归因 + 人工确认\"的闭环"
+      },
+      {
+        "key": "D",
+        "text": "归因结果无法用于指导后续的模型优化"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "AI 归因分析使用 LLM 来判断 BadCase 的原因，但 LLM 本身的归因也可能不准确（幻觉、偏见、过度简化）。因此，AI 归因不能作为最终结论，必须经过人工验证和校准。这形成了一个\"AI 初筛 + 人工确认\"的闭环。",
+    "source": ""
+  },
+  {
+    "id": "D-AI-Testing-Risk-and-Security-fc505428",
+    "module": "AI-Testing-Risk-and-Security",
+    "moduleName": "AI 测试风险防控与安全",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "以下关于\"AI for Testing\"和\"Testing for AI\"风险差异的说法，哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "\"AI for Testing\"的主要风险包括：AI 生成的测试用例存在幻觉、AI 遗漏关键测试场景、AI 生成内容的安全合规问题"
+      },
+      {
+        "key": "B",
+        "text": "\"Testing for AI\"的主要风险包括：AI 模型的偏见与公平性问题、对抗攻击鲁棒性、隐私泄露、幻觉与事实准确性"
+      },
+      {
+        "key": "C",
+        "text": "\"AI for Testing\"的风险后果主要是测试质量下降（漏测、误报），而\"Testing for AI\"的风险后果可能直接影响终端用户"
+      },
+      {
+        "key": "D",
+        "text": "两个方向的风险防控可以完全复用同一套方法和工具"
+      },
+      {
+        "key": "E",
+        "text": "\"Testing for AI\"需要专门的评测框架和安全测试方法（如红队测试、对抗性测试），不能完全依赖传统软件测试方法"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "\"AI for Testing\"的风险集中在 AI 作为测试工具的可靠性上（A 正确）；\"Testing for AI\"的风险是 AI 系统本身的质量和安全问题（B 正确）；两者风险影响的范围和严重程度不同（C 正确）；\"Testing for AI\"需要专门的评测框架和安全测试方法（E 正确）。D 错误：两个方向的风险类型、评估方法和工具链都有显著差异。",
+    "source": ""
+  },
+  {
+    "id": "D-AgentScope-Java-2ec180d2",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "AgentScope Java 2.0 的定位",
+    "stem": "以下关于 AgentScope Java 2.0 的描述，哪项最准确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "一个大语言模型 API 的 Java SDK 封装"
+      },
+      {
+        "key": "B",
+        "text": "一个 Spring Boot 的扩展模块，用于增强 Web 应用"
+      },
+      {
+        "key": "C",
+        "text": "从\"构建一个智能体\"的工具箱，迈向面向生产环境运行智能体的完整平台"
+      },
+      {
+        "key": "D",
+        "text": "一个数据库中间件，用于管理 AI 模型的存储"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "AgentScope Java 2.0 从\"构建一个智能体\"的工具箱，迈向面向生产环境运行智能体的完整平台。本次升级围绕三大主题展开：Harness 工程化、企业级分布式部署、底层框架升级。它不是简单的 LLM SDK 封装，而是覆盖从本地原型到企业级分布式部署的全栈 Agentic 工程基础设施。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/index.html — \"AgentScope Java 2.0 从'构建一个智能体'的工具箱，迈向面向生产环境运行智能体的完整平台。\""
+  },
+  {
+    "id": "D-AgentScope-Java-2fcac527",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "AgentScope Java 的 JDK 版本要求",
+    "stem": "AgentScope Java 需要的最低 JDK 版本是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "JDK 8"
+      },
+      {
+        "key": "B",
+        "text": "JDK 11"
+      },
+      {
+        "key": "C",
+        "text": "JDK 17"
+      },
+      {
+        "key": "D",
+        "text": "JDK 21"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "AgentScope Java 需要 JDK 17 及以上版本，构建工具推荐 Maven 3.9+。这是因为框架的核心层大量使用了 JDK 17 引入的 Records（不可变数据类）和 Sealed Classes（密封类）等现代 Java 特性来构建消息系统（如 Msg 的不可变设计、ContentBlock 的密封层次结构），以获得更好的类型安全性和代码简洁性。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/quickstart.html — \"AgentScope Java 需要 JDK 17 及以上版本，构建工具推荐 Maven 3.9+。\""
+  },
+  {
+    "id": "D-AgentScope-Java-e5d9bec1",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "2.0 推荐的入口 Agent 类型",
+    "stem": "AgentScope Java 2.0 推荐的入口 Agent 类型是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "SimpleAgent"
+      },
+      {
+        "key": "B",
+        "text": "ReActAgent"
+      },
+      {
+        "key": "C",
+        "text": "PipelineAgent"
+      },
+      {
+        "key": "D",
+        "text": "HarnessAgent"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`HarnessAgent` 是推荐的入口，把工作区、长期记忆、会话持久化、子 agent、沙箱等工程能力打包在一个 builder 里。依赖 `agentscope-harness` 会自动把核心 `agentscope-core` 一并拉进来。只想跑裸 ReActAgent（不需要工作区/持久化/子 agent/沙箱），单独依赖 `agentscope-core` 即可。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/quickstart.html — \"HarnessAgent 是推荐的入口，把工作区、长期记忆、会话持久化、子 agent、沙箱等工程能力打包在一个 builder 里\""
+  },
+  {
+    "id": "D-AgentScope-Java-797164ad",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "2.0 升级的三大主题",
+    "stem": "AgentScope Java 2.0 的升级围绕三大主题展开，以下哪项不属于这三大主题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Harness 工程化——长期运行、复杂任务的工程底座"
+      },
+      {
+        "key": "B",
+        "text": "企业级分布式部署"
+      },
+      {
+        "key": "C",
+        "text": "多模态大模型原生支持"
+      },
+      {
+        "key": "D",
+        "text": "底层框架升级——更轻、更顺手的核心抽象"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "AgentScope Java 2.0 的三大升级主题是：(1) Harness 工程化——长期运行、复杂任务的工程底座；(2) 企业级分布式部署；(3) 底层框架升级——更轻、更顺手的核心抽象。多模态支持是模型层的能力，不属于 2.0 的三大升级主题。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/index.html — \"本次升级围绕三大主题展开\""
+  },
+  {
+    "id": "D-AgentScope-Java-96fc600e",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": true,
+    "title": "Harness 工程化的核心能力",
+    "stem": "以下哪些属于 Harness 工程化层提供的能力？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "自进化与技能仓库——成功模式以 Markdown 技能自动沉淀到 `workspace/skills/`"
+      },
+      {
+        "key": "B",
+        "text": "分层记忆管理——三层记忆"
+      },
+      {
+        "key": "C",
+        "text": "子智能体——在 Markdown 里声明子 agent 规格，运行时按需 `agent_spawn`"
+      },
+      {
+        "key": "D",
+        "text": "上下文自动管理——结构化压缩、超大工具结果落盘"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "Harness 工程化提供的能力包括：自进化与技能仓库、分层记忆管理、子智能体、上下文自动管理、复杂任务规划（Plan Mode）、Workspace 工程底座。所有选项都是 Harness 层的核心能力。Harness 把这套工程基础设施一次给齐：核心推理循环原样保留，能力按需叠加，让智能体能稳定长跑、能力越用越强、能从容完成复杂作业。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/index.html — Harness 工程化部分"
+  },
+  {
+    "id": "D-AgentScope-Java-49d31cdb",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "底层框架升级的关键变更",
+    "stem": "AgentScope Java 2.0 底层框架升级中，以下哪项变更是正确的？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`Middleware` 取代了松散的 `Hook`，提供 `onAgent` / `onReasoning` / `onActing` / `onModelCall` / `onSystemPrompt` 五个阶段"
+      },
+      {
+        "key": "B",
+        "text": "Hook 系统保持不变"
+      },
+      {
+        "key": "C",
+        "text": "消息模型改为 XML 格式"
+      },
+      {
+        "key": "D",
+        "text": "事件流式输出被移除"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "2.0 底层框架升级中，`Middleware` 取代了 v1 的扁平 hook，提供五个阶段：`onAgent` / `onReasoning` / `onActing` / `onModelCall` / `onSystemPrompt`。每个关注点各居其层，组合干净利落。此外还有：事件流式输出原生支持、更简洁的消息模型、HITL 一等公民。HITL 与事件流式不再是外挂层，而是框架运行的一部分。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/index.html — \"Middleware 取代松散 Hook\""
+  },
+  {
+    "id": "D-AgentScope-Java-2e04b7c5",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Agent 的核心抽象",
+    "stem": "AgentScope 中 `Agent` 接口的默认实现是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "SimpleAgent"
+      },
+      {
+        "key": "B",
+        "text": "ReActAgent"
+      },
+      {
+        "key": "C",
+        "text": "HarnessAgent"
+      },
+      {
+        "key": "D",
+        "text": "PipelineAgent"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`Agent`（接口位于 `io.agentscope.core.agent.Agent`，默认实现是 `ReActAgent`）是 AgentScope 的核心抽象——一个推理-行动循环引擎，将模型、工具、权限系统、人机交互、上下文管理、中间件、状态管理和事件系统整合到一个统一接口中。ReAct 源自 Google 2022 年论文 \"ReAct: Synergizing Reasoning and Acting in Language Models\"。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — \"Agent（接口位于 io.agentscope.core.agent.Agent，默认实现是 ReActAgent）是 AgentScope 的核心抽象\""
+  },
+  {
+    "id": "D-AgentScope-Java-5ebf1d02",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Agent 的核心方法",
+    "stem": "`Agent` 接口的 `call` 方法返回什么类型？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`String`"
+      },
+      {
+        "key": "B",
+        "text": "`Msg`"
+      },
+      {
+        "key": "C",
+        "text": "`Flux<AgentEvent>`"
+      },
+      {
+        "key": "D",
+        "text": "`Mono<Msg>`"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`call(List<Msg>)` / `call(List<Msg>, RuntimeContext)` 运行推理-行动循环，返回 `Mono<Msg>`（响应式异步结果）。`streamEvents` 则以流式方式逐一产出 `AgentEvent` 对象。`observe(Msg)` / `observe(List<Msg>)` 将消息添加到上下文，不触发推理（返回 `Mono<Void>`）。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — Agent 接口方法表"
+  },
+  {
+    "id": "D-AgentScope-Java-6841858d",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "maxIters 参数的作用",
+    "stem": "在 `ReActAgent.builder()` 中，`maxIters` 参数的默认值和作用是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "默认 10，ReAct 主循环最大迭代次数"
+      },
+      {
+        "key": "B",
+        "text": "默认 5，限制工具调用次数"
+      },
+      {
+        "key": "C",
+        "text": "默认 20，限制模型调用次数"
+      },
+      {
+        "key": "D",
+        "text": "默认 100，限制总 Token 消耗"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`maxIters` 默认值为 10，控制 ReAct 主循环最大迭代次数。也可放在 `reactConfig` 中配置。达到最大迭代次数后会发出 `ExceedMaxItersEvent` 并返回。生产环境中需要根据任务复杂度合理设置此参数，过小可能导致复杂任务未完成，过大则可能浪费计算资源。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — 参数说明表"
+  },
+  {
+    "id": "D-AgentScope-Java-61d91c1a",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "observe 方法的用途",
+    "stem": "`Agent` 接口的 `observe` 方法用于什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将消息添加到上下文，但不触发推理"
+      },
+      {
+        "key": "B",
+        "text": "触发一次完整的推理-行动循环"
+      },
+      {
+        "key": "C",
+        "text": "以流式方式产出事件"
+      },
+      {
+        "key": "D",
+        "text": "中断正在运行的 agent"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`observe(Msg)` / `observe(List<Msg>)` 将消息添加到上下文，不触发推理（返回 `Mono<Void>`）。适用于多智能体场景中，一个智能体需要观察另一个智能体输出的情况。这是多 Agent 协作的基础能力之一。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — \"使用 observe 将消息注入智能体上下文而不触发 reply——适用于多智能体场景中\""
+  },
+  {
+    "id": "D-AgentScope-Java-baae2d78",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "中断执行（Interrupt）的机制",
+    "stem": "关于 Agent 的中断执行机制，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "中断是 per-session 的，只影响指定 `(userId, sessionId)` 的 in-flight call"
+      },
+      {
+        "key": "B",
+        "text": "中断会影响同一 agent 上所有 session 的并发请求"
+      },
+      {
+        "key": "C",
+        "text": "中断后对话上下文会丢失，无法恢复"
+      },
+      {
+        "key": "D",
+        "text": "中断只能从内部触发，不支持外部调用"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "中断是 per-session 的：只影响指定 `(userId, sessionId)` 的 in-flight call，不会波及同一 agent 上其他 session 的并发请求。中断后的行为：当前推理/工具执行在下一个检查点被拦截，agent 返回带 `GenerateReason.INTERRUPTED` 标记的 Msg，对话上下文（AgentState）自动保存——下次对同一 session 发起 `call()` 时从中断点恢复。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — 中断执行（Interrupt）部分"
+  },
+  {
+    "id": "D-AgentScope-Java-aafbf2ce",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": true,
+    "title": "结构化输出的实现路径",
+    "stem": "关于 AgentScope 的结构化输出，以下描述正确的是？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "框架根据模型能力自动选择原生路径或降级路径"
+      },
+      {
+        "key": "B",
+        "text": "原生路径通过 `response_format` 将 JSON Schema 传给模型 API"
+      },
+      {
+        "key": "C",
+        "text": "降级路径注入 `generate_response` 合成工具 + 指令提示"
+      },
+      {
+        "key": "D",
+        "text": "结构化输出与工具不能同时使用"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "框架根据模型能力自动选择实现路径：(1) 原生路径——模型支持 `response_format` + tools 并行（OpenAI、DashScope 等），将 JSON Schema 通过 `response_format` 直接传给模型 API；(2) 降级路径——模型不支持原生结构化输出（Anthropic、Ollama 等），注入 `generate_response` 合成工具 + 指令提示。结构化输出与工具可以同时使用——智能体会先调用工具完成任务，最后以指定 schema 输出最终结果。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — 结构化输出部分"
+  },
+  {
+    "id": "D-AgentScope-Java-b3473472",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "@Tool 注解的作用",
+    "stem": "在 AgentScope Java 中，`@Tool` 注解的作用是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将普通方法包装为 Agent 可调用的工具"
+      },
+      {
+        "key": "B",
+        "text": "标记一个 Java 类为 Agent 的子类"
+      },
+      {
+        "key": "C",
+        "text": "标记一个配置文件"
+      },
+      {
+        "key": "D",
+        "text": "标记测试方法"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "最轻量的写法：在普通类的方法上标注 `@Tool` 与 `@ToolParam`，然后通过 `Toolkit#registerTool(Object)` 反射注册。框架自动从 Java 类型推导 JSON schema，从 `description` 取面向 agent 的说明。Java 端把后者称为 *reflective function tool*。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/tool.html — 自定义 Tool（注解式）"
+  },
+  {
+    "id": "D-AgentScope-Java-a92bb50b",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Toolkit 的职责",
+    "stem": "`Toolkit` 类的主要职责是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "管理 Agent 的生命周期"
+      },
+      {
+        "key": "B",
+        "text": "容器，负责注册 tool、MCP 客户端与 skill，向模型暴露 JSON schema，并分发工具调用"
+      },
+      {
+        "key": "C",
+        "text": "管理模型的训练数据"
+      },
+      {
+        "key": "D",
+        "text": "管理 Agent 之间的通信"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`Toolkit` 是容器，负责注册 tool、MCP 客户端与 skill，向模型暴露它们的 JSON schema，并把每次工具调用分发到对应的 tool 对象。只调用 `registerTool(Object)` 时，被注册对象上所有 `@Tool` 方法都进入特殊的 `\"basic\"` 组——该组始终激活。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/tool.html — \"容器，负责注册 tool、MCP 客户端与 skill\""
+  },
+  {
+    "id": "D-AgentScope-Java-7aa73c0d",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Tool Group 的概念",
+    "stem": "关于 Tool Group（工具组），以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "一组带名称的 tool / MCP / skill 集合，可以作为整体激活或停用"
+      },
+      {
+        "key": "B",
+        "text": "工具组之间不能切换"
+      },
+      {
+        "key": "C",
+        "text": "工具组只能通过代码配置"
+      },
+      {
+        "key": "D",
+        "text": "工具组会自动删除不常用的工具"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Tool Group 是一组带名称的 tool / MCP / skill 集合，可以作为整体激活或停用。Agent 在运行时通过内置 meta tool 切换 group，让上下文保持聚焦。Toolkit 在出现额外 tool group 或 skill 时会自动注册 `reset_tools` meta tool 与 skill 查看器工具 `load_skill_through_path`，开发者无需手动实例化。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/tool.html — \"一组带名称的 tool / MCP / skill 集合，可以作为整体激活或停用\""
+  },
+  {
+    "id": "D-AgentScope-Java-228c866e",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": true,
+    "title": "@Tool 注解的常用属性",
+    "stem": "以下哪些是 `@Tool` 注解的常用属性？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`name` — tool 名（默认取方法名）"
+      },
+      {
+        "key": "B",
+        "text": "`description` — 面向 agent 的描述"
+      },
+      {
+        "key": "C",
+        "text": "`readOnly` — 是否只读（默认 `false`）"
+      },
+      {
+        "key": "D",
+        "text": "`concurrencySafe` — 是否可并发调用（默认 `false`）"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "`@Tool` 常用属性包括：`name`（tool 名，默认取方法名）、`description`（面向 agent 的描述）、`readOnly`（是否只读，默认 `false`）、`concurrencySafe`（是否可并发调用，默认 `false`）、`stateInjected`（是否在调用时注入 `AgentState` 作为额外参数，默认 `false`）、`dangerousFiles` / `dangerousDirectories`（追加自定义危险路径列表）、`converter`（自定义返回值到 `ToolResultBlock` 的转换器）。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/tool.html — @Tool 常用属性表"
+  },
+  {
+    "id": "D-AgentScope-Java-9bbe76d6",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "内置 Tool",
+    "stem": "AgentScope 当前提供的内置 Tool 是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`PlanNotebook`"
+      },
+      {
+        "key": "B",
+        "text": "`TodoTools.todoWrite`"
+      },
+      {
+        "key": "C",
+        "text": "`web_scraper`"
+      },
+      {
+        "key": "D",
+        "text": "`code_executor`"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "AgentScope 当前提供的内置 tool 是 `TodoTools.todoWrite`——维护当前会话的结构化任务列表（全列表替换语义）。Toolkit 在出现额外 tool group 或 skill 时会自动注册 `reset_tools` meta tool 与 skill 查看器工具 `load_skill_through_path`，开发者无需手动实例化。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/tool.html — 使用内置 Tool"
+  },
+  {
+    "id": "D-AgentScope-Java-aeacba2b",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "MCP 客户端集成",
+    "stem": "在 AgentScope 中集成 MCP 客户端的正确方式是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "修改 Agent 的源代码"
+      },
+      {
+        "key": "B",
+        "text": "通过 `McpClientBuilder.streamableHttp()` 构建，然后用 `toolkit.registerMcpClient(amap).block()` 注册"
+      },
+      {
+        "key": "C",
+        "text": "通过 `toolkit.addMcp(url)` 注册"
+      },
+      {
+        "key": "D",
+        "text": "MCP 不支持 Java 版本"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "集成 MCP 客户端的正确方式：先通过 `McpClientBuilder.streamableHttp()` 构建 MCP 客户端（设置 name、url），然后用 `toolkit.registerMcpClient(amap).block()` 注册到 Toolkit 中。MCP 集成需要官方 MCP SDK。MCP（Model Context Protocol）是 Anthropic 提出的开放标准，为 LLM 与外部工具的通信提供标准化协议。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — 配置 Toolkit / MCP"
+  },
+  {
+    "id": "D-AgentScope-Java-f70ed4f7",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "消息与事件的区别",
+    "stem": "关于消息（Message）与事件（Event）的区别，以下描述最准确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "两者完全相同"
+      },
+      {
+        "key": "B",
+        "text": "消息用于前端，事件用于后端"
+      },
+      {
+        "key": "C",
+        "text": "消息是智能体间通信与持久化的基本单元，事件是前端交互与流式传输的基本单元"
+      },
+      {
+        "key": "D",
+        "text": "事件替代了消息"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "消息（Message）是智能体间通信与持久化的基本单元，每个 `Msg` 代表一个完整的对话轮次，存储在上下文中并在智能体之间传递。事件（Event）是前端交互与流式传输的基本单元，事件携带增量进度更新（文本 token、工具调用片段、权限请求等），驱动实时界面和人工介入工作流。单次 `call` 调用产生的事件序列最终汇聚成恰好一条 assistant `Msg`。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/message-and-event.html"
+  },
+  {
+    "id": "D-AgentScope-Java-5a1d02c1",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "MsgRole 的角色类型",
+    "stem": "`MsgRole` 枚举包含哪些角色？",
+    "options": [
+      {
+        "key": "A",
+        "text": "USER、ASSISTANT"
+      },
+      {
+        "key": "B",
+        "text": "ADMIN、USER、GUEST"
+      },
+      {
+        "key": "C",
+        "text": "USER、ASSISTANT、SYSTEM、TOOL"
+      },
+      {
+        "key": "D",
+        "text": "SENDER、RECEIVER"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "`MsgRole` 包含四种角色：`USER` / `ASSISTANT` / `SYSTEM` / `TOOL`。角色约束在构造时强制执行：`USER` 消息只能包含 text/data/image/audio/video 块；`SYSTEM` 消息只能包含 `TextBlock`；`ASSISTANT` 消息可包含所有块类型。这与 OpenAI Chat Completions API 的消息角色设计一致。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/message-and-event.html — 消息结构"
+  },
+  {
+    "id": "D-AgentScope-Java-e14f1216",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "ContentBlock 的类型",
+    "stem": "以下哪个不是 AgentScope 2.0 中 `ContentBlock` 的类型？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`TextBlock`"
+      },
+      {
+        "key": "B",
+        "text": "`DataBlock`"
+      },
+      {
+        "key": "C",
+        "text": "`XmlBlock`"
+      },
+      {
+        "key": "D",
+        "text": "`ThinkingBlock`"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "AgentScope 的 ContentBlock 类型包括：`TextBlock`（纯文本）、`DataBlock`（二进制数据，统一替代旧的 ImageBlock/AudioBlock/VideoBlock）、`ThinkingBlock`（模型推理过程/思维链）、`ToolUseBlock`（工具调用）、`ToolResultBlock`（工具执行结果）、`HintBlock`（指令注入）。没有 `XmlBlock` 类型。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/message-and-event.html — 内容块"
+  },
+  {
+    "id": "D-AgentScope-Java-6a8fbb6a",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "事件生命周期模式",
+    "stem": "AgentScope 的事件遵循什么生命周期模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "start → delta → end"
+      },
+      {
+        "key": "B",
+        "text": "create → update → delete"
+      },
+      {
+        "key": "C",
+        "text": "begin → process → finish"
+      },
+      {
+        "key": "D",
+        "text": "init → run → stop"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "事件遵循 **start → delta → end** 模式。例如：`TextBlockStartEvent` → `TextBlockDeltaEvent` (×N) → `TextBlockEndEvent`；`ToolCallStartEvent` → `ToolCallDeltaEvent` (×N) → `ToolCallEndEvent`。同一次回复中的所有事件共享相同的 `replyId`。在回复内部，用 `blockId` 关联文本/思考/数据块事件，用 `toolCallId` 关联工具调用和工具结果事件。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/message-and-event.html — 事件生命周期"
+  },
+  {
+    "id": "D-AgentScope-Java-01e004c6",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": true,
+    "title": "GenerateReason 枚举",
+    "stem": "`Msg` 的 `getGenerateReason()` 可能返回哪些值？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`MODEL_STOP` — 模型自然结束"
+      },
+      {
+        "key": "B",
+        "text": "`TOOL_SUSPENDED` — 因工具暂停"
+      },
+      {
+        "key": "C",
+        "text": "`INTERRUPTED` — 被中断"
+      },
+      {
+        "key": "D",
+        "text": "`MAX_ITERATIONS` — 达到最大迭代次数"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "`getGenerateReason()` 返回 `GenerateReason` 枚举，退出原因包括：`MODEL_STOP`（模型自然结束）、`TOOL_SUSPENDED`（因工具暂停）、`REASONING_STOP_REQUESTED`、`ACTING_STOP_REQUESTED`、`INTERRUPTED`（被中断）、`MAX_ITERATIONS`（达到最大迭代次数）。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/message-and-event.html — Msg 结构"
+  },
+  {
+    "id": "D-AgentScope-Java-d153fa2c",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "人工介入事件",
+    "stem": "当权限系统判断某个工具调用需要用户批准时，智能体会发出什么事件？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`RequireExternalExecutionEvent`"
+      },
+      {
+        "key": "B",
+        "text": "`UserConfirmResultEvent`"
+      },
+      {
+        "key": "C",
+        "text": "`RequireUserConfirmEvent`"
+      },
+      {
+        "key": "D",
+        "text": "`PermissionDeniedEvent`"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "当权限系统判断某个工具调用需要用户批准时，智能体会发出 `RequireUserConfirmEvent` 并暂停。事件携带 `getReplyId()`（用于恢复）和 `getToolCalls()`——一组 `ToolUseBlock`。用户可以构建 `ConfirmResult` 通过 metadata 传给下一次 `call` 来恢复智能体。`RequireExternalExecutionEvent` 用于标记为外部执行的工具。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — 人机交互部分"
+  },
+  {
+    "id": "D-AgentScope-Java-383c67f9",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Middleware 的五个 hook 位置",
+    "stem": "AgentScope 的 Middleware 可以在几个位置上设置 hook？",
+    "options": [
+      {
+        "key": "A",
+        "text": "3 个"
+      },
+      {
+        "key": "B",
+        "text": "5 个"
+      },
+      {
+        "key": "C",
+        "text": "7 个"
+      },
+      {
+        "key": "D",
+        "text": "10 个"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "AgentScope Java 中，可以在 5 个位置上设置 hook，覆盖了从外层 reply 流程一路下沉到底层模型 API 调用的全链路：`onAgent`、`onReasoning`、`onActing`、`onModelCall`、`onSystemPrompt`。这些 hook 在 agent 生命周期中的嵌套关系如下：\n```\nonAgent/\n└── ReAct loop（每一轮）/\n    ├── onReasoning/\n    │   ├── onSystemPrompt（组装 system prompt）\n    │   └── onModelCall（模型 API 调用）\n    └── onActing（每次工具调用）\n```",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/middleware.html — 概述"
+  },
+  {
+    "id": "D-AgentScope-Java-21257146",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Onion 与 Transformer 的区别",
+    "stem": "关于 Middleware 的两种类型，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Onion 和 Transformer 完全相同"
+      },
+      {
+        "key": "B",
+        "text": "Onion（洋葱式）包裹下一层 handler，可在前后插入逻辑；Transformer（变换式）串行接力，前一个的输出作为后一个的输入"
+      },
+      {
+        "key": "C",
+        "text": "Transformer 包裹 handler，Onion 串行接力"
+      },
+      {
+        "key": "D",
+        "text": "两种类型不能同时使用"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "两种类型的差别：Onion（洋葱式）——middleware 包裹下一层 handler，可以在 `next.apply(input)` 前后插入逻辑、观察中间事件流。Transformer（变换式）——middleware 之间串成流水线，前一个的输出作为后一个的输入，不存在\"内层\"概念。5 个 hook 中，`onSystemPrompt` 是 Transformer 类型，其余 4 个是 Onion 类型。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/middleware.html — 概述"
+  },
+  {
+    "id": "D-AgentScope-Java-39d0ac16",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "OtelTracingMiddleware 的打点位置",
+    "stem": "`OtelTracingMiddleware` 在哪些位置打点？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只在 `onAgent`"
+      },
+      {
+        "key": "B",
+        "text": "只在 `onModelCall`"
+      },
+      {
+        "key": "C",
+        "text": "所有 5 个 hook 位置"
+      },
+      {
+        "key": "D",
+        "text": "`onAgent`、`onModelCall`、`onActing` 三个位置"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`OtelTracingMiddleware` 为 agent 全生命周期接入 OpenTelemetry 追踪。它在 `onAgent`、`onModelCall`、`onActing` 三个位置打点，按层级生成 span：`invoke_agent <name>`（整次 reply）、`chat <model>`（每次模型 API 调用）、`execute_tool <name>`（每次工具执行）。未配置 OpenTelemetry SDK 时，所有 hook 会直接短到 `next.apply(input)`，几乎零开销。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/middleware.html — OtelTracingMiddleware"
+  },
+  {
+    "id": "D-AgentScope-Java-1ae456cd",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "onSystemPrompt 的特殊性",
+    "stem": "关于 `onSystemPrompt` hook，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "它是 Onion 类型"
+      },
+      {
+        "key": "B",
+        "text": "它嵌入在 `onReasoning` 内部，在 reasoning 步骤组装 system prompt 时被触发"
+      },
+      {
+        "key": "C",
+        "text": "它独立于其他 hook 运行"
+      },
+      {
+        "key": "D",
+        "text": "它只在 Agent 首次启动时触发"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`onSystemPrompt` 嵌入在 `onReasoning` 内部，因为它在 reasoning 步骤组装 system prompt 时被触发。它是 Transformer 类型，多个 middleware 串行接力，每一个把上一个的输出再做一次变换。这使得可以在 system prompt 发送给模型前动态注入上下文信息。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/middleware.html — \"onSystemPrompt 嵌入在 onReasoning 内部\""
+  },
+  {
+    "id": "D-AgentScope-Java-057fd4ae",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Middleware 的执行顺序",
+    "stem": "对于 Onion 类 hook，如果 middlewares = [mw1, mw2]，调用顺序是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "mw1 前 → mw1 后 → mw2 前 → mw2 后"
+      },
+      {
+        "key": "B",
+        "text": "mw2 前 → mw1 前 → 内部逻辑 → mw1 后 → mw2 后"
+      },
+      {
+        "key": "C",
+        "text": "mw1 和 mw2 并行执行"
+      },
+      {
+        "key": "D",
+        "text": "mw1 前 → mw2 前 → 内部逻辑 → mw2 后 → mw1 后"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Onion 类 hook（`onAgent`、`onReasoning`、`onActing`、`onModelCall`）——列表中第一个 middleware 处于最外层：middlewares = [mw1, mw2] 的调用顺序为 mw1 前 → mw2 前 → 内部逻辑 → mw2 后 → mw1 后。Transformer 类 hook（`onSystemPrompt`）则是从左到右串行接力：originalPrompt → mw1.onSystemPrompt() → mw2.onSystemPrompt() → final。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/middleware.html — 执行顺序"
+  },
+  {
+    "id": "D-AgentScope-Java-a05f7650",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "自定义 Middleware 读取 RuntimeContext",
+    "stem": "在自定义 Middleware 中，如何读取当前调用的 `RuntimeContext`？",
+    "options": [
+      {
+        "key": "A",
+        "text": "通过全局变量"
+      },
+      {
+        "key": "B",
+        "text": "无法读取"
+      },
+      {
+        "key": "C",
+        "text": "通过 `MiddlewareBase.getContext()`"
+      },
+      {
+        "key": "D",
+        "text": "通过 `agent.getRuntimeContext()`"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`MiddlewareBase` 的所有 hook 都把 `Agent` 作为首个参数传进来。通过 `agent.getRuntimeContext()` 可拿到本次 `call` / `stream` 绑定的 `RuntimeContext`——既能读会话字段，也能按类型/按 key 取属性，还能反向写入来给下游 hook 和 tool 传值。注意 `agent.getRuntimeContext()` 只在 `call` 期间非 null；同一份 `RuntimeContext` 在整个 reply 内被各层 hook / tool 共享。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/middleware.html — 读取 RuntimeContext"
+  },
+  {
+    "id": "D-AgentScope-Java-d49bfb72",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "两层记忆架构",
+    "stem": "Harness 把记忆拆成两层，分别是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "工作记忆和短期记忆"
+      },
+      {
+        "key": "B",
+        "text": "对话历史和用户偏好"
+      },
+      {
+        "key": "C",
+        "text": "Redis 和 MySQL"
+      },
+      {
+        "key": "D",
+        "text": "第一层·日流水账 `memory/YYYY-MM-DD.md` 和第二层·策划后长期记忆 `MEMORY.md`"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Harness 把记忆拆成两层：第一层·日流水账 `memory/YYYY-MM-DD.md`——每天追加，原始且未去重；第二层·策划后长期记忆 `MEMORY.md`——周期性 LLM 合并去重的产物；每轮推理时作为长期记忆注入 system prompt。第一层只追加，不去重；第二层永远是 LLM 注入提示的来源；第一层等待被合并。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/memory.html — \"Harness 把记忆拆成两层\""
+  },
+  {
+    "id": "D-AgentScope-Java-a395ff33",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "AgentStateStore 的内置实现",
+    "stem": "AgentScope 内置了几种 `AgentStateStore` 实现？",
+    "options": [
+      {
+        "key": "A",
+        "text": "2 种（InMemory + JsonFile）"
+      },
+      {
+        "key": "B",
+        "text": "4 种（InMemory + JsonFile + Redis + MySQL）"
+      },
+      {
+        "key": "C",
+        "text": "只有 1 种"
+      },
+      {
+        "key": "D",
+        "text": "需要自行实现"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "AgentScope 内置 4 种 `AgentStateStore` 实现：(1) `InMemoryAgentStateStore`（agentscope-core，单元测试/单进程 demo）；(2) `JsonFileAgentStateStore`（agentscope-core，单机开发，HarnessAgent 默认值）；(3) `RedisAgentStateStore`（agentscope-extensions-redis，多副本生产）；(4) `MysqlAgentStateStore`（agentscope-extensions-mysql，需要落关系型库）。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/agent.html — AgentStateStore 配置"
+  },
+  {
+    "id": "D-AgentScope-Java-44c17524",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "上下文压缩的触发方式",
+    "stem": "对话摘要压缩（CompactionMiddleware）通过什么方式触发？",
+    "options": [
+      {
+        "key": "A",
+        "text": "每次 call 结束自动触发"
+      },
+      {
+        "key": "B",
+        "text": "模型报错时触发"
+      },
+      {
+        "key": "C",
+        "text": "用户手动触发"
+      },
+      {
+        "key": "D",
+        "text": "按消息条数或估算 token 触发"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "对话摘要压缩按消息条数或估算 token 触发，把对话前缀用一次 LLM 调用压成结构化摘要，保留尾部 N 条最近消息原文。配置方式：`CompactionConfig.builder().triggerMessages(30).keepMessages(10).build()`。默认摘要 prompt 会把内容组织成 `SESSION INTENT / SUMMARY / ARTIFACTS / NEXT STEPS` 四个小节。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/compaction.html — 对话摘要压缩"
+  },
+  {
+    "id": "D-AgentScope-Java-5ffa240f",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": true,
+    "title": "记忆管线的三处 LLM 调用",
+    "stem": "记忆管线中有三处独立的 LLM 调用，分别是？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "**Flush** — 从对话窗口抽取长期事实，写入 `memory/YYYY-MM-DD.md`"
+      },
+      {
+        "key": "B",
+        "text": "**Consolidation** — 把每日流水账合并到 `MEMORY.md`"
+      },
+      {
+        "key": "C",
+        "text": "**Compaction summary** — 把对话前缀蒸馏成一条摘要消息"
+      },
+      {
+        "key": "D",
+        "text": "**Indexing** — 构建知识图谱索引"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "记忆管线有三处独立的 LLM 调用：(1) Flush——从对话窗口抽取长期事实，写入 `memory/YYYY-MM-DD.md`；(2) Consolidation——把每日流水账合并到 `MEMORY.md`；(3) Compaction summary——把对话前缀蒸馏成一条摘要消息。前两个是\"沉淀长期记忆\"，由 `MemoryConfig` 管；第三个是\"压缩当下上下文\"，由 `CompactionConfig` 管。三处 LLM 调用默认共享 agent 主模型，但各自支持 `.model(...)` 覆盖。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/memory.html — 三处 LLM 调用的全景"
+  },
+  {
+    "id": "D-AgentScope-Java-798cdf03",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "四种上下文压缩策略",
+    "stem": "HarnessAgent 内置了几种上下文压缩策略？以下哪项不属于？",
+    "options": [
+      {
+        "key": "A",
+        "text": "对话摘要压缩"
+      },
+      {
+        "key": "B",
+        "text": "大工具结果卸载"
+      },
+      {
+        "key": "C",
+        "text": "上下文溢出兜底"
+      },
+      {
+        "key": "D",
+        "text": "模型参数量化"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "HarnessAgent 内置四种上下文压缩策略：(1) 对话摘要压缩（CompactionMiddleware）；(2) 大工具结果卸载（ToolResultEvictionMiddleware）；(3) 上下文溢出兜底（HarnessAgent.recoverFromOverflow）；(4) 预压缩参数截断（CompactionConfig.TruncateArgsConfig）。四套策略正交，可以任意组合，默认全部不开。模型参数量化不属于上下文压缩策略。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/compaction.html — HarnessAgent 内置的几种策略"
+  },
+  {
+    "id": "D-AgentScope-Java-d180c9c6",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "AgentState 与 Workspace 的关系",
+    "stem": "关于 `AgentState` 与 Workspace 的关系，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AgentState 存储在 Workspace 目录内"
+      },
+      {
+        "key": "B",
+        "text": "AgentState 不是工作区内容，存在独立的 `AgentStateStore` 子系统中"
+      },
+      {
+        "key": "C",
+        "text": "AgentState 和 Workspace 是完全相同的概念"
+      },
+      {
+        "key": "D",
+        "text": "Workspace 包含了 AgentState 的所有数据"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`AgentState` 不是工作区内容——别把两者混为一谈。Agent 中途恢复对话所需的在途上下文会被序列化成一份 `AgentState` 文档，存进独立子系统 `AgentStateStore`（默认 `~/.agentscope/state/<agentName>/`，完全在工作区树之外）。这是刻意的拆分：工作区保存持久的文件产物（永不压缩的会话日志、计划 markdown、任务记录、记忆），而 `AgentState` 保存易失的运行期上下文 + 工作区元数据。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/workspace.html — \"AgentState 不是工作区内容——别把两者混为一谈\""
+  },
+  {
+    "id": "D-AgentScope-Java-ae957083",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Workspace 的设计理念",
+    "stem": "工作区（workspace）的设计理念是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只能通过 API 配置"
+      },
+      {
+        "key": "B",
+        "text": "只能存储代码文件"
+      },
+      {
+        "key": "C",
+        "text": "必须使用数据库存储"
+      },
+      {
+        "key": "D",
+        "text": "智能体定义与进化的 source of truth，全部以目录 + 普通 Markdown / JSON 文件来组织"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "工作区（workspace）是 `HarnessAgent` 智能体定义与进化的 source of truth。智能体\"是什么\"以及\"在运行中学到了什么\"，全部以一个目录 + 普通 Markdown / JSON 文件来组织——不散落在代码里，不绑死在某个数据库表上。\n\n**工作区目录布局：**\n```\n.agentscope/workspace/\n├── AGENTS.md          ← 静态：人格 + 行为约定\n├── MEMORY.md          ← 长期记忆：策划后的长期事实\n├── tools.json         ← 静态：MCP server + 工具白名单（可选）\n├── memory/            ← 长期记忆：每天追加的事实流水账\n├── knowledge/         ← 静态：领域知识入口\n├── skills/            ← 静态：技能目录\n├── subagents/         ← 静态：子 agent 声明\n├── plans/             ← 运行时：Plan Mode 计划文件\n└── agents/<name>/     ← 运行时：每个 agent 自己的运行时根\n    ├── sessions/      ← 会话日志\n    └── tasks/         ← 子 agent 后台任务记录\n```",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/workspace.html — 设计理念"
+  },
+  {
+    "id": "D-AgentScope-Java-b9e53664",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "子 Agent 的委派工具",
+    "stem": "主 Agent 通过什么工具将任务委派给子 Agent？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`delegate_task`"
+      },
+      {
+        "key": "B",
+        "text": "`create_subagent`"
+      },
+      {
+        "key": "C",
+        "text": "`agent_spawn`"
+      },
+      {
+        "key": "D",
+        "text": "`send_message`"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "主 agent 通过 `agent_spawn` 创建子 agent。关键是 `timeout_seconds`：`timeout_seconds > 0`（默认 30，最大 600）——同步调用，主 agent 在这一步 block 等待结果；`timeout_seconds = 0`——后台调用，立即返回一个 `task_id`，子 agent 在后台跑。\n\n**子 Agent 声明示例（workspace/subagents/reviewer.md）：**\n```yaml\ndescription: 代码审查专家。当用户需要 review PR、找代码问题、检查代码规范时使用。\n\n你是一个专注代码评审的子 agent。请按以下流程工作：\n1. 先 read_file / grep_files 收集上下文\n2. 给出按文件/行号的具体建议\n3. 末尾给一个 1-5 的总体评分\n```",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/subagent.html — 同步还是后台？"
+  },
+  {
+    "id": "D-AgentScope-Java-93eaef2f",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "权限系统的三种决策",
+    "stem": "权限系统（Permission System）拦截每次工具调用，给出的三种决策是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "成功、失败、重试"
+      },
+      {
+        "key": "B",
+        "text": "读、写、执行"
+      },
+      {
+        "key": "C",
+        "text": "允许（ALLOW）、拒绝（DENY）、询问用户（ASK）"
+      },
+      {
+        "key": "D",
+        "text": "高、中、低"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Permission System 拦截 agent 的每一次工具调用，给出三种决策之一：允许（ALLOW）执行、拒绝（DENY）执行，或者询问用户（ASK）确认。它把静态配置与动态运行时分析组合起来。三个组件共同决定结果：Rules（显式 allow/deny/ask 模式）、Mode（全局静态策略）、Built-in Checks（运行时动态分析）。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/permission-system.html — 概述"
+  },
+  {
+    "id": "D-AgentScope-Java-915af208",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "子 Agent 的工作区模式",
+    "stem": "子 Agent 的 `workspaceMode` 有哪两种？",
+    "options": [
+      {
+        "key": "A",
+        "text": "ISOLATED（默认，独立工作区）和 SHARED（共享主工作区）"
+      },
+      {
+        "key": "B",
+        "text": "LOCAL 和 REMOTE"
+      },
+      {
+        "key": "C",
+        "text": "PUBLIC 和 PRIVATE"
+      },
+      {
+        "key": "D",
+        "text": "READ 和 WRITE"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`workspaceMode` 决定子 agent 的工作区怎么算：ISOLATED（默认）——子 agent 有自己独立的工作区。子 agent 的运行时状态按\"父 sessionId × 用户\"分桶——同一用户在不同对话里 spawn 同名子 agent 也互不污染。SHARED——子 agent 直接用主工作区。适合子 agent 的输出会被父立即读到的情况（例如 `general-purpose`）。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/subagent.html — ISOLATED vs SHARED"
+  },
+  {
+    "id": "D-AgentScope-Java-02bef710",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": true,
+    "title": "技能仓库的来源",
+    "stem": "Harness 支持从哪些来源装载 Skill？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "**技能市场** — Git 仓库、Nacos、MySQL、classpath、自定义后端"
+      },
+      {
+        "key": "B",
+        "text": "**工作区** — `workspace/skills/` 下大家共用；`<userId>/skills/` 下按用户隔离"
+      },
+      {
+        "key": "C",
+        "text": "只能从代码中定义"
+      },
+      {
+        "key": "D",
+        "text": "只能通过 API 传入"
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "Harness 让你从两个地方装 skill：(1) 技能市场——Git 仓库、Nacos、MySQL、classpath、自定义后端；(2) 工作区——`workspace/skills/` 下大家共用；`<userId>/skills/` 下按用户隔离。两类来源同时生效，不需要二选一。除此之外，还可以打开自学习闭环：agent 自己起草 skill → 审核 → 后台周期性整理。\n\n**Skill 目录结构示例：**\n```\ncode-reviewer/\n├── SKILL.md          # 必需，YAML frontmatter（name + description）+ 给 agent 看的指令\n├── references/       # 可选，长篇参考资料，agent 按需读取\n│   └── style-guide.md\n└── scripts/          # 可选，agent 可以通过 shell 调用的脚本\n    └── run-checks.sh\n```",
+    "source": "- https://java.agentscope.io/v2/zh/docs/harness/skill.html — 技能"
+  },
+  {
+    "id": "D-AgentScope-Java-b52db597",
+    "module": "AgentScope-Java",
+    "moduleName": "AgentScope Java 2.0",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Permission Mode 枚举",
+    "stem": "`PermissionMode` 枚举中，哪种模式会\"把所有 ASK 转为 DENY\"，适用于无人值守/计划任务？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`DONT_ASK`"
+      },
+      {
+        "key": "B",
+        "text": "`ACCEPT_EDITS`"
+      },
+      {
+        "key": "C",
+        "text": "`BYPASS`"
+      },
+      {
+        "key": "D",
+        "text": "`DEFAULT`"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`PermissionMode` 枚举支持以下模式：\n- `DEFAULT` — 所有操作都需要显式规则或用户确认（推荐默认值）\n- `ACCEPT_EDITS` — 自动放行工作目录内的文件操作\n- `EXPLORE` — 只读：放行读、拒绝所有写与命令\n- `BYPASS` — 放行一切（deny/ask 规则仍生效）\n- **`DONT_ASK`** — 把所有 ASK 转为 DENY（适用于无人值守/计划任务）\n\n注意：Deny 规则与危险路径检查是**不可绕过的**——即使在 `BYPASS` 模式下也照常生效。",
+    "source": "- https://java.agentscope.io/v2/zh/docs/building-blocks/permission-system.html — Permission Mode"
+  },
+  {
+    "id": "D-Code-Performance-and-SQL-Optimization-097e9996",
+    "module": "Code-Performance-and-SQL-Optimization",
+    "moduleName": "代码性能分析与 SQL 优化",
+    "difficulty": "easy",
+    "difficultyLabel": "L2",
+    "isMultiSelect": false,
+    "title": "使用 AI 分析火焰图时，以下哪种方式比较好？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接把火焰图 SVG 文件发给 AI 分析"
+      },
+      {
+        "key": "B",
+        "text": "将火焰图解析为结构化数据（层级视图、热点函数占比），再让 AI 分析"
+      },
+      {
+        "key": "C",
+        "text": "让 AI 自己登录监控控制台截图分析"
+      },
+      {
+        "key": "D",
+        "text": "不需要 AI，人工看火焰图就够了"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "将工具输出转化为结构化数据，让 AI 能自动完成闭环分析。",
+    "source": ""
+  },
+  {
+    "id": "D-Code-Performance-and-SQL-Optimization-b84bc26d",
+    "module": "Code-Performance-and-SQL-Optimization",
+    "moduleName": "代码性能分析与 SQL 优化",
+    "difficulty": "easy",
+    "difficultyLabel": "L2",
+    "isMultiSelect": false,
+    "title": "发现某个接口 CPU 占用很高，以下哪种排查思路比较合理？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接优化最耗时的方法"
+      },
+      {
+        "key": "B",
+        "text": "先排除 GC 导致 CPU 虚高的可能，再通过火焰图确认热点方法，最后结合调用链验证"
+      },
+      {
+        "key": "C",
+        "text": "把所有方法都优化一遍"
+      },
+      {
+        "key": "D",
+        "text": "加机器扩容解决"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "性能分析要多维度交叉验证，避免单指标定结论。",
+    "source": ""
+  },
+  {
+    "id": "D-Code-Performance-and-SQL-Optimization-b6bb52a3",
+    "module": "Code-Performance-and-SQL-Optimization",
+    "moduleName": "代码性能分析与 SQL 优化",
+    "difficulty": "easy",
+    "difficultyLabel": "L2",
+    "isMultiSelect": false,
+    "title": "慢 SQL 治理中，以下哪种长期做法比较好？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "有报警就优化，没报警就不管"
+      },
+      {
+        "key": "B",
+        "text": "所有查询都加索引以防万一"
+      },
+      {
+        "key": "C",
+        "text": "建立常态化机制：定期获取慢 SQL 清单 → 识别重点 → 分配责任人 → 按周推进"
+      },
+      {
+        "key": "D",
+        "text": "交给 AI 自动优化所有慢 SQL"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "慢 SQL 治理是持续过程，需要常态化机制。",
+    "source": ""
+  },
+  {
+    "id": "D-Code-Performance-and-SQL-Optimization-afbf5e90",
+    "module": "Code-Performance-and-SQL-Optimization",
+    "moduleName": "代码性能分析与 SQL 优化",
+    "difficulty": "easy",
+    "difficultyLabel": "L2",
+    "isMultiSelect": false,
+    "title": "设计组合索引时，以下哪种字段排列思路比较好？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "按字段名称字母顺序排列"
+      },
+      {
+        "key": "B",
+        "text": "等值查询字段放左侧，范围查询字段放右侧"
+      },
+      {
+        "key": "C",
+        "text": "选择性最差的字段放最前面"
+      },
+      {
+        "key": "D",
+        "text": "把最常用的字段放在最后面"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "组合索引遵循最左匹配原则，范围查询后索引中断，因此等值字段应在前。",
+    "source": ""
+  },
+  {
+    "id": "D-GUI-Agent-Testing-a7defa3c",
+    "module": "GUI-Agent-Testing",
+    "moduleName": "GUI Agent 与测试自动化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "GUI Agent（图形用户界面智能体）的核心工作模式可以概括为以下哪种循环？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "感知 → 推理 → 执行"
+      },
+      {
+        "key": "B",
+        "text": "输入 → 计算 → 输出"
+      },
+      {
+        "key": "C",
+        "text": "编码 → 训练 → 推理"
+      },
+      {
+        "key": "D",
+        "text": "采集 → 标注 → 评估"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "GUI Agent 的工作模式遵循\"感知（Perception）→ 推理（Reasoning）→ 执行（Action）\"的循环，对应 ReAct 范式。感知阶段获取界面状态信息；推理阶段利用 LLM/VLM 进行思维链推演；执行阶段模拟人类操作完成任务。",
+    "source": ""
+  },
+  {
+    "id": "D-GUI-Agent-Testing-982747e3",
+    "module": "GUI-Agent-Testing",
+    "moduleName": "GUI Agent 与测试自动化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 LLM 驱动的 GUI Agent 架构中，以下哪个组件负责将用户的自然语言指令分解为可执行的子任务序列？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "感知模块（Perception）"
+      },
+      {
+        "key": "B",
+        "text": "规划模块（Planning）"
+      },
+      {
+        "key": "C",
+        "text": "记忆模块（Memory）"
+      },
+      {
+        "key": "D",
+        "text": "动作执行模块（Action Execution）"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "规划模块是 GUI Agent 架构的核心组件之一，负责将用户的高层自然语言指令分解为可执行的子任务序列。它通常集成了思维链推演、自我反思机制和目标分解技术。",
+    "source": ""
+  },
+  {
+    "id": "D-GUI-Agent-Testing-3a5b4623",
+    "module": "GUI-Agent-Testing",
+    "moduleName": "GUI Agent 与测试自动化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "GUI Agent 获取界面信息的观察方式包括以下哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "屏幕截图（Screenshot）"
+      },
+      {
+        "key": "B",
+        "text": "DOM / Accessibility Tree（可访问性树）"
+      },
+      {
+        "key": "C",
+        "text": "直接读取应用程序源代码"
+      },
+      {
+        "key": "D",
+        "text": "OCR 文字识别"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "GUI Agent 主要通过屏幕截图（A）、DOM/Accessibility Tree（B）、OCR 文字识别（D）等方式感知界面环境。C 不正确——GUI Agent 的核心优势恰恰在于不需要读取应用程序源代码或依赖应用开放 API。",
+    "source": ""
+  },
+  {
+    "id": "D-GUI-Agent-Testing-b332f3d2",
+    "module": "GUI-Agent-Testing",
+    "moduleName": "GUI Agent 与测试自动化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "相比传统的基于脚本的 GUI 测试方法（如 Selenium、Appium），LLM 驱动的 GUI Agent 在测试领域带来了哪些变革？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "允许非专业人员通过自然语言描述测试用例，无需编写测试脚本"
+      },
+      {
+        "key": "B",
+        "text": "完全消除了 GUI 测试中的误报和漏报问题"
+      },
+      {
+        "key": "C",
+        "text": "具备自愈能力（Self-Healing），当 UI 元素变化时可自动调整测试路径"
+      },
+      {
+        "key": "D",
+        "text": "能够自主探索应用界面，发现传统脚本无法覆盖的边缘场景"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "GUI Agent 降低了测试门槛（A）；具备自愈能力（C）；能够自主探索（D）。B 不正确——GUI Agent 的输出本身具有概率性，不可能完全消除误报和漏报。",
+    "source": ""
+  },
+  {
+    "id": "D-GUI-Agent-Testing-9c2b9d36",
+    "module": "GUI-Agent-Testing",
+    "moduleName": "GUI Agent 与测试自动化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "GUI Agent 的\"自愈能力\"（Self-Healing）是指？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "当 Agent 出现程序崩溃时能自动重启"
+      },
+      {
+        "key": "B",
+        "text": "Agent 能自动修复被测应用中的 Bug"
+      },
+      {
+        "key": "C",
+        "text": "当 UI 元素发生变化（如按钮位置移动、ID 更改）时，Agent 能通过视觉语义识别自动找到最相似的元素继续执行"
+      },
+      {
+        "key": "D",
+        "text": "Agent 能自动更新自身的模型参数"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "GUI Agent 的自愈能力是指当界面元素发生变化时，Agent 能通过视觉语义识别自动找到功能最相似的元素并继续执行测试，无需人工修改测试脚本。这是 GUI Agent 相比传统脚本测试的重要优势之一。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-1842a90e",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "检索-排序统一建模",
+    "stem": "传统推荐系统通常采用\"检索（Retrieval）→ 排序（Ranking）\"的两阶段级联架构。OneRec 提出的\"统一检索与排序\"（Unifying Retrieve and Rank）的核心思路是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "在检索阶段直接输出最终排序结果，跳过精排阶段"
+      },
+      {
+        "key": "B",
+        "text": "使用同一个生成式模型同时完成候选召回和偏好排序，将推荐建模为序列生成任务"
+      },
+      {
+        "key": "C",
+        "text": "在精排模型中嵌入倒排索引，替代传统检索模块"
+      },
+      {
+        "key": "D",
+        "text": "将检索和排序的模型参数共享，但不改变各自的推理流程"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "OneRec 的核心创新是将推荐任务统一建模为生成式框架——使用一个生成式推荐模型（Generative Recommender）同时完成候选集的生成（召回）和偏好排序。不同于传统两阶段的检索→排序分离架构，OneRec 通过序列生成的方式端到端地输出推荐结果，并结合偏好对齐（Preference Alignment）来优化生成质量。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-767c7d02",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "偏好对齐机制",
+    "stem": "OneRec 中的\"Preference Alignment\"（偏好对齐）主要解决什么问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将用户的历史行为序列与物品特征进行特征交叉"
+      },
+      {
+        "key": "B",
+        "text": "将不同用户群体的偏好进行统一标准化"
+      },
+      {
+        "key": "C",
+        "text": "确保生成式推荐模型输出的排序结果与用户真实偏好分布一致"
+      },
+      {
+        "key": "D",
+        "text": "对齐检索阶段和排序阶段的候选集分布"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "生成式模型（如基于 Transformer 的自回归生成）直接输出推荐序列时，其生成分布可能与用户真实的偏好分布存在偏差。Preference Alignment 通过偏好对齐策略（可类比 RLHF 或 DPO 的思路），使模型生成的推荐结果更贴合用户的真实偏好，从而提升推荐质量。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-d779a2ad",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "生成式与判别式推荐范式",
+    "stem": "在推荐系统中，\"生成式推荐\"（Generative Recommendation）与传统\"判别式推荐\"（Discriminative Recommendation）的核心区别是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成式推荐将推荐建模为从用户表征到物品序列的生成过程，判别式推荐建模为用户-物品的匹配概率"
+      },
+      {
+        "key": "B",
+        "text": "生成式推荐使用 GAN 生成推荐结果，判别式推荐使用分类器"
+      },
+      {
+        "key": "C",
+        "text": "两者没有本质区别，只是训练目标函数不同"
+      },
+      {
+        "key": "D",
+        "text": "生成式推荐只能用于召回阶段，判别式推荐只能用于排序阶段"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "传统判别式推荐（如 CTR 预估、双塔召回）将推荐建模为给定用户和物品后预测匹配概率的二分类/排序问题。生成式推荐则将推荐建模为条件生成任务——给定用户表征，直接生成推荐物品序列。这种范式转换使得模型可以端到端地建模用户偏好，而不需要显式的\"检索→排序\"分阶段架构。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-0a060b3b",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "OneRec自回归生成范式",
+    "stem": "OneRec 将推荐任务建模为序列生成问题后，模型推理时直接自回归地生成推荐物品 ID 序列，不再需要传统推荐系统中的\"候选召回→粗排→精排→重排\"的级联流程。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "这是生成式推荐范式的核心主张——用统一的生成式模型替代多阶段的级联架构，直接端到端地生成排序后的推荐结果。\n\n\n## 二、排序模型 Scaling 与特征交互",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-50ba23b9",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "排序模型Scaling",
+    "stem": "RankMixer 的核心目标是解决工业推荐系统中排序模型的什么问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "排序模型的推理延迟过高"
+      },
+      {
+        "key": "B",
+        "text": "排序模型在处理冷启动物品时效果差"
+      },
+      {
+        "key": "C",
+        "text": "如何在保证线上服务效率的前提下，扩展排序模型的参数量和表达能力"
+      },
+      {
+        "key": "D",
+        "text": "多目标排序中各目标的权重如何设定"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "RankMixer 聚焦于工业推荐场景下的排序模型 Scaling 问题。传统精排模型受限于线上推理的延迟约束（通常要求在几十毫秒内完成），模型容量受限。RankMixer 探索了在严格延迟约束下如何有效扩展排序模型规模，通过创新的架构设计实现参数量增长与推理效率的平衡。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-6f56606d",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "推荐系统Scaling Law",
+    "stem": "Wukong 论文探讨的是\"大规模推荐的 Scaling Law\"。在推荐系统语境中，\"Scaling Law\"主要指的是什么规律？",
+    "options": [
+      {
+        "key": "A",
+        "text": "推荐系统的用户规模与营收之间的指数增长关系"
+      },
+      {
+        "key": "B",
+        "text": "推荐模型性能（如 AUC、NDCG）随模型参数量、数据量、计算量增加而呈现的可预测的幂律提升关系"
+      },
+      {
+        "key": "C",
+        "text": "推荐系统中候选集大小与排序精度的线性关系"
+      },
+      {
+        "key": "D",
+        "text": "特征数量与模型训练收敛速度的平方根关系"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "借鉴大语言模型领域的 Scaling Law 研究，Wukong 探索了推荐模型领域是否存在类似的规律——即模型性能（评估指标）是否随参数量、训练数据规模和计算预算的增长而可预测地提升。这为推荐模型的资源投入决策提供了理论指导。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-c1f41a8d",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "异构特征交互建模",
+    "stem": "Hiformer（Heterogeneous Feature Interactions Learning with Transformers）要解决的核心问题是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "如何用 Transformer 替代所有传统推荐模型架构"
+      },
+      {
+        "key": "B",
+        "text": "如何降低 Transformer 在推荐系统中的训练成本"
+      },
+      {
+        "key": "C",
+        "text": "如何在 Transformer 架构中有效建模推荐系统中多种异构特征（类别特征、连续特征、序列特征等）之间的交互"
+      },
+      {
+        "key": "D",
+        "text": "如何将 Transformer 的注意力机制应用于图像特征提取"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "推荐系统中的特征体系高度异构——包括用户 ID 等类别特征、年龄等连续数值特征、行为序列特征、以及各种交叉特征。Hiformer 的核心贡献在于设计了一种能够有效处理这些异构特征类型并在 Transformer 架构中进行高效交互建模的方法，而非简单地将所有特征统一嵌入后输入标准 Transformer。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-69100012",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "分层特征交互机制",
+    "stem": "HHFT（Hierarchical Heterogeneous Feature Transformer）相比 Hiformer 的主要升级在于引入了什么机制？",
+    "options": [
+      {
+        "key": "A",
+        "text": "用图神经网络替代 Transformer"
+      },
+      {
+        "key": "B",
+        "text": "分层（Hierarchical）的特征交互结构，在不同层级对不同粒度的特征交互进行建模"
+      },
+      {
+        "key": "C",
+        "text": "用强化学习自动搜索最优特征组合"
+      },
+      {
+        "key": "D",
+        "text": "引入知识蒸馏来压缩模型"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "HHFT 在 Hiformer 的异构特征 Transformer 基础上，进一步引入分层结构——在不同层级对不同粒度的特征交互进行建模（例如低层建模细粒度交互、高层建模粗粒度语义），使模型能够更高效地捕获多尺度的特征交互模式。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-b1f0d50b",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "排序模型Scaling核心挑战",
+    "stem": "以下哪些是工业推荐系统中排序模型 Scaling 面临的核心挑战？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "线上推理的严格延迟约束（通常 < 100ms）"
+      },
+      {
+        "key": "B",
+        "text": "模型参数量增加带来的显存和服务成本上升"
+      },
+      {
+        "key": "C",
+        "text": "大规模稀疏特征（如用户/物品 ID 的 Embedding）占据了绝大部分参数量"
+      },
+      {
+        "key": "D",
+        "text": "训练数据量远小于大语言模型的训练语料规模"
+      },
+      {
+        "key": "E",
+        "text": "模型 Scaling 带来的收益可能存在边际递减效应"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "工业推荐排序模型的 Scaling 受到严格的线上延迟约束（A）、显存和成本限制（B）、以及大规模稀疏 Embedding 参数的挑战（C）。此外，Scaling 的收益确实存在边际递减现象（E）。D 不完全准确——工业推荐系统的训练数据量（用户行为日志）通常非常庞大，但分布和数据质量与 LLM 的文本语料不同，不应简单类比。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-dd83bbbb",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Scaling Law跨领域差异",
+    "stem": "Wukong 论文的研究结果表明，推荐模型的 Scaling Law 与大语言模型的 Scaling Law 完全一致，参数量每翻一倍，推荐精度提升的幅度相同。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "推荐系统 Scaling Law 与 LLM 领域存在差异。推荐模型包含大量稀疏 Embedding 参数，其 Scaling 行为受到特征体系、数据分布、评估指标特性等多方面因素的影响，不能简单套用 LLM 的 Scaling Law 结论。\n\n\n## 三、多模态推荐与多目标优化",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-5c9c69f9",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "惊喜推荐与精准推荐",
+    "stem": "\"Serendipitous Recommendation\"（惊喜推荐）与传统\"精准推荐\"的核心区别是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "惊喜推荐追求更高的 CTR，精准推荐追求更高的 CVR"
+      },
+      {
+        "key": "B",
+        "text": "两者完全相同，只是名称不同"
+      },
+      {
+        "key": "C",
+        "text": "惊喜推荐追求推荐结果的新颖性和意外之喜，精准推荐追求推荐结果与用户已知偏好的高匹配度"
+      },
+      {
+        "key": "D",
+        "text": "惊喜推荐只推荐新品，精准推荐只推荐热门品"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Serendipitous Recommendation（惊喜/意外推荐）的核心目标是推荐用户可能喜欢但自己尚未意识到的物品——强调新颖性（novelty）和意外性（unexpectedness），而非仅仅追求与已知偏好的高匹配度。这在避免\"信息茧房\"和提升用户长期体验方面具有重要价值。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-694da2dc",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "多模态LLM驱动惊喜推荐",
+    "stem": "在\"Serendipitous Recommendation with Multimodal LLM\"中，多模态大语言模型被用来实现惊喜推荐的关键机制是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "用多模态 LLM 生成推荐理由文案"
+      },
+      {
+        "key": "B",
+        "text": "利用多模态 LLM 理解物品的视觉/文本等多模态内容，发现跨越传统协同过滤的隐性关联，从而推荐\"意料之外但情理之中\"的物品"
+      },
+      {
+        "key": "C",
+        "text": "用多模态 LLM 替代所有传统召回通道"
+      },
+      {
+        "key": "D",
+        "text": "用多模态 LLM 对用户进行画像分类"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "多模态 LLM 能够同时理解物品的视觉信息（图片/视频封面）、文本描述、用户评论等多维度内容，从而发现传统协同过滤难以捕获的跨模态隐性关联——这正是\"惊喜推荐\"的核心——基于深层内容理解而非仅靠行为共现来发现关联。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-24b56999",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "视频推荐多目标优化",
+    "stem": "在视频推荐场景中，\"多目标优化\"（Multi-objective Optimization）通常需要同时优化哪些目标？",
+    "options": [
+      {
+        "key": "A",
+        "text": "仅优化点击率（CTR）"
+      },
+      {
+        "key": "B",
+        "text": "仅优化观看时长"
+      },
+      {
+        "key": "C",
+        "text": "仅优化用户留存率"
+      },
+      {
+        "key": "D",
+        "text": "同时优化点击率、完播率、观看时长、点赞/分享/评论互动率等多个相互可能存在冲突的目标"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "视频推荐是多目标优化的典型场景。平台通常需要同时优化多个业务指标——CTR（吸引点击）、完播率（内容质量）、观看时长（用户投入度）、互动率（社交传播）等。这些目标之间存在权衡关系（如标题党可能提升 CTR 但降低完播率），需要一个统一框架来平衡。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-21edd200",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "端到端多目标集成排序",
+    "stem": "\"An End-to-End Multi-objective Ensemble Ranking Framework\"中的\"端到端\"（End-to-End）主要指的是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "从数据采集到模型部署全自动化"
+      },
+      {
+        "key": "B",
+        "text": "从用户请求到推荐结果返回的全链路延迟优化"
+      },
+      {
+        "key": "C",
+        "text": "将多目标的权重学习、模型融合和最终排序统一在一个端到端可训练的框架中，而非分别独立优化后再人工组合"
+      },
+      {
+        "key": "D",
+        "text": "模型训练和线上推理使用完全相同的代码"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "传统多目标排序中，各目标的权重通常通过人工调参或离线网格搜索确定。该论文提出的\"端到端\"框架将多目标的集成排序建模为一个可端到端训练的过程——多目标的融合权重和排序模型参数在统一的优化目标下联合学习，避免了分阶段优化的次优性。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-d171e85b",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "多模态信息的推荐价值",
+    "stem": "以下哪些是推荐系统中引入多模态信息（图片、视频、文本描述等）带来的潜在价值？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "提升对冷启动物品的理解能力（利用内容信息弥补行为数据的不足）"
+      },
+      {
+        "key": "B",
+        "text": "发现仅靠协同过滤无法捕获的物品间隐性关联"
+      },
+      {
+        "key": "C",
+        "text": "为惊喜推荐提供跨模态的推荐依据"
+      },
+      {
+        "key": "D",
+        "text": "完全替代协同过滤，使行为数据变得不再必要"
+      },
+      {
+        "key": "E",
+        "text": "增强推荐结果的可解释性（可基于内容特征生成推荐理由）"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "多模态信息在冷启动（A）、隐性关联发现（B）、惊喜推荐（C）和可解释性（E）方面都有重要价值。但 D 不正确——行为数据（协同信号）仍然是推荐系统最核心的信息源之一，多模态更多是补充和增强，而非替代。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-20de558d",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "帕累托最优",
+    "stem": "在多目标推荐排序中，帕累托最优（Pareto Optimality）指的是存在一组解，在该组解中无法在不损害任一目标的前提下改善另一个目标。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "帕累托最优是多目标优化的核心概念。在多目标推荐中，各目标（CTR、时长、互动等）之间存在 trade-off，帕累托前沿（Pareto Front）上的每个点都代表了在给定偏好下的一种最优权衡。\n\n\n## 四、Agent 推理与端到端排序",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-23b4a2fb",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Agentic推理排序框架",
+    "stem": "\"Decoding ML Decision\"论文提出的\"Agentic Reasoning Framework\"用于排序系统的核心创新点是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "用 AI Agent 完全替代排序模型进行推荐决策"
+      },
+      {
+        "key": "B",
+        "text": "用 Agent 生成训练数据来增强排序模型"
+      },
+      {
+        "key": "C",
+        "text": "用 Agent 自动调参替代人工调参"
+      },
+      {
+        "key": "D",
+        "text": "将 Agent 的推理能力（Reasoning）引入排序系统，使排序过程具备可解释的决策推理链，而不仅仅是输出一个黑盒分数"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "该论文的核心创新是将 Agent 的推理范式引入大规模排序系统——传统排序模型输出的是一个不可解释的分数，而 Agentic Reasoning Framework 使得排序过程能够产生类似推理链（Chain of Reasoning）的决策路径，使排序结果不仅更准确，而且具备可解释性。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-11650058",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "排序推理链形式",
+    "stem": "在 Agentic Reasoning Framework 中，\"Reasoning\"（推理）在排序场景中通常体现为什么形式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "模型对每个候选物品输出一个 0-1 的匹配分数"
+      },
+      {
+        "key": "B",
+        "text": "模型对每个用户生成一段文字描述其偏好"
+      },
+      {
+        "key": "C",
+        "text": "排序系统在输出最终排序的同时，生成一个包含多步分析（如\"用户近期偏好 → 候选物品特征匹配 → 多样性考量 → 最终排序\"）的推理过程"
+      },
+      {
+        "key": "D",
+        "text": "模型只做规则匹配，不涉及任何学习"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Agentic Reasoning 的核心在于将排序从\"直接打分\"转变为\"多步推理决策\"——类似于 Chain-of-Thought，模型在执行排序时会经过多个推理步骤，综合考虑用户偏好、候选特征、多样性等因素，最终形成排序决策。这使得排序过程更透明、更可控。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-0da7e6e2",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "端到端vs级联流水线",
+    "stem": "在搜索推荐系统中，\"端到端学习\"（End-to-End Learning）相比\"级联流水线\"（Cascaded Pipeline）的主要优势是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "端到端学习的代码更少"
+      },
+      {
+        "key": "B",
+        "text": "端到端学习的推理速度一定更快"
+      },
+      {
+        "key": "C",
+        "text": "端到端学习可以全局优化最终目标，避免各阶段独立优化带来的次优累积"
+      },
+      {
+        "key": "D",
+        "text": "端到端学习不需要训练数据"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "传统级联架构中，召回、粗排、精排、重排各阶段独立优化各自的局部目标，局部最优的叠加不构成全局最优。端到端学习将整个流程统一在一个优化目标下联合训练，可以避免这种\"次优累积\"问题——这是生成式推荐和端到端排序框架的核心理论优势。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-ccbde086",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "Agentic推理排序优势",
+    "stem": "以下哪些是 Agentic Reasoning Framework 应用于推荐排序系统时可能带来的优势？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "排序结果的可解释性增强"
+      },
+      {
+        "key": "B",
+        "text": "能够在推理过程中动态权衡多个目标（如准确性与多样性）"
+      },
+      {
+        "key": "C",
+        "text": "推理链可以作为审计和 Debug 的依据"
+      },
+      {
+        "key": "D",
+        "text": "完全消除了排序模型的线上推理延迟"
+      },
+      {
+        "key": "E",
+        "text": "使排序系统具备一定的自适应能力（根据上下文动态调整策略）"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "Agentic Reasoning 带来可解释性（A）、多目标动态权衡（B）、审计 Debug 能力（C）和自适应能力（E）。D 不正确——引入推理链通常会增加推理延迟，而非消除。这是 Agentic 方法在实践中需要权衡的工程挑战。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-75460887",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "推理链动态自适应",
+    "stem": "\"Decoding ML Decision\"论文中，Agentic Reasoning Framework 的\"Reasoning\"链必须在模型训练阶段就预先定义好，推理时不能动态调整。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Agentic Reasoning 的核心特征之一就是推理时的动态性和自适应性——推理链不是预先固定的模板，而是模型根据当前上下文（用户状态、候选集、场景特征）动态生成的决策路径。这与固定规则的级联系统有本质区别。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-35da9dd9",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "多目标权重动态性",
+    "stem": "在推荐系统中，\"端到端多目标集成排序\"中，不同目标的权重应该是全局固定的静态值，不应随用户或场景变化。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "不同用户对不同目标的敏感度不同（例如有的用户更看重内容质量而非点击吸引力），不同场景下各目标的重要性也不同（例如首页推荐 vs 相关推荐）。因此，多目标权重应该是用户/场景感知的动态权重，而非全局静态值。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-1f2aa830",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "生成式推荐迁移评估",
+    "stem": "某视频推荐团队当前使用\"召回（多路）→ 粗排 → 精排 → 重排\"的四阶段级联架构。团队考虑引入生成式推荐范式，以下哪些是引入前需要重点评估的方面？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成式模型的推理延迟是否能满足线上服务的严格约束"
+      },
+      {
+        "key": "B",
+        "text": "现有级联架构中各阶段已积累的优化经验（如多路召回策略）如何在生成式框架中保留或迁移"
+      },
+      {
+        "key": "C",
+        "text": "生成式推荐对冷启动物品的覆盖能力是否优于当前多路召回"
+      },
+      {
+        "key": "D",
+        "text": "团队是否具备生成式模型的训练和调优能力"
+      },
+      {
+        "key": "E",
+        "text": "生成式推荐的结果是否便于进行业务干预和策略控制"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "explanation": "从传统级联架构迁移到生成式推荐是一个系统性工程决策。推理延迟（A）是工业场景的首要约束，已有策略的迁移（B）、冷启动能力（C）、团队技术储备（D）以及业务可控性（E）都是必须评估的维度。业务干预能力尤其重要——传统级联架构可以在各阶段插入人工规则，而端到端生成式模型的可控性需要通过偏好对齐等技术来保障。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-768b15b1",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "arXiv编号规范",
+    "stem": "arXiv 上论文的编号格式为 `YYMM.NNNNN`，其中 `YYMM` 表示论文首次提交的年月。因此编号 `2502.18965` 表示该论文首次提交于 2025 年 2 月。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "arXiv 编号格式自 2007 年起变更为 `YYMM.NNNNN`（5 位序号），如 `2502.18965` 表示 2025 年 2 月提交的第 18965 篇。",
+    "source": ""
+  },
+  {
+    "id": "D-Generative-Recommendation-Search-68caa60b",
+    "module": "Generative-Recommendation-Search",
+    "moduleName": "生成式搜推算法",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "排序模型Scaling工程瓶颈",
+    "stem": "在工业推荐系统中，排序模型的参数量 Scaling 面临的最大瓶颈通常是 GPU 训练资源不足，而非线上推理延迟。",
+    "options": [
+      {
+        "key": "A",
+        "text": "正确"
+      },
+      {
+        "key": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "对于工业排序模型而言，线上推理延迟是比训练资源更刚性的约束。精排模型需要在几十毫秒内完成对数百个候选的推理，这个严格的延迟 SLA 是排序模型 Scaling 的首要瓶颈。训练可以通过增加 GPU 资源来扩展，但线上推理延迟受限于用户体验底线。",
+    "source": ""
+  },
+  {
+    "id": "D-LangChain-Framework-47ca861d",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LangChain 分层架构中各包的职责",
+    "stem": "在 LangChain 的分层架构中，`langchain-core` 包的核心职责是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "定义所有底层抽象接口和基类（如 Runnable、ChatModel、Retriever）"
+      },
+      {
+        "key": "B",
+        "text": "提供完整的应用框架和 Agent 编排逻辑"
+      },
+      {
+        "key": "C",
+        "text": "管理与第三方服务的集成（如 OpenAI、Pinecone 等）"
+      },
+      {
+        "key": "D",
+        "text": "提供可观测性和调试能力"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`langchain-core` 是 LangChain 生态的最底层基础包，负责定义所有核心抽象接口和基类，包括 Runnable 协议、BaseChatModel、BaseRetriever、BaseOutputParser 等。它不包含任何具体的实现或第三方集成，确保上层包可以基于统一接口进行扩展。选项 A 描述的是 `langchain` 包的职责，选项 C 描述的是各个 `langchain-*` 集成包的职责，选项 D 描述的是 `langsmith` 的职责。",
+    "source": "[LangChain Architecture](https://python.langchain.com/docs/concepts/architecture/)"
+  },
+  {
+    "id": "D-LangChain-Framework-333de19f",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LangChain 生态各包的分工",
+    "stem": "关于 LangChain 生态中各包的分工，以下哪项描述是正确的？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`langchain` 包可以直接连接所有主流向量数据库，无需额外安装集成包"
+      },
+      {
+        "key": "B",
+        "text": "`langchain-community` 提供与第三方模型和服务的集成包"
+      },
+      {
+        "key": "C",
+        "text": "`langgraph` 是 `langchain-core` 的可选插件，仅用于可视化调试"
+      },
+      {
+        "key": "D",
+        "text": "`langsmith` 是 LangChain 的必选依赖，用于运行时日志记录"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`langchain-community` 是一个社区维护的集成包，提供了与大量第三方模型和服务（如 OpenAI、Anthropic、Pinecone、Chroma 等）的连接能力。选项 A 错误，因为连接特定向量数据库需要安装对应的集成包（如 `langchain-openai`、`langchain-pinecone` 等）。选项 B 错误，`langgraph` 是一个独立的状态图框架，用于构建复杂的有状态 Agent 工作流，并非调试插件。选项 D 错误，`langsmith` 是可选的可观测性平台 SDK，不是必选依赖。",
+    "source": "[LangChain Packages](https://python.langchain.com/docs/concepts/architecture/)"
+  },
+  {
+    "id": "D-LangChain-Framework-9205e1d1",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "LangChain 架构设计理念",
+    "stem": "关于 LangChain 的整体架构设计，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "LangChain 采用分层模块化设计，各层之间职责清晰"
+      },
+      {
+        "key": "B",
+        "text": "`langchain` 包完全独立，不依赖 `langchain-core` 提供的底层抽象"
+      },
+      {
+        "key": "C",
+        "text": "LangChain 通过 `langchain-community` 和各 `langchain-*` 集成包与第三方服务对接"
+      },
+      {
+        "key": "D",
+        "text": "`langgraph` 是 LangChain 生态中用于构建有状态、多步骤 Agent 工作流的框架"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "LangChain 采用清晰的分层模块化设计：`langchain-core` 定义底层抽象，`langchain` 在其上构建高层 API，`langchain-community` 和各厂商集成包提供第三方服务对接能力，`langgraph` 则专注于有状态的多步骤 Agent 工作流编排。选项 B 错误，`langchain` 包直接依赖 `langchain-core`，所有的 Runnable 协议、基类定义都来自 `langchain-core`，两者是紧密的依赖关系而非独立存在。",
+    "source": "[LangChain Architecture](https://python.langchain.com/docs/concepts/architecture/)"
+  },
+  {
+    "id": "D-LangChain-Framework-3a44d3d9",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Chat Models 统一接口方法",
+    "stem": "在 LangChain 的 Chat Models 统一接口中，以下哪个方法用于流式输出 LLM 的生成结果？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`stream()`"
+      },
+      {
+        "key": "B",
+        "text": "`invoke()`"
+      },
+      {
+        "key": "C",
+        "text": "`batch()`"
+      },
+      {
+        "key": "D",
+        "text": "`predict()`"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`stream()` 方法用于流式输出生成结果，将 LLM 的输出逐 token 或逐块返回，适用于实时显示生成内容的场景（如聊天界面）。`invoke()` 用于同步调用并返回完整的响应结果，`batch()` 用于批量并行处理多个输入。选项 D 的 `predict()` 是旧版 `LLM` 类的方法，在当前的 Chat Models 统一接口中已不推荐使用，应迁移至 `invoke()`。",
+    "source": "[Chat Models](https://python.langchain.com/docs/concepts/chat_models/)"
+  },
+  {
+    "id": "D-LangChain-Framework-c85f66a7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "Prompt Templates 类型选择",
+    "stem": "在构建一个需要系统消息（System Message）和用户输入组合的 Prompt 时，应使用哪种 Prompt Template？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`PromptTemplate`"
+      },
+      {
+        "key": "B",
+        "text": "`ChatPromptTemplate`"
+      },
+      {
+        "key": "C",
+        "text": "`FewShotPromptTemplate`"
+      },
+      {
+        "key": "D",
+        "text": "`SystemOnlyTemplate`"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`ChatPromptTemplate` 专门用于构建包含多种消息类型（如 SystemMessage、HumanMessage、AIMessage）的聊天模型 Prompt。通过 `ChatPromptTemplate.from_messages()` 方法，可以灵活组合系统消息和用户输入，是 Chat Models 场景下的标准选择。选项 A 的 `PromptTemplate` 只能生成纯文本字符串，不支持多消息类型结构。选项 C 的 `FewShotPromptTemplate` 专门用于少样本学习场景，会自动插入预定义的示例。选项 D 的 `SystemOnlyTemplate` 在 LangChain 中并不存在。",
+    "source": "[Prompt Templates](https://python.langchain.com/docs/concepts/prompt_templates/)"
+  },
+  {
+    "id": "D-LangChain-Framework-4aaa4cf7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "Output Parsers 的作用",
+    "stem": "关于 LangChain 的 Output Parsers，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "Output Parsers 可以将 LLM 的文本输出解析为结构化数据（如字典、Pydantic 模型等）"
+      },
+      {
+        "key": "B",
+        "text": "`PydanticOutputParser` 可以根据 Pydantic 模型的 schema 自动约束和验证 LLM 的输出格式"
+      },
+      {
+        "key": "C",
+        "text": "Output Parsers 的主要作用是翻译 LLM 的输出为其他语言"
+      },
+      {
+        "key": "D",
+        "text": "`JsonOutputParser` 专门用于将 LLM 输出解析为 JSON 格式"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Output Parsers 的核心价值在于将 LLM 返回的非结构化文本转换为程序可直接使用的结构化数据。`PydanticOutputParser` 利用 Pydantic 模型的字段定义和验证规则，确保 LLM 输出符合预定义的 schema。`JsonOutputParser` 则专门处理 JSON 格式的解析。选项 C 错误，Output Parsers 的作用不是语言翻译，而是数据格式的结构化转换，将自由文本变为可程序化处理的结构化对象。",
+    "source": "[Output Parsers](https://python.langchain.com/docs/concepts/output_parsers/)"
+  },
+  {
+    "id": "D-LangChain-Framework-81750738",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LCEL 管道符的作用",
+    "stem": "在 LCEL（LangChain Expression Language）中，管道符 `|` 的作用是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将两个组件的输出进行数学运算"
+      },
+      {
+        "key": "B",
+        "text": "为链添加错误处理逻辑"
+      },
+      {
+        "key": "C",
+        "text": "将多个组件的输出合并为一个列表"
+      },
+      {
+        "key": "D",
+        "text": "将多个 Runnable 组件串联为一个链式调用，数据按顺序从左到右流经每个组件"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "管道符 `|` 是 LCEL 的核心语法，它将实现了 Runnable 接口的组件串联成一个链（Chain），数据按从左到右的顺序依次流经每个组件，前一个组件的输出自动成为后一个组件的输入。这种声明式语法让链的构建清晰直观，例如 `prompt | llm | parser` 表示输入先经过 Prompt 模板、再经过 LLM、最后经过解析器。选项 A 和 C 描述的不是管道符的功能，选项 D 的错误处理应使用 `.with_fallbacks()` 方法实现。",
+    "source": "[LCEL](https://python.langchain.com/docs/concepts/lcel/)"
+  },
+  {
+    "id": "D-LangChain-Framework-810a06c7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "RunnablePassthrough 的作用",
+    "stem": "`RunnablePassthrough` 在 LCEL 链中的主要作用是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将输入原封不动地传递给下一个组件，不做任何转换"
+      },
+      {
+        "key": "B",
+        "text": "对输入进行加密处理后传递"
+      },
+      {
+        "key": "C",
+        "text": "在链中插入一个异步调用节点"
+      },
+      {
+        "key": "D",
+        "text": "自动重试失败的链组件"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`RunnablePassthrough` 的作用是将接收到的输入原封不动地传递给下游组件，不对其进行任何转换或处理。它在 LCEL 链中常用于 `RunnableParallel` 结构中传递原始输入，确保某些字段可以直接传递给下游组件而无需额外处理。例如在 RAG 链中，常用 `RunnablePassthrough` 将用户原始问题传递给生成步骤。选项 B、C、D 描述的功能分别涉及安全、异步和重试，这些都不是 `RunnablePassthrough` 的职责。",
+    "source": "[RunnablePassthrough](https://python.langchain.com/docs/how_to/passthrough/)"
+  },
+  {
+    "id": "D-LangChain-Framework-a015a6d9",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "LCEL 的核心特性",
+    "stem": "关于 LCEL 的特性，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "LCEL 支持通过 `.with_retry()` 方法为链组件配置自动重试策略"
+      },
+      {
+        "key": "B",
+        "text": "所有实现了 Runnable 接口的组件都自动支持 `invoke()`、`stream()`、`batch()` 三种调用方式"
+      },
+      {
+        "key": "C",
+        "text": "LCEL 不支持异步调用，所有操作都是同步的"
+      },
+      {
+        "key": "D",
+        "text": "通过 `|` 管道符组合的链自动继承流式输出（streaming）能力"
+      },
+      {
+        "key": "E",
+        "text": "LCEL 链只能通过 `invoke()` 调用，不支持流式输出"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "LCEL 的设计确保了所有 Runnable 组件天然支持 `invoke()`、`stream()`、`batch()` 三种调用方式，且通过管道符组合的链会自动继承这些能力，包括流式输出。LCEL 还提供了 `.with_retry()` 和 `.with_fallbacks()` 等实用方法用于配置重试和回退策略。选项 C 错误，LCEL 完整支持异步调用，可通过 `ainvoke()`、`astream()`、`abatch()` 等方法使用。选项 E 同样错误，LCEL 链天然支持 `stream()` 流式输出。",
+    "source": "[LCEL](https://python.langchain.com/docs/concepts/lcel/)"
+  },
+  {
+    "id": "D-LangChain-Framework-af03626f",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "RAG 完整流程",
+    "stem": "以下哪个选项正确描述了 RAG（Retrieval-Augmented Generation）的完整流程？",
+    "options": [
+      {
+        "key": "A",
+        "text": "加载文档 → 分割文本 → 嵌入为向量 → 存储到向量数据库 → 检索相关内容 → 生成回答"
+      },
+      {
+        "key": "B",
+        "text": "加载文档 → 嵌入为向量 → 分割文本 → 存储到向量数据库 → 生成回答 → 检索相关内容"
+      },
+      {
+        "key": "C",
+        "text": "分割文本 → 加载文档 → 嵌入为向量 → 检索相关内容 → 生成回答 → 存储结果"
+      },
+      {
+        "key": "D",
+        "text": "加载文档 → 分割文本 → 存储到向量数据库 → 嵌入为向量 → 检索相关内容 → 生成回答"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "RAG 的标准流程包含六个步骤：首先通过 Document Loader 加载各类文档（PDF、网页、数据库等），然后使用 Text Splitter 将长文档分割为适合处理的文本块，接着通过 Embedding 模型将文本块转换为向量表示，将向量存储到向量数据库（如 Chroma、Pinecone），在查询时通过 Retriever 检索与问题最相关的文本块，最后将检索结果与用户问题一起传递给 LLM 生成回答。其他选项的步骤顺序均存在逻辑错误。",
+    "source": "[RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/)"
+  },
+  {
+    "id": "D-LangChain-Framework-90d08a09",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "RecursiveCharacterTextSplitter 参数",
+    "stem": "在使用 `RecursiveCharacterTextSplitter` 分割文档时，`chunk_size` 和 `chunk_overlap` 参数的含义分别是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`chunk_size` 是每个文本块的字节数，`chunk_overlap` 是块与块之间的时间间隔"
+      },
+      {
+        "key": "B",
+        "text": "`chunk_size` 是每个文本块的最大行数，`chunk_overlap` 是块与块之间共享的行数"
+      },
+      {
+        "key": "C",
+        "text": "`chunk_size` 是文本块的数量上限，`chunk_overlap` 是允许重复的文本块数量"
+      },
+      {
+        "key": "D",
+        "text": "`chunk_size` 是每个文本块的最大字符数，`chunk_overlap` 是相邻文本块之间的重叠字符数"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`chunk_size` 定义每个文本块的最大字符数（不是字节数或行数），控制分割后每个片段的长度上限。`chunk_overlap` 定义相邻文本块之间的重叠字符数，确保分割后的文本块在边界处保持上下文连贯性，避免因切割点不当导致语义断裂。例如设置 `chunk_size=1000, chunk_overlap=200` 表示每个块最多 1000 字符，且相邻块共享 200 字符的重叠内容。选项 A、C、D 对参数含义的描述均不准确。",
+    "source": "[Text Splitters](https://python.langchain.com/docs/concepts/text_splitters/)"
+  },
+  {
+    "id": "D-LangChain-Framework-4f5c3036",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "不同 Retriever 的区别",
+    "stem": "关于 LangChain 中不同 Retriever 的特点，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`similarity` 检索器基于向量相似度（如余弦相似度）返回与查询最相关的文档"
+      },
+      {
+        "key": "B",
+        "text": "MMR（Maximal Marginal Relevance）检索器在相关性和结果多样性之间取得平衡，减少返回结果中的冗余信息"
+      },
+      {
+        "key": "C",
+        "text": "`MultiQueryRetriever` 通过让 LLM 生成多个不同表述的查询来提高召回率"
+      },
+      {
+        "key": "D",
+        "text": "`similarity` 检索器返回的结果数量会自动根据相关性阈值动态调整"
+      },
+      {
+        "key": "E",
+        "text": "MMR 检索器的主要优势是比 similarity 检索器检索速度更快"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "三种 Retriever 各有侧重：`similarity` 检索器基于向量相似度（如余弦相似度）返回 Top-K 最相关文档，实现简单直接。MMR 检索器在保持相关性的同时最大化结果多样性，有效减少返回文档之间的信息冗余，特别适合需要覆盖多个角度的场景。`MultiQueryRetriever` 利用 LLM 将原始问题改写为多个不同表述的查询，从多个角度检索以提高召回率。选项 D 错误，`similarity` 检索器返回固定数量（K 个）结果，不会自动调整。选项 E 错误，MMR 的主要优势是结果多样性而非检索速度。",
+    "source": "[Retrievers](https://python.langchain.com/docs/concepts/retrievers/)"
+  },
+  {
+    "id": "D-LangChain-Framework-e7305da5",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "@tool 装饰器的作用",
+    "stem": "在 LangChain 中，`@tool` 装饰器的主要作用是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将 Python 函数转换为 LLM 可以调用的工具，函数的文档字符串（docstring）自动成为工具的描述信息"
+      },
+      {
+        "key": "B",
+        "text": "将 Python 函数转换为向量存储接口"
+      },
+      {
+        "key": "C",
+        "text": "将 Python 函数转换为一个独立的 Agent"
+      },
+      {
+        "key": "D",
+        "text": "将 Python 函数转换为 Prompt Template"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`@tool` 装饰器将普通 Python 函数封装为 LangChain 的 Tool 对象，使 Agent 能够识别并调用该工具。函数的名称自动成为工具名称，文档字符串（docstring）自动成为工具的描述信息，帮助 LLM 理解何时以及如何使用该工具。这是构建 Agent 工具集最简洁的方式。选项 B、C、D 描述的功能（向量存储、Agent 创建、Prompt 模板）都不是 `@tool` 装饰器的职责。",
+    "source": "[Custom Tools](https://python.langchain.com/docs/how_to/custom_tools/)"
+  },
+  {
+    "id": "D-LangChain-Framework-c6c1eaa9",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "AgentExecutor 的工作循环",
+    "stem": "`AgentExecutor` 的工作循环是怎样的？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 生成推理 → 工具执行行动 → 无论结果如何都立即停止"
+      },
+      {
+        "key": "B",
+        "text": "Agent 直接调用所有可用工具 → 收集所有结果 → 一次性生成最终答案"
+      },
+      {
+        "key": "C",
+        "text": "工具先执行推理 → Agent 根据工具结果决定是否继续"
+      },
+      {
+        "key": "D",
+        "text": "Agent 生成推理和行动（Action）→ 工具执行行动并返回观察结果（Observation）→ Agent 根据新的观察继续推理 → 重复此过程直到生成最终答案"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`AgentExecutor` 遵循经典的\"推理-行动-观察\"循环：Agent（LLM）根据当前状态生成推理过程和要执行的动作，然后由工具执行该动作并返回观察结果，Agent 再根据新的观察结果继续推理，决定下一步行动或给出最终答案。这个循环会持续进行直到 Agent 决定返回最终答案。选项 B 描述的是并行执行所有工具，不符合实际循环逻辑。选项 C 颠倒了 Agent 和工具的角色。选项 D 描述的是一次性执行，缺少循环迭代的核心特征。",
+    "source": "[AgentExecutor](https://python.langchain.com/docs/concepts/agents/)"
+  },
+  {
+    "id": "D-LangChain-Framework-8c891a5d",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LangGraph 的三要素",
+    "stem": "LangGraph 中构建一个图的三个核心要素是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "State（状态 schema）、Nodes（节点函数）、Edges（节点间的转移关系）"
+      },
+      {
+        "key": "B",
+        "text": "State（状态字典）、Nodes（节点函数）、Edges（边函数）"
+      },
+      {
+        "key": "C",
+        "text": "State（状态列表）、Nodes（节点类）、Edges（边权重）"
+      },
+      {
+        "key": "D",
+        "text": "State（全局变量）、Nodes（节点配置）、Edges（边的优先级）"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "LangGraph 的图由三个核心要素构成：State 是贯穿整个图的状态 schema（通常用 TypedDict 定义），定义了图中流转的数据结构；Nodes 是执行具体逻辑的函数，每个节点接收当前状态并返回更新后的状态；Edges 定义节点之间的转移关系，包括普通边（固定跳转）和条件边（根据状态动态选择下一个节点）。选项 A 将 State 描述为列表、选项 B 将 Edges 描述为函数、选项 D 将 State 描述为全局变量，均不准确。",
+    "source": "[LangGraph Concepts](https://langchain-ai.github.io/langgraph/concepts/low_level/)"
+  },
+  {
+    "id": "D-LangChain-Framework-5c843654",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LangGraph 条件路由",
+    "stem": "在 LangGraph 中，`add_conditional_edges` 的作用是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "为图添加固定的线性执行路径"
+      },
+      {
+        "key": "B",
+        "text": "限制图的最大执行步数"
+      },
+      {
+        "key": "C",
+        "text": "为图添加错误处理和回退机制"
+      },
+      {
+        "key": "D",
+        "text": "根据当前 State 的值动态选择下一个要执行的节点，实现分支路由逻辑"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`add_conditional_edges` 是 LangGraph 实现条件路由的关键方法，它接受一个路由函数作为参数，该函数根据当前 State 的值返回下一个应该执行的节点名称。这使得图能够根据运行时状态动态决定执行路径，实现复杂的分支逻辑。例如在一个对话系统中，可以根据用户意图路由到不同的处理节点。选项 A 的固定路径使用普通 `add_edge` 即可。选项 B 的执行步数限制通过 `recursion_limit` 配置。选项 C 的错误处理不属于条件路由的职责。",
+    "source": "[LangGraph Low Level Concepts](https://langchain-ai.github.io/langgraph/concepts/low_level/)"
+  },
+  {
+    "id": "D-LangChain-Framework-79fd93e8",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "LangGraph 持久化 Checkpoint 的作用",
+    "stem": "LangGraph 中持久化（Checkpoint）机制的主要作用是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "保存图的代码以便版本控制"
+      },
+      {
+        "key": "B",
+        "text": "记录每次 LLM 调用的日志用于审计"
+      },
+      {
+        "key": "C",
+        "text": "优化图的执行性能，通过缓存中间结果减少计算量"
+      },
+      {
+        "key": "D",
+        "text": "在每个超级步骤（super-step）后保存 State 快照，支持工作流的中断恢复和时间旅行（回溯到历史状态）"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "LangGraph 的 Checkpoint 机制在每个超级步骤完成后自动保存当前 State 的完整快照。这一能力带来两大核心价值：一是支持工作流的中断与恢复，当长时间运行的 Agent 因外部事件暂停时，可以从最近的检查点继续执行；二是支持\"时间旅行\"，即回溯到任意历史检查点查看或重新执行后续流程。选项 A、B 分别涉及代码版本控制和审计日志，不是 Checkpoint 的职责。选项 D 的缓存优化也不是其主要目的。",
+    "source": "[LangGraph Persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/)"
+  },
+  {
+    "id": "D-LangChain-Framework-809dd313",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "LangGraph 与 AgentExecutor 的区别",
+    "stem": "关于 LangGraph 与 AgentExecutor 的核心区别，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "LangGraph 采用显式状态机设计，开发者可以精确定义图的拓扑结构、条件分支和循环逻辑"
+      },
+      {
+        "key": "B",
+        "text": "AgentExecutor 使用固定的\"推理-行动-观察\"循环，难以实现自定义的条件分支和并行执行"
+      },
+      {
+        "key": "C",
+        "text": "LangGraph 提供了更细粒度的流程控制能力，适合构建复杂的多 Agent 协作系统"
+      },
+      {
+        "key": "D",
+        "text": "AgentExecutor 比 LangGraph 更适合构建复杂的多步骤工作流"
+      },
+      {
+        "key": "E",
+        "text": "LangGraph 和 AgentExecutor 在架构上完全相同，只是命名不同"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "LangGraph 与 AgentExecutor 的核心区别在于架构理念：AgentExecutor 采用固定的\"推理-行动-观察\"循环，流程相对简单直接，适合标准的工具调用场景。LangGraph 则采用显式状态机设计，开发者可以精确定义节点、边和条件路由，支持并行执行、子图嵌套和复杂的多 Agent 协作模式。这使得 LangGraph 在构建复杂工作流时提供了更强的控制力和灵活性。选项 D 错误，恰恰是 LangGraph 更适合复杂工作流。选项 E 错误，两者在架构上有本质区别。",
+    "source": "[LangGraph vs AgentExecutor](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/)"
+  },
+  {
+    "id": "D-LangChain-Framework-cdb6afe3",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶",
+    "isMultiSelect": false,
+    "title": "ConversationBufferMemory 与 ConversationSummaryMemory 的区别",
+    "stem": "关于 `ConversationBufferMemory` 和 `ConversationSummaryMemory` 的区别，以下哪项描述是正确的？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`ConversationBufferMemory` 会对历史消息进行语义压缩，保留核心信息"
+      },
+      {
+        "key": "B",
+        "text": "`ConversationBufferMemory` 简单存储所有历史消息，适合短对话；`ConversationSummaryMemory` 定期对历史消息进行总结压缩，更适合长对话场景"
+      },
+      {
+        "key": "C",
+        "text": "`ConversationSummaryMemory` 不需要额外的 LLM 调用，运行速度比 Buffer 更快"
+      },
+      {
+        "key": "D",
+        "text": "`ConversationBufferMemory` 会自动丢弃超过一定长度的历史消息"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "`ConversationBufferMemory` 将对话中的所有历史消息原封不动地存储并传递给 LLM，实现简单但在长对话中会迅速耗尽模型的上下文窗口。`ConversationSummaryMemory` 则通过定期调用 LLM 对历史对话进行总结压缩，用一段摘要替代冗长的历史记录，更适合长对话场景。选项 A 错误，Buffer 方式不做任何压缩。选项 C 错误，Summary 方式需要额外的 LLM 调用来生成摘要，会增加延迟和成本。选项 D 描述的是 `ConversationBufferWindowMemory` 的行为，不是 Buffer。",
+    "source": "[Memory](https://python.langchain.com/docs/concepts/memory/)"
+  },
+  {
+    "id": "D-LangChain-Framework-cb1cc9d7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RunnableWithMessageHistory 与 LangSmith Tracing",
+    "stem": "关于 `RunnableWithMessageHistory` 和 LangSmith Tracing，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`RunnableWithMessageHistory` 是 LangChain 推荐的现代方式，用于为链或 Agent 添加对话历史管理能力"
+      },
+      {
+        "key": "B",
+        "text": "`RunnableWithMessageHistory` 需要提供聊天记录加载器（如 `ChatMessageHistory`）和 session 标识来管理多轮对话"
+      },
+      {
+        "key": "C",
+        "text": "LangSmith 的 Tracing 功能可以可视化链的执行流程，记录每个步骤的输入、输出和耗时信息"
+      },
+      {
+        "key": "D",
+        "text": "`RunnableWithMessageHistory` 已经取代了 LCEL，成为构建链的唯一方式"
+      },
+      {
+        "key": "E",
+        "text": "LangSmith Tracing 仅支持记录单次 LLM 调用，无法追踪整个链的执行过程"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "`RunnableWithMessageHistory` 是 LangChain 当前推荐的对话历史管理方式，它将 Runnable 链与消息历史存储结合，通过 session_id 区分不同对话会话，需要提供 `get_session_history` 回调函数来加载和保存历史记录。LangSmith 是 LangChain 官方的可观测性平台，其 Tracing 功能能够端到端追踪整个链的执行过程，可视化每个组件的输入、输出、耗时和 token 使用情况，是调试和优化 LLM 应用的重要工具。选项 D 错误，`RunnableWithMessageHistory` 是在 LCEL 基础上添加历史管理，而非取代 LCEL。选项 E 错误，LangSmith Tracing 支持追踪完整的链执行过程。",
+    "source": "[Message History](https://python.langchain.com/docs/concepts/memory/) / [LangSmith Tracing](https://docs.smith.langchain.com/observability)"
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-37f74711",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 LLM 驱动的测试基础设施中，负责提供外部知识和专业领域数据支持的是哪个层次？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "前端交互层"
+      },
+      {
+        "key": "B",
+        "text": "数据源层"
+      },
+      {
+        "key": "C",
+        "text": "LLM 层"
+      },
+      {
+        "key": "D",
+        "text": "后端服务层"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "LLM 驱动的测试基础设施包含四层架构：前端交互层（用户界面）、后端服务层（业务逻辑协调）、LLM 层（核心智能能力）和数据源层（提供外部知识和数据支持，如需求文档、历史缺陷库、测试用例库等）。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-501a75f3",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RAG（检索增强生成）技术在软件测试中的价值包括以下哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "利用项目特定知识（需求文档、历史缺陷等）提升测试输出的针对性"
+      },
+      {
+        "key": "B",
+        "text": "减少 LLM 的幻觉，提高生成内容的事实准确性"
+      },
+      {
+        "key": "C",
+        "text": "替代所有人工测试活动，实现完全自动化"
+      },
+      {
+        "key": "D",
+        "text": "保持知识的时效性，无需重新训练模型即可更新知识库"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "RAG 通过检索外部数据源增强 LLM 输出：可利用项目特定文档提升测试输出的针对性（A）；通过提供事实依据减少幻觉（B）；通过更新向量数据库保持知识时效性，无需重新训练模型（D）。C 错误——RAG 增强了 AI 辅助测试的能力，但不能替代所有人工测试活动。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-1a6b8fa6",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "团队知识库利用率报告显示：依赖知识库的测试用例数从 30 条增至 58 条（+93%），可执行性和覆盖面显著提升，但 Token 消耗增加约 250%。在 RAG 系统优化中，以下哪些策略可以在不显著降低检索质量的前提下有效降低 Token 消耗？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "采用 Contextual Retrieval 技术，为每个知识块预置解释性上下文，提升单次检索命中率"
+      },
+      {
+        "key": "B",
+        "text": "引入 Reranking 重排序机制，先粗检索较多候选块，再用轻量模型精排，仅将 Top-K 高相关块传入 LLM"
+      },
+      {
+        "key": "C",
+        "text": "将所有知识块无差别压缩至 100 token 以内，强制缩短上下文长度"
+      },
+      {
+        "key": "D",
+        "text": "使用混合检索（Embedding + BM25），利用 BM25 对精确术语匹配的优势减少语义检索的冗余召回"
+      },
+      {
+        "key": "E",
+        "text": "完全移除知识库，改用 LLM 的参数化知识直接生成用例"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Contextual Retrieval 通过预置上下文提升检索准确性（A 正确）；Reranking 是业界标准做法，可减少传入 LLM 的上下文量（B 正确）；混合检索结合语义理解和精确匹配优势（D 正确）。C 错误：无差别压缩会丢失关键信息；E 错误：违背 RAG 核心价值。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-def329da",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "在 RAG 系统的知识库分块（Chunking）策略中，以下说法哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "对于 API 文档这类结构化内容，应按接口粒度分块，保持每个接口的请求参数、返回值、示例代码在同一块内"
+      },
+      {
+        "key": "B",
+        "text": "对于需求文档这类叙事性内容，固定 512 token 分块是最优策略，因为它简单且能保证均匀的信息密度"
+      },
+      {
+        "key": "C",
+        "text": "对于缺陷报告，应将\"复现步骤\"和\"预期结果\"保留在同一块内，否则检索到复现步骤时缺少验证标准"
+      },
+      {
+        "key": "D",
+        "text": "分块时应为每个块附加元数据标签（如模块名、优先级、关联需求编号），支持检索时的过滤和精准定位"
+      },
+      {
+        "key": "E",
+        "text": "所有类型的文档都应使用相同的分块策略，以保持一致性和简化工程实现"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "结构化文档应按语义单元分块（A 正确）；缺陷报告的\"复现步骤\"和\"预期结果\"是逻辑上不可分割的整体（C 正确）；元数据标签支持过滤和精准定位（D 正确）。B 错误：固定大小分块对叙事性文档往往不是最优的；E 错误：不同类型的文档需要不同的分块策略。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-e7d3d978",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在测试用例生成的知识库检索场景中，如果过度追求高召回率而忽视精确率，最可能导致的问题是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成的用例数量过少，覆盖不全"
+      },
+      {
+        "key": "B",
+        "text": "检索到大量不相关的知识条目，导致 LLM 上下文窗口被噪声占据，生成的用例包含无关断言或错误逻辑"
+      },
+      {
+        "key": "C",
+        "text": "Token 消耗降低，因为不相关内容会被 LLM 自动忽略"
+      },
+      {
+        "key": "D",
+        "text": "知识库的更新频率被迫提高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "高召回低精确意味着检索结果中包含大量不相关内容，这些不相关的块会被拼入 LLM 的上下文窗口，产生两个负面影响：占用有限的上下文空间，挤掉真正相关的内容；LLM 可能被噪声误导，生成包含无关断言或错误逻辑的用例。这就是学术界所说的\"Lost in the Middle\"问题。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-5609069d",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从知识工程和 RAG 系统的角度，知识库\"合并优化\"阶段应重点关注的质量维度包括哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "去重与冲突消解——自动生成的内容可能与手动内容重复或矛盾，需要识别并处理"
+      },
+      {
+        "key": "B",
+        "text": "一致性校验——确保合并后的知识条目在术语、格式、粒度上保持一致"
+      },
+      {
+        "key": "C",
+        "text": "覆盖率评估——检查合并后的知识库是否覆盖了目标领域的所有关键知识点"
+      },
+      {
+        "key": "D",
+        "text": "最大化保留所有内容，不做任何删减，以确保信息完整性"
+      },
+      {
+        "key": "E",
+        "text": "时效性验证——确认合并后的知识条目仍然反映最新的业务逻辑和技术规范"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "去重和冲突消解（A）、一致性校验（B）、覆盖率评估（C）、时效性验证（E）都是知识库合并优化的关键维度。D 错误：不加甄别地保留所有内容会导致知识库膨胀、噪声增加、检索质量下降。",
+    "source": ""
+  },
+  {
+    "id": "D-LangChain-Framework-cb1cc9d7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RunnableWithMessageHistory 与 LangSmith Tracing",
+    "stem": "关于 `RunnableWithMessageHistory` 和 LangSmith Tracing，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`RunnableWithMessageHistory` 是 LangChain 推荐的现代方式，用于为链或 Agent 添加对话历史管理能力"
+      },
+      {
+        "key": "B",
+        "text": "`RunnableWithMessageHistory` 需要提供聊天记录加载器（如 `ChatMessageHistory`）和 session 标识来管理多轮对话"
+      },
+      {
+        "key": "C",
+        "text": "LangSmith 的 Tracing 功能可以可视化链的执行流程，记录每个步骤的输入、输出和耗时信息"
+      },
+      {
+        "key": "D",
+        "text": "`RunnableWithMessageHistory` 已经取代了 LCEL，成为构建链的唯一方式"
+      },
+      {
+        "key": "E",
+        "text": "LangSmith Tracing 仅支持记录单次 LLM 调用，无法追踪整个链的执行过程"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "`RunnableWithMessageHistory` 是 LangChain 当前推荐的对话历史管理方式，它将 Runnable 链与消息历史存储结合，通过 session_id 区分不同对话会话，需要提供 `get_session_history` 回调函数来加载和保存历史记录。LangSmith 是 LangChain 官方的可观测性平台，其 Tracing 功能能够端到端追踪整个链的执行过程，可视化每个组件的输入、输出、耗时和 token 使用情况，是调试和优化 LLM 应用的重要工具。选项 D 错误，`RunnableWithMessageHistory` 是在 LCEL 基础上添加历史管理，而非取代 LCEL。选项 E 错误，LangSmith Tracing 支持追踪完整的链执行过程。",
+    "source": "[Message History](https://python.langchain.com/docs/concepts/memory/) / [LangSmith Tracing](https://docs.smith.langchain.com/observability)"
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-37f74711",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 LLM 驱动的测试基础设施中，负责提供外部知识和专业领域数据支持的是哪个层次？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "前端交互层"
+      },
+      {
+        "key": "B",
+        "text": "数据源层"
+      },
+      {
+        "key": "C",
+        "text": "LLM 层"
+      },
+      {
+        "key": "D",
+        "text": "后端服务层"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "LLM 驱动的测试基础设施包含四层架构：前端交互层（用户界面）、后端服务层（业务逻辑协调）、LLM 层（核心智能能力）和数据源层（提供外部知识和数据支持，如需求文档、历史缺陷库、测试用例库等）。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-501a75f3",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RAG（检索增强生成）技术在软件测试中的价值包括以下哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "利用项目特定知识（需求文档、历史缺陷等）提升测试输出的针对性"
+      },
+      {
+        "key": "B",
+        "text": "减少 LLM 的幻觉，提高生成内容的事实准确性"
+      },
+      {
+        "key": "C",
+        "text": "替代所有人工测试活动，实现完全自动化"
+      },
+      {
+        "key": "D",
+        "text": "保持知识的时效性，无需重新训练模型即可更新知识库"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "RAG 通过检索外部数据源增强 LLM 输出：可利用项目特定文档提升测试输出的针对性（A）；通过提供事实依据减少幻觉（B）；通过更新向量数据库保持知识时效性，无需重新训练模型（D）。C 错误——RAG 增强了 AI 辅助测试的能力，但不能替代所有人工测试活动。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-1a6b8fa6",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "团队知识库利用率报告显示：依赖知识库的测试用例数从 30 条增至 58 条（+93%），可执行性和覆盖面显著提升，但 Token 消耗增加约 250%。在 RAG 系统优化中，以下哪些策略可以在不显著降低检索质量的前提下有效降低 Token 消耗？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "采用 Contextual Retrieval 技术，为每个知识块预置解释性上下文，提升单次检索命中率"
+      },
+      {
+        "key": "B",
+        "text": "引入 Reranking 重排序机制，先粗检索较多候选块，再用轻量模型精排，仅将 Top-K 高相关块传入 LLM"
+      },
+      {
+        "key": "C",
+        "text": "将所有知识块无差别压缩至 100 token 以内，强制缩短上下文长度"
+      },
+      {
+        "key": "D",
+        "text": "使用混合检索（Embedding + BM25），利用 BM25 对精确术语匹配的优势减少语义检索的冗余召回"
+      },
+      {
+        "key": "E",
+        "text": "完全移除知识库，改用 LLM 的参数化知识直接生成用例"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Contextual Retrieval 通过预置上下文提升检索准确性（A 正确）；Reranking 是业界标准做法，可减少传入 LLM 的上下文量（B 正确）；混合检索结合语义理解和精确匹配优势（D 正确）。C 错误：无差别压缩会丢失关键信息；E 错误：违背 RAG 核心价值。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-def329da",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "在 RAG 系统的知识库分块（Chunking）策略中，以下说法哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "对于 API 文档这类结构化内容，应按接口粒度分块，保持每个接口的请求参数、返回值、示例代码在同一块内"
+      },
+      {
+        "key": "B",
+        "text": "对于需求文档这类叙事性内容，固定 512 token 分块是最优策略，因为它简单且能保证均匀的信息密度"
+      },
+      {
+        "key": "C",
+        "text": "对于缺陷报告，应将\"复现步骤\"和\"预期结果\"保留在同一块内，否则检索到复现步骤时缺少验证标准"
+      },
+      {
+        "key": "D",
+        "text": "分块时应为每个块附加元数据标签（如模块名、优先级、关联需求编号），支持检索时的过滤和精准定位"
+      },
+      {
+        "key": "E",
+        "text": "所有类型的文档都应使用相同的分块策略，以保持一致性和简化工程实现"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "结构化文档应按语义单元分块（A 正确）；缺陷报告的\"复现步骤\"和\"预期结果\"是逻辑上不可分割的整体（C 正确）；元数据标签支持过滤和精准定位（D 正确）。B 错误：固定大小分块对叙事性文档往往不是最优的；E 错误：不同类型的文档需要不同的分块策略。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-e7d3d978",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在测试用例生成的知识库检索场景中，如果过度追求高召回率而忽视精确率，最可能导致的问题是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成的用例数量过少，覆盖不全"
+      },
+      {
+        "key": "B",
+        "text": "检索到大量不相关的知识条目，导致 LLM 上下文窗口被噪声占据，生成的用例包含无关断言或错误逻辑"
+      },
+      {
+        "key": "C",
+        "text": "Token 消耗降低，因为不相关内容会被 LLM 自动忽略"
+      },
+      {
+        "key": "D",
+        "text": "知识库的更新频率被迫提高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "高召回低精确意味着检索结果中包含大量不相关内容，这些不相关的块会被拼入 LLM 的上下文窗口，产生两个负面影响：占用有限的上下文空间，挤掉真正相关的内容；LLM 可能被噪声误导，生成包含无关断言或错误逻辑的用例。这就是学术界所说的\"Lost in the Middle\"问题。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-5609069d",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从知识工程和 RAG 系统的角度，知识库\"合并优化\"阶段应重点关注的质量维度包括哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "去重与冲突消解——自动生成的内容可能与手动内容重复或矛盾，需要识别并处理"
+      },
+      {
+        "key": "B",
+        "text": "一致性校验——确保合并后的知识条目在术语、格式、粒度上保持一致"
+      },
+      {
+        "key": "C",
+        "text": "覆盖率评估——检查合并后的知识库是否覆盖了目标领域的所有关键知识点"
+      },
+      {
+        "key": "D",
+        "text": "最大化保留所有内容，不做任何删减，以确保信息完整性"
+      },
+      {
+        "key": "E",
+        "text": "时效性验证——确认合并后的知识条目仍然反映最新的业务逻辑和技术规范"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "去重和冲突消解（A）、一致性校验（B）、覆盖率评估（C）、时效性验证（E）都是知识库合并优化的关键维度。D 错误：不加甄别地保留所有内容会导致知识库膨胀、噪声增加、检索质量下降。",
+    "source": ""
+  },
+  {
+    "id": "D-LangChain-Framework-cb1cc9d7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RunnableWithMessageHistory 与 LangSmith Tracing",
+    "stem": "关于 `RunnableWithMessageHistory` 和 LangSmith Tracing，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`RunnableWithMessageHistory` 是 LangChain 推荐的现代方式，用于为链或 Agent 添加对话历史管理能力"
+      },
+      {
+        "key": "B",
+        "text": "`RunnableWithMessageHistory` 需要提供聊天记录加载器（如 `ChatMessageHistory`）和 session 标识来管理多轮对话"
+      },
+      {
+        "key": "C",
+        "text": "LangSmith 的 Tracing 功能可以可视化链的执行流程，记录每个步骤的输入、输出和耗时信息"
+      },
+      {
+        "key": "D",
+        "text": "`RunnableWithMessageHistory` 已经取代了 LCEL，成为构建链的唯一方式"
+      },
+      {
+        "key": "E",
+        "text": "LangSmith Tracing 仅支持记录单次 LLM 调用，无法追踪整个链的执行过程"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "`RunnableWithMessageHistory` 是 LangChain 当前推荐的对话历史管理方式，它将 Runnable 链与消息历史存储结合，通过 session_id 区分不同对话会话，需要提供 `get_session_history` 回调函数来加载和保存历史记录。LangSmith 是 LangChain 官方的可观测性平台，其 Tracing 功能能够端到端追踪整个链的执行过程，可视化每个组件的输入、输出、耗时和 token 使用情况，是调试和优化 LLM 应用的重要工具。选项 D 错误，`RunnableWithMessageHistory` 是在 LCEL 基础上添加历史管理，而非取代 LCEL。选项 E 错误，LangSmith Tracing 支持追踪完整的链执行过程。",
+    "source": "[Message History](https://python.langchain.com/docs/concepts/memory/) / [LangSmith Tracing](https://docs.smith.langchain.com/observability)"
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-37f74711",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 LLM 驱动的测试基础设施中，负责提供外部知识和专业领域数据支持的是哪个层次？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "前端交互层"
+      },
+      {
+        "key": "B",
+        "text": "数据源层"
+      },
+      {
+        "key": "C",
+        "text": "LLM 层"
+      },
+      {
+        "key": "D",
+        "text": "后端服务层"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "LLM 驱动的测试基础设施包含四层架构：前端交互层（用户界面）、后端服务层（业务逻辑协调）、LLM 层（核心智能能力）和数据源层（提供外部知识和数据支持，如需求文档、历史缺陷库、测试用例库等）。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-501a75f3",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RAG（检索增强生成）技术在软件测试中的价值包括以下哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "利用项目特定知识（需求文档、历史缺陷等）提升测试输出的针对性"
+      },
+      {
+        "key": "B",
+        "text": "减少 LLM 的幻觉，提高生成内容的事实准确性"
+      },
+      {
+        "key": "C",
+        "text": "替代所有人工测试活动，实现完全自动化"
+      },
+      {
+        "key": "D",
+        "text": "保持知识的时效性，无需重新训练模型即可更新知识库"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "RAG 通过检索外部数据源增强 LLM 输出：可利用项目特定文档提升测试输出的针对性（A）；通过提供事实依据减少幻觉（B）；通过更新向量数据库保持知识时效性，无需重新训练模型（D）。C 错误——RAG 增强了 AI 辅助测试的能力，但不能替代所有人工测试活动。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-1a6b8fa6",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "团队知识库利用率报告显示：依赖知识库的测试用例数从 30 条增至 58 条（+93%），可执行性和覆盖面显著提升，但 Token 消耗增加约 250%。在 RAG 系统优化中，以下哪些策略可以在不显著降低检索质量的前提下有效降低 Token 消耗？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "采用 Contextual Retrieval 技术，为每个知识块预置解释性上下文，提升单次检索命中率"
+      },
+      {
+        "key": "B",
+        "text": "引入 Reranking 重排序机制，先粗检索较多候选块，再用轻量模型精排，仅将 Top-K 高相关块传入 LLM"
+      },
+      {
+        "key": "C",
+        "text": "将所有知识块无差别压缩至 100 token 以内，强制缩短上下文长度"
+      },
+      {
+        "key": "D",
+        "text": "使用混合检索（Embedding + BM25），利用 BM25 对精确术语匹配的优势减少语义检索的冗余召回"
+      },
+      {
+        "key": "E",
+        "text": "完全移除知识库，改用 LLM 的参数化知识直接生成用例"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Contextual Retrieval 通过预置上下文提升检索准确性（A 正确）；Reranking 是业界标准做法，可减少传入 LLM 的上下文量（B 正确）；混合检索结合语义理解和精确匹配优势（D 正确）。C 错误：无差别压缩会丢失关键信息；E 错误：违背 RAG 核心价值。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-def329da",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "在 RAG 系统的知识库分块（Chunking）策略中，以下说法哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "对于 API 文档这类结构化内容，应按接口粒度分块，保持每个接口的请求参数、返回值、示例代码在同一块内"
+      },
+      {
+        "key": "B",
+        "text": "对于需求文档这类叙事性内容，固定 512 token 分块是最优策略，因为它简单且能保证均匀的信息密度"
+      },
+      {
+        "key": "C",
+        "text": "对于缺陷报告，应将\"复现步骤\"和\"预期结果\"保留在同一块内，否则检索到复现步骤时缺少验证标准"
+      },
+      {
+        "key": "D",
+        "text": "分块时应为每个块附加元数据标签（如模块名、优先级、关联需求编号），支持检索时的过滤和精准定位"
+      },
+      {
+        "key": "E",
+        "text": "所有类型的文档都应使用相同的分块策略，以保持一致性和简化工程实现"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "结构化文档应按语义单元分块（A 正确）；缺陷报告的\"复现步骤\"和\"预期结果\"是逻辑上不可分割的整体（C 正确）；元数据标签支持过滤和精准定位（D 正确）。B 错误：固定大小分块对叙事性文档往往不是最优的；E 错误：不同类型的文档需要不同的分块策略。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-e7d3d978",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在测试用例生成的知识库检索场景中，如果过度追求高召回率而忽视精确率，最可能导致的问题是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成的用例数量过少，覆盖不全"
+      },
+      {
+        "key": "B",
+        "text": "检索到大量不相关的知识条目，导致 LLM 上下文窗口被噪声占据，生成的用例包含无关断言或错误逻辑"
+      },
+      {
+        "key": "C",
+        "text": "Token 消耗降低，因为不相关内容会被 LLM 自动忽略"
+      },
+      {
+        "key": "D",
+        "text": "知识库的更新频率被迫提高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "高召回低精确意味着检索结果中包含大量不相关内容，这些不相关的块会被拼入 LLM 的上下文窗口，产生两个负面影响：占用有限的上下文空间，挤掉真正相关的内容；LLM 可能被噪声误导，生成包含无关断言或错误逻辑的用例。这就是学术界所说的\"Lost in the Middle\"问题。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-5609069d",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从知识工程和 RAG 系统的角度，知识库\"合并优化\"阶段应重点关注的质量维度包括哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "去重与冲突消解——自动生成的内容可能与手动内容重复或矛盾，需要识别并处理"
+      },
+      {
+        "key": "B",
+        "text": "一致性校验——确保合并后的知识条目在术语、格式、粒度上保持一致"
+      },
+      {
+        "key": "C",
+        "text": "覆盖率评估——检查合并后的知识库是否覆盖了目标领域的所有关键知识点"
+      },
+      {
+        "key": "D",
+        "text": "最大化保留所有内容，不做任何删减，以确保信息完整性"
+      },
+      {
+        "key": "E",
+        "text": "时效性验证——确认合并后的知识条目仍然反映最新的业务逻辑和技术规范"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "去重和冲突消解（A）、一致性校验（B）、覆盖率评估（C）、时效性验证（E）都是知识库合并优化的关键维度。D 错误：不加甄别地保留所有内容会导致知识库膨胀、噪声增加、检索质量下降。",
+    "source": ""
+  },
+  {
+    "id": "D-LangChain-Framework-cb1cc9d7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RunnableWithMessageHistory 与 LangSmith Tracing",
+    "stem": "关于 `RunnableWithMessageHistory` 和 LangSmith Tracing，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`RunnableWithMessageHistory` 是 LangChain 推荐的现代方式，用于为链或 Agent 添加对话历史管理能力"
+      },
+      {
+        "key": "B",
+        "text": "`RunnableWithMessageHistory` 需要提供聊天记录加载器（如 `ChatMessageHistory`）和 session 标识来管理多轮对话"
+      },
+      {
+        "key": "C",
+        "text": "LangSmith 的 Tracing 功能可以可视化链的执行流程，记录每个步骤的输入、输出和耗时信息"
+      },
+      {
+        "key": "D",
+        "text": "`RunnableWithMessageHistory` 已经取代了 LCEL，成为构建链的唯一方式"
+      },
+      {
+        "key": "E",
+        "text": "LangSmith Tracing 仅支持记录单次 LLM 调用，无法追踪整个链的执行过程"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "`RunnableWithMessageHistory` 是 LangChain 当前推荐的对话历史管理方式，它将 Runnable 链与消息历史存储结合，通过 session_id 区分不同对话会话，需要提供 `get_session_history` 回调函数来加载和保存历史记录。LangSmith 是 LangChain 官方的可观测性平台，其 Tracing 功能能够端到端追踪整个链的执行过程，可视化每个组件的输入、输出、耗时和 token 使用情况，是调试和优化 LLM 应用的重要工具。选项 D 错误，`RunnableWithMessageHistory` 是在 LCEL 基础上添加历史管理，而非取代 LCEL。选项 E 错误，LangSmith Tracing 支持追踪完整的链执行过程。",
+    "source": "[Message History](https://python.langchain.com/docs/concepts/memory/) / [LangSmith Tracing](https://docs.smith.langchain.com/observability)"
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-37f74711",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 LLM 驱动的测试基础设施中，负责提供外部知识和专业领域数据支持的是哪个层次？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "前端交互层"
+      },
+      {
+        "key": "B",
+        "text": "数据源层"
+      },
+      {
+        "key": "C",
+        "text": "LLM 层"
+      },
+      {
+        "key": "D",
+        "text": "后端服务层"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "LLM 驱动的测试基础设施包含四层架构：前端交互层（用户界面）、后端服务层（业务逻辑协调）、LLM 层（核心智能能力）和数据源层（提供外部知识和数据支持，如需求文档、历史缺陷库、测试用例库等）。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-501a75f3",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RAG（检索增强生成）技术在软件测试中的价值包括以下哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "利用项目特定知识（需求文档、历史缺陷等）提升测试输出的针对性"
+      },
+      {
+        "key": "B",
+        "text": "减少 LLM 的幻觉，提高生成内容的事实准确性"
+      },
+      {
+        "key": "C",
+        "text": "替代所有人工测试活动，实现完全自动化"
+      },
+      {
+        "key": "D",
+        "text": "保持知识的时效性，无需重新训练模型即可更新知识库"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "RAG 通过检索外部数据源增强 LLM 输出：可利用项目特定文档提升测试输出的针对性（A）；通过提供事实依据减少幻觉（B）；通过更新向量数据库保持知识时效性，无需重新训练模型（D）。C 错误——RAG 增强了 AI 辅助测试的能力，但不能替代所有人工测试活动。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-1a6b8fa6",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "团队知识库利用率报告显示：依赖知识库的测试用例数从 30 条增至 58 条（+93%），可执行性和覆盖面显著提升，但 Token 消耗增加约 250%。在 RAG 系统优化中，以下哪些策略可以在不显著降低检索质量的前提下有效降低 Token 消耗？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "采用 Contextual Retrieval 技术，为每个知识块预置解释性上下文，提升单次检索命中率"
+      },
+      {
+        "key": "B",
+        "text": "引入 Reranking 重排序机制，先粗检索较多候选块，再用轻量模型精排，仅将 Top-K 高相关块传入 LLM"
+      },
+      {
+        "key": "C",
+        "text": "将所有知识块无差别压缩至 100 token 以内，强制缩短上下文长度"
+      },
+      {
+        "key": "D",
+        "text": "使用混合检索（Embedding + BM25），利用 BM25 对精确术语匹配的优势减少语义检索的冗余召回"
+      },
+      {
+        "key": "E",
+        "text": "完全移除知识库，改用 LLM 的参数化知识直接生成用例"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Contextual Retrieval 通过预置上下文提升检索准确性（A 正确）；Reranking 是业界标准做法，可减少传入 LLM 的上下文量（B 正确）；混合检索结合语义理解和精确匹配优势（D 正确）。C 错误：无差别压缩会丢失关键信息；E 错误：违背 RAG 核心价值。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-def329da",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "在 RAG 系统的知识库分块（Chunking）策略中，以下说法哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "对于 API 文档这类结构化内容，应按接口粒度分块，保持每个接口的请求参数、返回值、示例代码在同一块内"
+      },
+      {
+        "key": "B",
+        "text": "对于需求文档这类叙事性内容，固定 512 token 分块是最优策略，因为它简单且能保证均匀的信息密度"
+      },
+      {
+        "key": "C",
+        "text": "对于缺陷报告，应将\"复现步骤\"和\"预期结果\"保留在同一块内，否则检索到复现步骤时缺少验证标准"
+      },
+      {
+        "key": "D",
+        "text": "分块时应为每个块附加元数据标签（如模块名、优先级、关联需求编号），支持检索时的过滤和精准定位"
+      },
+      {
+        "key": "E",
+        "text": "所有类型的文档都应使用相同的分块策略，以保持一致性和简化工程实现"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "结构化文档应按语义单元分块（A 正确）；缺陷报告的\"复现步骤\"和\"预期结果\"是逻辑上不可分割的整体（C 正确）；元数据标签支持过滤和精准定位（D 正确）。B 错误：固定大小分块对叙事性文档往往不是最优的；E 错误：不同类型的文档需要不同的分块策略。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-e7d3d978",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在测试用例生成的知识库检索场景中，如果过度追求高召回率而忽视精确率，最可能导致的问题是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成的用例数量过少，覆盖不全"
+      },
+      {
+        "key": "B",
+        "text": "检索到大量不相关的知识条目，导致 LLM 上下文窗口被噪声占据，生成的用例包含无关断言或错误逻辑"
+      },
+      {
+        "key": "C",
+        "text": "Token 消耗降低，因为不相关内容会被 LLM 自动忽略"
+      },
+      {
+        "key": "D",
+        "text": "知识库的更新频率被迫提高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "高召回低精确意味着检索结果中包含大量不相关内容，这些不相关的块会被拼入 LLM 的上下文窗口，产生两个负面影响：占用有限的上下文空间，挤掉真正相关的内容；LLM 可能被噪声误导，生成包含无关断言或错误逻辑的用例。这就是学术界所说的\"Lost in the Middle\"问题。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-5609069d",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从知识工程和 RAG 系统的角度，知识库\"合并优化\"阶段应重点关注的质量维度包括哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "去重与冲突消解——自动生成的内容可能与手动内容重复或矛盾，需要识别并处理"
+      },
+      {
+        "key": "B",
+        "text": "一致性校验——确保合并后的知识条目在术语、格式、粒度上保持一致"
+      },
+      {
+        "key": "C",
+        "text": "覆盖率评估——检查合并后的知识库是否覆盖了目标领域的所有关键知识点"
+      },
+      {
+        "key": "D",
+        "text": "最大化保留所有内容，不做任何删减，以确保信息完整性"
+      },
+      {
+        "key": "E",
+        "text": "时效性验证——确认合并后的知识条目仍然反映最新的业务逻辑和技术规范"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "去重和冲突消解（A）、一致性校验（B）、覆盖率评估（C）、时效性验证（E）都是知识库合并优化的关键维度。D 错误：不加甄别地保留所有内容会导致知识库膨胀、噪声增加、检索质量下降。",
+    "source": ""
+  },
+  {
+    "id": "D-LangChain-Framework-cb1cc9d7",
+    "module": "LangChain-Framework",
+    "moduleName": "LangChain 框架",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RunnableWithMessageHistory 与 LangSmith Tracing",
+    "stem": "关于 `RunnableWithMessageHistory` 和 LangSmith Tracing，以下哪些说法是正确的？（多选）",
+    "options": [
+      {
+        "key": "A",
+        "text": "`RunnableWithMessageHistory` 是 LangChain 推荐的现代方式，用于为链或 Agent 添加对话历史管理能力"
+      },
+      {
+        "key": "B",
+        "text": "`RunnableWithMessageHistory` 需要提供聊天记录加载器（如 `ChatMessageHistory`）和 session 标识来管理多轮对话"
+      },
+      {
+        "key": "C",
+        "text": "LangSmith 的 Tracing 功能可以可视化链的执行流程，记录每个步骤的输入、输出和耗时信息"
+      },
+      {
+        "key": "D",
+        "text": "`RunnableWithMessageHistory` 已经取代了 LCEL，成为构建链的唯一方式"
+      },
+      {
+        "key": "E",
+        "text": "LangSmith Tracing 仅支持记录单次 LLM 调用，无法追踪整个链的执行过程"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "`RunnableWithMessageHistory` 是 LangChain 当前推荐的对话历史管理方式，它将 Runnable 链与消息历史存储结合，通过 session_id 区分不同对话会话，需要提供 `get_session_history` 回调函数来加载和保存历史记录。LangSmith 是 LangChain 官方的可观测性平台，其 Tracing 功能能够端到端追踪整个链的执行过程，可视化每个组件的输入、输出、耗时和 token 使用情况，是调试和优化 LLM 应用的重要工具。选项 D 错误，`RunnableWithMessageHistory` 是在 LCEL 基础上添加历史管理，而非取代 LCEL。选项 E 错误，LangSmith Tracing 支持追踪完整的链执行过程。",
+    "source": "[Message History](https://python.langchain.com/docs/concepts/memory/) / [LangSmith Tracing](https://docs.smith.langchain.com/observability)"
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-37f74711",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在 LLM 驱动的测试基础设施中，负责提供外部知识和专业领域数据支持的是哪个层次？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "前端交互层"
+      },
+      {
+        "key": "B",
+        "text": "数据源层"
+      },
+      {
+        "key": "C",
+        "text": "LLM 层"
+      },
+      {
+        "key": "D",
+        "text": "后端服务层"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "LLM 驱动的测试基础设施包含四层架构：前端交互层（用户界面）、后端服务层（业务逻辑协调）、LLM 层（核心智能能力）和数据源层（提供外部知识和数据支持，如需求文档、历史缺陷库、测试用例库等）。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-501a75f3",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "RAG（检索增强生成）技术在软件测试中的价值包括以下哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "利用项目特定知识（需求文档、历史缺陷等）提升测试输出的针对性"
+      },
+      {
+        "key": "B",
+        "text": "减少 LLM 的幻觉，提高生成内容的事实准确性"
+      },
+      {
+        "key": "C",
+        "text": "替代所有人工测试活动，实现完全自动化"
+      },
+      {
+        "key": "D",
+        "text": "保持知识的时效性，无需重新训练模型即可更新知识库"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "RAG 通过检索外部数据源增强 LLM 输出：可利用项目特定文档提升测试输出的针对性（A）；通过提供事实依据减少幻觉（B）；通过更新向量数据库保持知识时效性，无需重新训练模型（D）。C 错误——RAG 增强了 AI 辅助测试的能力，但不能替代所有人工测试活动。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-1a6b8fa6",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "团队知识库利用率报告显示：依赖知识库的测试用例数从 30 条增至 58 条（+93%），可执行性和覆盖面显著提升，但 Token 消耗增加约 250%。在 RAG 系统优化中，以下哪些策略可以在不显著降低检索质量的前提下有效降低 Token 消耗？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "采用 Contextual Retrieval 技术，为每个知识块预置解释性上下文，提升单次检索命中率"
+      },
+      {
+        "key": "B",
+        "text": "引入 Reranking 重排序机制，先粗检索较多候选块，再用轻量模型精排，仅将 Top-K 高相关块传入 LLM"
+      },
+      {
+        "key": "C",
+        "text": "将所有知识块无差别压缩至 100 token 以内，强制缩短上下文长度"
+      },
+      {
+        "key": "D",
+        "text": "使用混合检索（Embedding + BM25），利用 BM25 对精确术语匹配的优势减少语义检索的冗余召回"
+      },
+      {
+        "key": "E",
+        "text": "完全移除知识库，改用 LLM 的参数化知识直接生成用例"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Contextual Retrieval 通过预置上下文提升检索准确性（A 正确）；Reranking 是业界标准做法，可减少传入 LLM 的上下文量（B 正确）；混合检索结合语义理解和精确匹配优势（D 正确）。C 错误：无差别压缩会丢失关键信息；E 错误：违背 RAG 核心价值。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-def329da",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "在 RAG 系统的知识库分块（Chunking）策略中，以下说法哪些是正确的？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "对于 API 文档这类结构化内容，应按接口粒度分块，保持每个接口的请求参数、返回值、示例代码在同一块内"
+      },
+      {
+        "key": "B",
+        "text": "对于需求文档这类叙事性内容，固定 512 token 分块是最优策略，因为它简单且能保证均匀的信息密度"
+      },
+      {
+        "key": "C",
+        "text": "对于缺陷报告，应将\"复现步骤\"和\"预期结果\"保留在同一块内，否则检索到复现步骤时缺少验证标准"
+      },
+      {
+        "key": "D",
+        "text": "分块时应为每个块附加元数据标签（如模块名、优先级、关联需求编号），支持检索时的过滤和精准定位"
+      },
+      {
+        "key": "E",
+        "text": "所有类型的文档都应使用相同的分块策略，以保持一致性和简化工程实现"
+      }
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "结构化文档应按语义单元分块（A 正确）；缺陷报告的\"复现步骤\"和\"预期结果\"是逻辑上不可分割的整体（C 正确）；元数据标签支持过滤和精准定位（D 正确）。B 错误：固定大小分块对叙事性文档往往不是最优的；E 错误：不同类型的文档需要不同的分块策略。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-e7d3d978",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "easy",
+    "difficultyLabel": "基础",
+    "isMultiSelect": false,
+    "title": "在测试用例生成的知识库检索场景中，如果过度追求高召回率而忽视精确率，最可能导致的问题是：",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "生成的用例数量过少，覆盖不全"
+      },
+      {
+        "key": "B",
+        "text": "检索到大量不相关的知识条目，导致 LLM 上下文窗口被噪声占据，生成的用例包含无关断言或错误逻辑"
+      },
+      {
+        "key": "C",
+        "text": "Token 消耗降低，因为不相关内容会被 LLM 自动忽略"
+      },
+      {
+        "key": "D",
+        "text": "知识库的更新频率被迫提高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "高召回低精确意味着检索结果中包含大量不相关内容，这些不相关的块会被拼入 LLM 的上下文窗口，产生两个负面影响：占用有限的上下文空间，挤掉真正相关的内容；LLM 可能被噪声误导，生成包含无关断言或错误逻辑的用例。这就是学术界所说的\"Lost in the Middle\"问题。",
+    "source": ""
+  },
+  {
+    "id": "D-Testing-RAG-Engineering-5609069d",
+    "module": "Testing-RAG-Engineering",
+    "moduleName": "测试领域的 RAG 工程化",
+    "difficulty": "hard",
+    "difficultyLabel": "进阶·多选",
+    "isMultiSelect": true,
+    "title": "从知识工程和 RAG 系统的角度，知识库\"合并优化\"阶段应重点关注的质量维度包括哪些？",
+    "stem": "",
+    "options": [
+      {
+        "key": "A",
+        "text": "去重与冲突消解——自动生成的内容可能与手动内容重复或矛盾，需要识别并处理"
+      },
+      {
+        "key": "B",
+        "text": "一致性校验——确保合并后的知识条目在术语、格式、粒度上保持一致"
+      },
+      {
+        "key": "C",
+        "text": "覆盖率评估——检查合并后的知识库是否覆盖了目标领域的所有关键知识点"
+      },
+      {
+        "key": "D",
+        "text": "最大化保留所有内容，不做任何删减，以确保信息完整性"
+      },
+      {
+        "key": "E",
+        "text": "时效性验证——确认合并后的知识条目仍然反映最新的业务逻辑和技术规范"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "E"
+    ],
+    "explanation": "去重和冲突消解（A）、一致性校验（B）、覆盖率评估（C）、时效性验证（E）都是知识库合并优化的关键维度。D 错误：不加甄别地保留所有内容会导致知识库膨胀、噪声增加、检索质量下降。",
+    "source": ""
+  }
+]

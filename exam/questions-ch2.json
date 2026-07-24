@@ -1,0 +1,4919 @@
+[
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-4fca024a",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "AI 幻觉的典型表现",
+    "stem": "AI 编码中的\"幻觉\"问题，最典型的表现是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 会\"自信地\"编造不存在的 API、版本号或伪造文档链接"
+      },
+      {
+        "key": "B",
+        "text": "AI 会拒绝回答所有编程相关的问题，直接返回错误提示"
+      },
+      {
+        "key": "C",
+        "text": "AI 会在生成的代码中插入明显的错误标记，提示开发者需要检查"
+      },
+      {
+        "key": "D",
+        "text": "AI 只在被问到不熟悉的领域时才会出现幻觉，常见的编程语言完全不会"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "AI 幻觉的核心特征是\"自信地编造\"——生成的代码语法正确、逻辑自洽，但调用了不存在的函数、使用了虚构的版本号或伪造了看起来像官方文档的链接。选项 C 和 D 是错误的——AI 不会主动标记不确定性，常见语言同样会出现幻觉。正因为幻觉代码\"看起来对\"，所以更加危险，必须实际运行或查阅官方文档验证。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-908c4918",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "安全使用 AI 的隔离原则",
+    "stem": "\"隔离原则\"在 AI 编码中的含义是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 生成的代码必须放在独立的 Git 分支中，不能和人工代码混在一起"
+      },
+      {
+        "key": "B",
+        "text": "敏感代码和凭据要与 AI 交互隔离，敏感模块禁止通过 AI 修改"
+      },
+      {
+        "key": "C",
+        "text": "使用 AI 编码时必须断开网络，防止代码数据外传到云端"
+      },
+      {
+        "key": "D",
+        "text": "AI 必须在隔离的虚拟机中运行，禁止访问本地任何文件系统"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "隔离原则要求敏感信息和代码与 AI 交互隔离：API 密钥用环境变量管理而非硬编码、涉及安全或核心业务的模块不通过 AI 修改、生产环境数据不通过 AI 查询。选项 A 不是隔离原则的内容；选项 C 和 D 是过度反应，会严重影响 AI 工具的可用性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-f07d90c9",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "AI 生成代码中的常见安全问题",
+    "stem": "以下哪项是 AI 生成代码中最常见的安全问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 会在代码中自动添加安全审计日志，便于追溯问题"
+      },
+      {
+        "key": "B",
+        "text": "AI 会自动对所有用户输入做完整的转义处理，防止出现 XSS 攻击"
+      },
+      {
+        "key": "C",
+        "text": "AI 可能生成字符串拼接 SQL 而非参数化查询，导致注入风险"
+      },
+      {
+        "key": "D",
+        "text": "AI 生成的代码默认包含完整的权限校验逻辑"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程明确列出 AI 可能生成的安全漏洞包括：SQL 注入（字符串拼接 SQL 而非参数化查询）、硬编码凭据（示例中写入占位密钥）、XSS 漏洞（前端代码直接渲染用户输入未做转义）、不安全依赖（推荐有已知漏洞的库版本）。选项 A、B、D 都与实际相反——AI 不会主动进行安全加固，这是开发者需要审查的重点。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-56043336",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "AI 能力边界的正确认知",
+    "stem": "根据 AI 编码的能力边界速查表，以下哪种说法最准确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 最擅长架构设计，因为它能够全面考虑系统的长期演进方向"
+      },
+      {
+        "key": "B",
+        "text": "AI 在所有编码场景中都表现得非常优秀，包括架构设计和安全审计等高难度任务"
+      },
+      {
+        "key": "C",
+        "text": "AI 只适合最简单的代码补全场景，复杂业务逻辑完全无法处理"
+      },
+      {
+        "key": "D",
+        "text": "AI 擅长 CRUD 代码和单元测试，但安全审计和合规审查不能替代人工"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的能力边界速查表明确划分：CRUD 代码 / 单元测试 / 代码解释 → AI 擅长；复杂业务逻辑 / 性能优化 → 需引导；架构设计 / 数据库 Schema → AI 辅助，人工主导；安全审计 / 合规审查 → 不能替代人工。选项 B 过度信任 AI，选项 C 低估 AI 能力，选项 A 与事实相反——架构设计需要综合考虑业务、团队、技术债务等因素，AI 只能列举方案对比，最终决策必须由人来做。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-38622a08",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "\"AI 写的\"与 Code Review 的关系",
+    "stem": "关于 AI 生成代码的 Code Review，以下哪种态度最正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 生成的代码必须经过与人工代码同等严格的 Review，提交者承担全部责任"
+      },
+      {
+        "key": "B",
+        "text": "\"AI 写的\"可以作为降低 Review 标准的理由，因为大模型经过了大量代码训练"
+      },
+      {
+        "key": "C",
+        "text": "AI 生成的代码质量较高，可以简化 Review 流程"
+      },
+      {
+        "key": "D",
+        "text": "只需要 Review AI 生成的业务逻辑部分，安全相关代码由 AI 自行保证"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出：\"AI 写的\"不是免责理由——提交者承担全部责任，Code Review 不应因\"AI 生成的\"而降低标准。AI 不是质量保证，其生成的代码可能包含幻觉、安全漏洞或逻辑错误，必须经过同等严格的审查。选项 B 和 C 违反审计原则，选项 D 尤其危险——安全相关代码恰恰需要额外审查。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-914bd905",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Prompt 注入攻击的防范",
+    "stem": "通过 MCP 让 AI 连接内部系统时，Prompt 注入攻击的风险是什么？如何防范？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Prompt 注入只影响聊天对话类的 AI 应用，对 AI 编码工具没有实际威胁"
+      },
+      {
+        "key": "B",
+        "text": "外部数据源可能嵌入恶意指令，防范方式是严格控制 MCP Server 权限范围"
+      },
+      {
+        "key": "C",
+        "text": "Prompt 注入会导致 AI 模型崩溃，但不会造成数据安全问题"
+      },
+      {
+        "key": "D",
+        "text": "只要使用最新的 AI 模型，就完全免疫 Prompt 注入攻击"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Prompt 注入是 AI 编码工具面临的新型安全威胁：数据库记录、GitHub Issue、API 响应中可能嵌入恶意指令，诱导 AI 执行非预期操作（如泄露敏感信息、执行删除操作）。防范方式包括严格控制 MCP Server 权限范围、只读优于读写、白名单优于黑名单、限制数据范围。选项 A 和 C 低估了威胁的严重性，选项 D 是错误的——目前没有 AI 模型能完全免疫 Prompt 注入。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-ac0894d7",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "安全使用框架的综合判断",
+    "stem": "你的团队正在评估是否让 AI 参与以下四个任务。基于四个核心原则（验证、隔离、审计、兜底），哪个决策最合理？\n\n任务 1：用 AI 生成用户注册的密码校验正则（至少 8 位，含大小写和数字）\n任务 2：让 AI 设计 3 节点分布式锁防止订单重复提交\n任务 3：让 AI 独立审查支付回调的安全漏洞\n任务 4：用 AI 自动生成 CRUD 接口的单元测试",
+    "options": [
+      {
+        "key": "A",
+        "text": "四个任务都适合 AI 独立完成，因为它们本质上都是编码任务，生成后抽查即可"
+      },
+      {
+        "key": "B",
+        "text": "只有任务 4 适合让 AI 独立完成，任务 1、2、3 都涉及业务逻辑与安全问题，必须全部都由人工从头完成"
+      },
+      {
+        "key": "C",
+        "text": "任务 1 和 4 适合 AI 完成；任务 2 由 AI 列方案、人工决策；任务 3 必须有安全人员审查"
+      },
+      {
+        "key": "D",
+        "text": "四个任务都不适合让 AI 参与，无论复杂度如何都应全部由人工编写和审查完成"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "根据能力边界速查表和四个核心原则：任务 1（密码校验正则）和任务 4（CRUD 单元测试）属于 AI 擅长的标准逻辑，但仍需验证正则正确性和测试覆盖度（验证原则）；任务 2（分布式锁）涉及一致性、网络分区容错等复杂问题，AI 可列举方案对比但关键决策必须人工主导（审计原则）；任务 3（支付回调安全审查）涉及金额验证、签名校验、防重放攻击等安全关键点，不能仅依赖 AI（兜底原则）。选项 A 过度信任 AI，选项 B 和 D 低估了 AI 在标准场景的能力。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-3d5eabf4",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "依赖退化的长期风险",
+    "stem": "一个开发者在使用 AI 编码工具半年后发现自己：遇到复杂 Bug 时第一反应是打开 AI 而不是自己分析；对底层框架原理越来越模糊；Code Review 时经常不审查直接接受 AI 的 Diff。这种情况反映了什么问题？最合理的应对策略是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "这是正常现象，AI 工具本来就应该替代人工分析，开发者只需专注于高层架构设计"
+      },
+      {
+        "key": "B",
+        "text": "这是\"依赖退化\"问题，应保持\"理解后才接受\"原则，定期做不依赖 AI 的编码练习"
+      },
+      {
+        "key": "C",
+        "text": "这只是个别开发者的现象，换一个 AI 工具或改变使用习惯就能解决"
+      },
+      {
+        "key": "D",
+        "text": "说明 AI 工具质量不够好导致依赖问题，等下一代模型发布就能彻底解决"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "\"依赖退化\"是 AI 编码的五大陷阱之一：当 AI 能快速写出正确代码时，开发者容易形成\"不再深入理解\"的习惯——不审查直接接受 Diff、不理解底层原理、丧失独立排错能力。教程的兜底原则明确要求：保持\"理解后才接受\"的原则，用 Ask 模式让 AI 解释代码，定期做不依赖 AI 的编码练习。AI 应该放大你的能力，而不是成为你的拐杖。选项 A 忽视了独立编码能力的重要性，选项 C 和 D 归因错误——问题在于使用方式而非工具本身。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-AI-Coding-Boundaries-f57baace",
+    "module": "Qoder-AI-Coding-Boundaries",
+    "moduleName": "AI 编码的边界在哪里",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "Qoder 代码安全扫描的三层策略",
+    "stem": "教程介绍了 Qoder 的三层渐进式代码安全扫描能力。关于各层级的使用时机和能力边界，以下描述最准确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "三层扫描都能自动执行，开发者无需任何手动操作即可完全保障代码安全"
+      },
+      {
+        "key": "B",
+        "text": "L1 静态检查在编码过程中自动执行，L2 轻量扫描在一轮修改后，L3 深度扫描在提交/推送前，但都不能替代专业安全审计"
+      },
+      {
+        "key": "C",
+        "text": "L3 深度扫描能覆盖所有类型的漏洞，包括越权访问、鉴权缺陷和业务逻辑漏洞"
+      },
+      {
+        "key": "D",
+        "text": "安全扫描只适合在 CI/CD 阶段运行，本地编码时不需要开启任何扫描功能"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程介绍了三层渐进式扫描：L1 静态检查（编码过程中自动执行）识别危险函数和明显泄露，L2 轻量扫描（一轮修改完成后）做语义分析识别注入等复杂风险，L3 深度扫描（提交/PR 前）跨文件追踪完整数据流。但教程明确说明其边界：越权访问、鉴权缺陷和业务逻辑漏洞尚不在覆盖范围内，安全扫描不能替代代码评审、测试和专业安全审计。A 错误，不能完全自动保障安全；C 错误，越权和业务逻辑漏洞不在覆盖范围；D 错误，本地编码时也应开启。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-65718128",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Print 模式的核心特性",
+    "stem": "Qoder CLI 的 Print 模式（`--print` / `-p`）主要为哪种场景设计？",
+    "options": [
+      {
+        "key": "A",
+        "text": "交互式对话开发，开发者可以实时和 AI 对话讨论代码"
+      },
+      {
+        "key": "B",
+        "text": "项目管理，用于创建 Issue 和跟踪任务进度"
+      },
+      {
+        "key": "C",
+        "text": "代码补全，在编辑器中实时预测下一行代码"
+      },
+      {
+        "key": "D",
+        "text": "非交互式自动化执行，适合被 CI/CD 脚本调用"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Print 模式专为自动化场景设计，核心特性是非交互式执行——给 AI 一个任务描述，它自动执行并输出结果，不需要用户输入。这使得它可以像编译器或测试框架一样被 CI 脚本调用。选项 A 是 Agent 模式的特征，选项 C 是补全模式的特征。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-d3c46e50",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "CI 中 AI 权限控制的核心原则",
+    "stem": "在 CI/CD 流水线中集成 AI 代码审查时，最重要的安全原则是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 在 CI 中只做只读操作，不能修改代码或执行危险命令"
+      },
+      {
+        "key": "B",
+        "text": "让 AI 拥有完整的读写权限，以便让它自动修复审查中发现的各类问题"
+      },
+      {
+        "key": "C",
+        "text": "不需要限制权限，CI 环境本身就是安全的"
+      },
+      {
+        "key": "D",
+        "text": "让 AI 自动合并审查通过的 PR，提高效率"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出权限最小化是核心原则：AI 在 CI 中应该只做只读操作，通过 `--allowed-tools=Read,Glob,Grep` 限制工具范围。AI 的输出是\"建议\"而非\"决定\"，不能自动合并代码。选项 B 和 D 违反了权限最小化和人类兜底原则，选项 C 忽略了 CI 环境中的安全风险。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-b6f59162",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Token 认证的正确做法",
+    "stem": "在 CI/CD 中使用 Qoder CLI 时，Token 的正确管理方式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "将 Token 直接写在 workflow 文件中，方便维护"
+      },
+      {
+        "key": "B",
+        "text": "每次构建时都需要手动输入 Token，以确保安全性"
+      },
+      {
+        "key": "C",
+        "text": "将 Token 写在项目的 README 文档中，让团队所有成员都能方便地看到"
+      },
+      {
+        "key": "D",
+        "text": "通过 CI 平台的 Secrets 管理 Token，避免硬编码和日志泄露"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程指出 Token 泄露是最大安全风险，正确做法是通过 CI 平台的 Secrets/Variables 管理（如 GitHub Actions 的 `$&#123;&#123; secrets.QODER_TOKEN &#125;&#125;`），避免硬编码在文件中或被打印到日志。选项 A 和 C 会导致 Token 泄露，选项 B 不适用于自动化流水线。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-e19327ee",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "--max-turns 参数的作用",
+    "stem": "在 CI 集成中使用 `--max-turns` 参数的主要目的是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "限制 AI 生成的最大代码行数，防止输出内容过长"
+      },
+      {
+        "key": "B",
+        "text": "限制同时运行的 CI Job 的最大数量，防止服务器资源被全部耗尽"
+      },
+      {
+        "key": "C",
+        "text": "控制 AI 的对话轮数上限，防止陷入无限循环导致 CI 超时"
+      },
+      {
+        "key": "D",
+        "text": "控制 PR 的最大文件大小，超过限制则跳过 AI 审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "`--max-turns` 限制 AI 的最大对话轮数，防止 AI 陷入长对话或无限循环，导致 CI Job 超时或消耗过多 Credits。教程踩坑提醒中明确提到，需要设置 `--max-turns` 配合 `timeout-minutes` 来防止 AI 响应慢或陷入长对话时卡住整个流水线。选项 A、B、D 都不是该参数的实际功能。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-2ba49d91",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI 集成模板的关键配置",
+    "stem": "以下是一个 CI 集成 AI 审查的配置片段，哪项组合最符合安全最佳实践？\n\n```yaml\n- name: AI Review\n  env:\n    QODER_PERSONAL_ACCESS_TOKEN: $&#123;&#123; secrets.QODER_TOKEN &#125;&#125;\n  run: |\n    qodercli -p \"审查代码变更\" \\\n      --output-format=text \\\n      --allowed-tools=Read,Glob,Grep \\\n      --max-turns=15 \\\n      > review-result.md\n```",
+    "options": [
+      {
+        "key": "A",
+        "text": "不应该使用环境变量传 Token，应该将 Token 直接写在命令中"
+      },
+      {
+        "key": "B",
+        "text": "缺少 `--yolo` 参数，没有它 AI 无法在 CI 中运行"
+      },
+      {
+        "key": "C",
+        "text": "用 `--disallowed-tools` 替代 `--allowed-tools`，黑名单更安全"
+      },
+      {
+        "key": "D",
+        "text": "配置正确，符合 Token 用 Secrets 管理、只读工具限制、轮数限制的最佳实践"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "这个配置符合教程推荐的全部最佳实践：Token 通过 Secrets 管理避免泄露、`--allowed-tools=Read,Glob,Grep` 限制只读操作、`--max-turns=15` 防止无限循环。选项 B 错误——`--yolo` 会跳过所有权限确认，虽然在 CI 中可用但必须配合只读限制；选项 C 错误——白名单（allowed-tools）比黑名单（disallowed-tools）更安全，因为它默认拒绝一切未明确允许的操作；选项 A 会导致 Token 泄露。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-ebf512ac",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "AI 审查结果的正确态度",
+    "stem": "关于 CI 中 AI 代码审查的结果，以下哪种处理方式最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 审查只是建议，PR 仍需至少一名人工 Approve"
+      },
+      {
+        "key": "B",
+        "text": "AI 审查通过后就自动合并 PR，减少人工干预环节"
+      },
+      {
+        "key": "C",
+        "text": "AI 审查发现问题后自动修复问题并直接提交代码"
+      },
+      {
+        "key": "D",
+        "text": "只在 AI 审查不通过时才需要人工介入，通过时直接合并"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确强调\"人类兜底\"原则：AI 的输出是\"建议\"而非\"决定\"，审查结果要人类确认，不能自动合并。AI 审查不能盲信——完全依赖 AI 可能放过 AI 没发现的 bug。选项 B、C、D 都违反了人类兜底原则，将 AI 建议等同于人工决定。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Automate-CICD-2a1c9d32",
+    "module": "Qoder-Automate-CICD",
+    "moduleName": "CI/CD 流水线怎么接入 AI 自动化",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "CI 中 AI 集成的风险决策",
+    "stem": "你的团队要在 CI 中同时接入三个 AI 能力：代码审查、自动补充单元测试、自动生成 Changelog。以下是四种集成方案，哪个在安全性和实用性上最合理？\n\n方案一：三个任务全部用 `--yolo` 跳过权限检查，提高效率\n方案二：代码审查用只读权限（`--allowed-tools=Read,Glob,Grep`）；测试生成额外允许 Write 工具；Changelog 生成用只读权限 + 输出重定向\n方案三：三个任务全部用完整权限，确保 AI 不受限制\n方案四：只在本地手动运行这三个任务，不接入 CI",
+    "options": [
+      {
+        "key": "A",
+        "text": "方案一：用 `--yolo` 跳过所有权限检查，效率最高"
+      },
+      {
+        "key": "B",
+        "text": "方案二：每个任务按最小权限配置，审查只读，测试按需放开写入"
+      },
+      {
+        "key": "C",
+        "text": "方案三：给所有任务完整权限，权限越完整输出质量越高"
+      },
+      {
+        "key": "D",
+        "text": "方案四：AI 不适合接入 CI，应该完全手动使用"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "方案二遵循权限最小化原则，为每个任务配置最小必要权限：代码审查只需读文件、搜索代码（只读）；测试生成需要写入测试文件（额外允许 Write）；Changelog 只需读取 git log 并输出到文件（只读 + 重定向）。方案一和方案三违反了权限最小化原则，`--yolo` 配合完整权限可能导致意外文件操作；方案四过于保守，放弃了 CI 自动化的价值。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-0b0c0b47",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Spec 驱动开发的核心思路",
+    "stem": "面对复杂需求时，\"先对齐再动手\"的思路本质上是在 AI 编码中引入什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "确定性——审查 Spec 确保方向正确"
+      },
+      {
+        "key": "B",
+        "text": "更全面的自动化测试用例覆盖率保障"
+      },
+      {
+        "key": "C",
+        "text": "更高效更快速的代码生成与自动化交付流程"
+      },
+      {
+        "key": "D",
+        "text": "更少的人工代码审查与人工验收环节"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出\"先对齐再动手\"的本质是引入确定性——你不需要自己拆任务、写方案，但你需要审查 AI 的方案、把控整体方向。Spec 审查确保 AI 理解正确，不会写了一堆代码却不是你要的。C 关注速度而非方向正确性；B 和 D 与\"先对齐再动手\"的核心思路无关。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-b38a2281",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Spec 驱动的适用边界",
+    "stem": "根据教程，以下哪种任务更适合跳过 Spec 驱动，选择\"原型探索\"或普通 Agent 模式直接编码？",
+    "options": [
+      {
+        "key": "A",
+        "text": "跨多个模块的大规模重构任务，涉及二十多个文件的接口变更"
+      },
+      {
+        "key": "B",
+        "text": "快速验证想法的 0-1 原型，或一个简单的 bug 修复"
+      },
+      {
+        "key": "C",
+        "text": "需要严格质量控制、必须文档化技术方案的核心交易系统需求"
+      },
+      {
+        "key": "D",
+        "text": "需要多人团队协作对齐、涉及前后端多个模块联动的大型复杂功能开发"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确指出 Spec 驱动适合复杂功能、跨多模块的重构、需要严格质量控制和团队协作文档化的项目；而 0-1 建站、快速验证想法、简单 bug 修复可以选择\"原型探索\"跳过 Spec 直接编码，或者直接用普通 Agent 模式。A、C、D 都是复杂、需要质量控制或多模块协作的场景，正是 Spec 驱动的典型适用场景，跳过 Spec 反而容易方向跑偏。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-30bf82b2",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Spec 文档包含的内容",
+    "stem": "以下哪项不属于 Spec 文档的标准组成部分？",
+    "options": [
+      {
+        "key": "A",
+        "text": "覆盖所有功能的完整实现代码"
+      },
+      {
+        "key": "B",
+        "text": "技术方案（架构设计、接口定义）"
+      },
+      {
+        "key": "C",
+        "text": "明确的需求范围：做什么和不做什么"
+      },
+      {
+        "key": "D",
+        "text": "验收标准（每个功能的验收条件）"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Spec 文档包含需求范围、技术方案、验收标准和实现计划四部分，是编码前的规划文档。完整的实现代码是在确认 Spec 后由 AI 按步骤生成的，不是 Spec 本身的组成部分。Spec 的作用是\"对齐方向\"，编码是后续\"逐步实现\"阶段的工作。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-c28d7cd4",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "需求澄清环节的重要性",
+    "stem": "在使用 Spec 驱动开发时，AI 提出了几个澄清问题（如\"注册是否需要邮箱验证\"\"登录失败是否锁定\"）。以下哪种做法最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "全部一路选默认值，尽快结束澄清进入编码阶段"
+      },
+      {
+        "key": "B",
+        "text": "把所有澄清问题转给产品经理回答，自己不参与判断"
+      },
+      {
+        "key": "C",
+        "text": "直接跳过所有澄清问题，让 AI 立即生成 Spec"
+      },
+      {
+        "key": "D",
+        "text": "认真回答每个澄清问题，当作对齐需求边界的机会"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程强调澄清问题往往是真正的边界条件，认真对待这一步 Spec 质量会显著提升。一路选默认（A）可能导致 Spec 和预期差很远。C 跳过澄清会让 AI 基于猜测生成 Spec，质量无法保证。B 虽然产品经理能回答部分问题，但技术相关的问题需要工程师自己判断。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-40e7661f",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Spec 审查的重点",
+    "stem": "AI 生成了 Spec 文档后，工程师在审查时应重点关注哪些部分？",
+    "options": [
+      {
+        "key": "A",
+        "text": "接口定义和数据模型——编码的骨架，错了代价最大"
+      },
+      {
+        "key": "B",
+        "text": "是否穷尽列出了所有可能的技术栈备选方案"
+      },
+      {
+        "key": "C",
+        "text": "文档的篇幅是否足够长、各处细节描述是否足够详细"
+      },
+      {
+        "key": "D",
+        "text": "排版格式是否规范美观、措辞是否专业得体"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出 Spec 审查应重点关注接口定义和数据模型——这是后续编码的骨架，错了代价最大。同时关注错误码和异常处理是否覆盖常见场景、验收标准是否可测试可量化。C 和 D 关注形式而非内容；B 技术栈应在需求描述中确定，不需要在 Spec 中列出所有选项。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-6df2e0ec",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "修改 Spec 的正确方式",
+    "stem": "在审查 Spec 时发现遗漏了一个接口：\"用户信息修改接口 PUT /api/users/me\"。最合适的修改方式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接打开 Spec 文件手动编辑，在接口列表中添加这个接口"
+      },
+      {
+        "key": "B",
+        "text": "在对话框中告诉 AI 需要增加这个接口，由 AI 更新 Spec"
+      },
+      {
+        "key": "C",
+        "text": "直接删除当前的 Spec 文档，重新描述一遍完整需求让 AI 从头生成"
+      },
+      {
+        "key": "D",
+        "text": "在代码实现阶段直接添加这个接口，不需要修改 Spec"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确指出修改 Spec 应通过对话告诉 AI，而不是直接编辑 Spec 文件。这样 AI 能保持完整上下文，修改后的 Spec 更一致。A 直接改文件会导致 AI 丢失上下文，后续实现可能不一致；C 过于极端，不需要从头重来；D 会导致 Spec 和实际代码不一致，破坏了 Spec 驱动开发的一致性保证。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Break-Down-Complex-Requirements-b237bf3b",
+    "module": "Qoder-Break-Down-Complex-Requirements",
+    "moduleName": "大需求怎么让 AI 帮我拆和做",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "大型需求的拆分与推进策略",
+    "stem": "产品经理提出了一个包含\"用户管理 + 订单系统 + 支付系统 + 物流系统\"的完整电商平台需求。团队想使用 Spec 驱动开发来推进，以下哪种策略最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "先让 AI 直接开始编码实现，遇到不清楚的地方再随时补充 Spec 说明"
+      },
+      {
+        "key": "B",
+        "text": "只为用户管理创建 Spec，其他模块让 AI 自由发挥以保持开发速度"
+      },
+      {
+        "key": "C",
+        "text": "每个独立业务域各创建一个 Quest 任务，各有自己的 Spec，逐步推进"
+      },
+      {
+        "key": "D",
+        "text": "把所有需求写在一个 Quest 任务的描述中，让 AI 生成一份完整的 Spec，一次性覆盖所有业务域"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "这个问题需要综合判断超大需求的推进策略。教程明确指出即使使用了 Spec 驱动开发，\"用户管理 + 订单 + 支付 + 物流\"还是太大了，建议每个独立业务域作为一个 Quest 任务，各有自己的 Spec，逐步推进。D 把超大需求塞进一个 Spec，会导致 Spec 过于复杂、审查困难、AI 理解偏差风险大；A 跳过了\"先对齐再动手\"的核心原则；B 只规范部分模块，其他模块失去方向约束，容易导致系统不一致。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-dcf7bd28",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Repo Wiki 的核心作用",
+    "stem": "团队希望 AI 编程助手快速了解项目的整体架构、模块关系和核心流程。应该使用哪种机制来实现？",
+    "options": [
+      {
+        "key": "A",
+        "text": "每次对话的开头都先手动告诉 AI 这个项目的技术栈和整体架构"
+      },
+      {
+        "key": "B",
+        "text": "使用 Repo Wiki 生成结构化的项目知识文档"
+      },
+      {
+        "key": "C",
+        "text": "把所有编码规范写在 AGENTS.md 文件中"
+      },
+      {
+        "key": "D",
+        "text": "让 AI 自己阅读源代码来理解项目"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Repo Wiki 专门用于生成项目级的结构化知识，包括架构概览、模块关系和核心流程，相当于给 AI 一份\"新人入职手册\"。A 每次重复效率低且容易遗漏；C 中 AGENTS.md 侧重记忆和偏好，不适合承载全局架构信息；D 让 AI 自行读源码效率低且理解不一定准确。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-cad5913b",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "知识卡片的使用场景",
+    "stem": "团队有一条重要规范：\"金额计算必须使用 BigDecimal，禁止 float/double\"。这条规范最适合通过哪种方式沉淀？",
+    "options": [
+      {
+        "key": "A",
+        "text": "记录在 Repo Wiki 的架构文档中"
+      },
+      {
+        "key": "B",
+        "text": "在每次对话时口头提醒 AI"
+      },
+      {
+        "key": "C",
+        "text": "为这条规范新增一条知识卡片"
+      },
+      {
+        "key": "D",
+        "text": "记录个人踩坑经验与偏好设置"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "知识卡片专门记录高密度的局部最佳实践，如编码规范、设计决策等。\"金额用 BigDecimal\"属于高频使用的编码规范，正是知识卡片的典型场景。A 中 Repo Wiki 侧重项目全局架构，不适合放细粒度编码规范；B 效率低且无法积累；D 全局记忆侧重个人偏好，编码规范更适合用知识卡片这种结构化方式沉淀。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-66fb297e",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "CLI 记忆文件的作用域",
+    "stem": "在 CLI 模式下，`~/.qoder/AGENTS.md` 文件中的记忆对哪些项目生效？",
+    "options": [
+      {
+        "key": "A",
+        "text": "所有项目均生效"
+      },
+      {
+        "key": "B",
+        "text": "仅 Git 仓库中的项目生效"
+      },
+      {
+        "key": "C",
+        "text": "仅团队成员的项目生效"
+      },
+      {
+        "key": "D",
+        "text": "仅当前项目生效"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "`~/.qoder/AGENTS.md` 是用户级记忆文件，存放在用户主目录下，对所有项目生效。项目级记忆使用 `${project}/AGENTS.md`，仅对当前项目生效。两者作用域不同，需要根据知识类型选择存放位置。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-4f1ee642",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "三层知识体系的配合策略",
+    "stem": "一个新团队刚开始使用 AI 编程工具，想要系统化地沉淀项目知识。以下哪种做法最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "三层机制各有侧重，从一开始就配合使用效果最佳"
+      },
+      {
+        "key": "B",
+        "text": "优先建立记忆系统，让 AI 先学会个人偏好"
+      },
+      {
+        "key": "C",
+        "text": "把所有知识都写在知识卡片里，方便检索"
+      },
+      {
+        "key": "D",
+        "text": "只维护 Repo Wiki，因为项目全局知识最重要"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "三层知识体系是递进关系：Repo Wiki 让 AI 了解项目全貌，知识卡片让 AI 生成符合规范的代码，记忆系统让 AI 记住踩坑经验。只用一种会导致 AI 知识不完整。D 只维护 Repo Wiki，忽略了编码规范和踩坑经验；B 个人偏好优先级最低，应先建立项目知识；C 知识卡片侧重局部最佳实践，不适合承载架构概览等全局信息。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-8996a3a9",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "记忆系统的维护策略",
+    "stem": "项目已经积累了大量记忆条目，最近发现 AI 有时会忽略一些关键约定。最可能的原因和解决方案是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "记忆系统有容量上限，需要升级到高级版本"
+      },
+      {
+        "key": "B",
+        "text": "记忆条目太多太杂，稀释了关键信息的权重，应定期清理过时条目"
+      },
+      {
+        "key": "C",
+        "text": "AI 模型的上下文窗口不够大，需要换用更强的模型"
+      },
+      {
+        "key": "D",
+        "text": "记忆条目和 Repo Wiki 内容重复，应该删除所有记忆只保留 Wiki"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确指出记忆不是越多越好，太多太杂会稀释关键信息的权重，建议每月花 10 分钟审查一次，移除或更新不再适用的条目。A 和 C 属于无依据的推测，教程中没有提到容量上限或模型限制的问题；D 的做法过于极端，三层机制各有侧重，不应互相替代。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-109b8c8d",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Repo Wiki 生成前的注意事项",
+    "stem": "团队准备为老项目生成 Repo Wiki，以下哪个步骤应该最先执行？",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接立即运行 /knowledge 命令一键生成 Wiki"
+      },
+      {
+        "key": "B",
+        "text": "先清空所有已有的知识卡片和记忆"
+      },
+      {
+        "key": "C",
+        "text": "确认当前代码质量，确保代码状态适合被记录和生成文档"
+      },
+      {
+        "key": "D",
+        "text": "把所有团队成员召集在一起同时生成"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程踩坑提醒中强调，Wiki 生成前需确认代码质量——如果代码本身有问题，生成的 Wiki 会基于错误的代码描述项目，后续 AI 会基于这些错误知识生成更多错误代码。A 跳过了质量确认这一关键前置步骤；B 没有必要，三层机制互不冲突；D 与 Wiki 生成质量无关。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-9fd6c855",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "知识沉淀体系的整体设计",
+    "stem": "一个快速扩张的技术团队面临以下问题：新人入职后 AI 不了解项目约定，老员工的经验无法传承，不同成员让 AI 生成的代码风格不一致。团队负责人想建立一套完整的知识沉淀体系，以下哪种方案最能系统性解决问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让每个成员各自维护自己的 AGENTS.md，记录个人开发经验和踩坑记录，形成个人知识库"
+      },
+      {
+        "key": "B",
+        "text": "只维护一套 Auto Attached 规则，仅按文件类型自动约束 AI 编码的生成行为"
+      },
+      {
+        "key": "C",
+        "text": "写一份非常详细的 Markdown 规范文档存放在项目的根目录，强制要求所有人每次开始与 AI 对话之前都手动引用"
+      },
+      {
+        "key": "D",
+        "text": "生成 Repo Wiki 项目地图，用知识卡片沉淀编码规范，用 AGENTS.md 记录团队约定并提交 Git"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "这个问题需要综合判断知识沉淀体系的设计思路。D 方案整合了三层机制的优势：Repo Wiki 提供项目全局地图（解决新人不了解项目的问题），知识卡片沉淀高频编码规范（解决代码风格不一致的问题），项目级 AGENTS.md 提交 Git 实现团队共享（解决经验传承问题），记忆系统保存个人经验。A 只覆盖了个人层面，缺少团队共享和项目全局知识；C 回到了“每次手动引用”的低效模式；B 只涉及规则系统，不能覆盖架构知识、设计决策和踩坑经验的沉淀需求。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Capture-Project-Knowledge-13792d34",
+    "module": "Qoder-Capture-Project-Knowledge",
+    "moduleName": "项目知识怎么让 AI 记住",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Repo Wiki 维护与 AGENTS.md 文件的提交策略",
+    "stem": "团队已经开始使用 Qoder 的知识沉淀体系。关于 Repo Wiki 的日常维护和 CLI 记忆文件的提交策略，以下做法最合理的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Repo Wiki 一次生成后无需更新，AGENTS.md 和 AGENTS.local.md 都应提交到 Git 以便团队共享"
+      },
+      {
+        "key": "B",
+        "text": "代码较大变更后检查 Wiki 是否需更新，项目级 AGENTS.md 提交 Git，AGENTS.local.md 不提交"
+      },
+      {
+        "key": "C",
+        "text": "Wiki 应完全由 AI 自动维护，人工干预会导致内容与 AI 理解产生偏差，影响后续生成质量"
+      },
+      {
+        "key": "D",
+        "text": "所有记忆文件都不应提交到 Git，因为记忆属于个人隐私，团队共享可能会泄露敏感信息"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程踩坑提醒指出两个关键实践：一是“代码改了但 Wiki 没更新，AI 会基于过时知识生成错误代码”，因此每次较大变更后应检查 Wiki 是否需要更新；二是 CLI 记忆文件分三个层级——用户级 `~/.qoder/AGENTS.md`、项目级 `AGENTS.md`（提交 Git 团队共享）和本地项目级 `AGENTS.local.md`（不提交，个人本地配置）。A 错误，Wiki 需要更新，且 AGENTS.local.md 不应提交；C 错误，人工干预的知识会被系统标记和保护，放心修改；D 错误，项目级 AGENTS.md 应提交以实现团队知识共享。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Cloud-Agent-57a798e6",
+    "module": "Qoder-Cloud-Agent",
+    "moduleName": "怎么让 AI 在云端帮我干活",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "核心概念理解",
+    "stem": "在 Qoder Cloud Agent 中，Agent、Session 和 Environment 分别指什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 是一次具体的任务执行，Session 是配置模板，Environment 是网络策略"
+      },
+      {
+        "key": "B",
+        "text": "Agent 是云端服务器的名称，Session 是用户登录会话，Environment 是开发环境变量"
+      },
+      {
+        "key": "C",
+        "text": "Agent 是可复用配置模板（模型、提示词、工具集），Session 是任务执行实例，Environment 是运行容器环境"
+      },
+      {
+        "key": "D",
+        "text": "Agent 是工具集合的统一名称，Session 是一次具体的 API 调用请求，Environment 是代码的实际运行环境"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程将三个概念做了明确定义：Agent 是可复用的配置模板（类似\"岗位说明书\"），定义使用哪个模型、什么提示词、哪些工具；Session 是一次具体的对话或任务执行（类似\"一次工作会话\"）；Environment 是 Session 运行的容器环境（类似\"办公桌和工具箱\"），包含网络和依赖配置。选项 A 把 Agent 和 Session 的定义颠倒了；选项 B 和 D 的描述都不符合教程定义。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Cloud-Agent-9706734a",
+    "module": "Qoder-Cloud-Agent",
+    "moduleName": "怎么让 AI 在云端帮我干活",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "云端环境访问集团内网",
+    "stem": "在集团内使用 Cloud Agent 时，想让 Agent 访问内部域名、内网服务和内网 MCP，正确的做法是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "默认 Environment 就能直接访问内网，无需任何额外配置"
+      },
+      {
+        "key": "B",
+        "text": "在提示词中把内网服务的完整地址和访问凭据都详细告诉 Agent 即可"
+      },
+      {
+        "key": "C",
+        "text": "给云端沙箱配置公司 VPN 客户端，让它以员工身份接入内网环境"
+      },
+      {
+        "key": "D",
+        "text": "申请 BYOC 环境，并在创建会话时指定对应的环境和隧道 ID"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确指出：默认创建的 Environment 运行在云端公网沙箱，无法访问集团内网——内部域名、内网服务、内网 MCP 全都不通。解决办法是申请集团的 Alibaba BYOC 环境，通过 API 创建会话时指定 environment_id 和 tunnel_id，工具调用会由内网托管的 Worker 集群转发到内网沙箱执行。选项 A 与事实相反；选项 B 把凭据写进提示词有泄露风险，也解决不了网络不通的问题；选项 C 不是 Cloud Agent 支持的接入方式。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Cloud-Agent-27c026c9",
+    "module": "Qoder-Cloud-Agent",
+    "moduleName": "怎么让 AI 在云端帮我干活",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "批量处理优势",
+    "stem": "你的团队需要同时审查 50 个 Pull Request，使用 Cloud Agent 比本地电脑串行处理的最大优势是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cloud Agent 可以并行启动多个 Session 同时处理，大幅缩短总耗时"
+      },
+      {
+        "key": "B",
+        "text": "Cloud Agent 审查的代码质量比本地审查更高，因为它使用了参数规模更大的高级模型"
+      },
+      {
+        "key": "C",
+        "text": "Cloud Agent 不需要任何配置，开箱即用，省去了环境搭建时间"
+      },
+      {
+        "key": "D",
+        "text": "Cloud Agent 会自动修复代码中发现的问题，而不仅仅是报告问题"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出 Cloud Agent 的核心优势之一是批量并行处理——可以并行启动多个 Session 处理批量请求（如同时审查 50 个 PR），比串行执行快数十倍。选项 B 错误，模型大小与本地/云端无关；选项 C 错误，Cloud Agent 仍需配置 Agent 和 Environment；选项 D 错误，Cloud Agent 执行什么操作取决于任务描述和 Agent 配置，不默认自动修复。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Cloud-Agent-36199efe",
+    "module": "Qoder-Cloud-Agent",
+    "moduleName": "怎么让 AI 在云端帮我干活",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Cloud Agent 与 IDE/CLI 的关系",
+    "stem": "关于 Cloud Agent 与 IDE、CLI 的关系，以下哪项理解最准确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cloud Agent 本质上就是 IDE 的在线版本，两者功能完全一致，只是改为运行在云端环境中"
+      },
+      {
+        "key": "B",
+        "text": "Cloud Agent 是 CLI 的远程模式，两者功能完全相同，只是执行位置不同"
+      },
+      {
+        "key": "C",
+        "text": "Cloud Agent 将逐步取代 IDE 和 CLI，成为未来唯一的标准使用方式"
+      },
+      {
+        "key": "D",
+        "text": "三者互补——IDE 适合深度编码，CLI 适合脚本集成，Cloud Agent 适合长时批量任务"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确强调 Cloud Agent 不是 IDE 的在线版，而是独立的全托管运行平台。三者各有适用场景：IDE 适合深度编码和多文件重构（图形化交互），CLI 适合脚本处理和工具链集成（命令行交互），Cloud Agent 适合 API 集成、长时任务和批量处理（云端运行）。选项 A 和 B 混淆了它们的定位；选项 C 过于极端，三者互补而非替代。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Cloud-Agent-f7e7a0a2",
+    "module": "Qoder-Cloud-Agent",
+    "moduleName": "怎么让 AI 在云端帮我干活",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "工作流场景的综合选择",
+    "stem": "你的团队日常使用 Qoder 进行开发，以下哪种工作安排方式最合理地利用了 IDE、CLI 和 Cloud Agent 三种形态？",
+    "options": [
+      {
+        "key": "A",
+        "text": "所有开发任务都在 IDE 中完成，以获得最好的图形化交互体验"
+      },
+      {
+        "key": "B",
+        "text": "所有任务都通过 Cloud Agent 完成，API 驱动实现全自动化"
+      },
+      {
+        "key": "C",
+        "text": "白天在 IDE 深度编码，下班前用 CLI 远程模式发起审查，云端夜间运行，次日查看结果"
+      },
+      {
+        "key": "D",
+        "text": "深度编码和重构任务用 CLI，常规的代码审查用 IDE，批量处理任务用 Cloud Agent"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "这道题考察三种形态的综合运用。教程推荐的典型工作流是：白天在 IDE 写代码→下班前用 --remote 发起审查→云端夜间运行→次日查看结果。这充分发挥了每种形态的优势：IDE 的图形化交互适合深度编码，Cloud Agent 的异步执行适合长时任务。选项 A 只用 IDE 无法利用云端异步能力；选项 B 的 Cloud Agent 不适合深度编码（教程明确说明）；选项 D 把 IDE 和 CLI 的适用场景搞反了。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Connect-Internal-Systems-6264f38e",
+    "module": "Qoder-Connect-Internal-Systems",
+    "moduleName": "怎么让 AI 连接内部系统",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "MCP 的核心定位",
+    "stem": "MCP（Model Context Protocol）在 AI 编码中解决的核心问题是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "一种用于用户身份认证的加密协议，类似于 OAuth"
+      },
+      {
+        "key": "B",
+        "text": "Qoder 的一项专有功能，仅用于连接公司内部数据库"
+      },
+      {
+        "key": "C",
+        "text": "连接 AI 和外部系统的标准协议，类似“AI 的 USB 接口”"
+      },
+      {
+        "key": "D",
+        "text": "一种自动化的代码审查工具，专门用于检查和评估 AI 生成的代码质量好坏"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "MCP 是一种开放标准协议，核心作用是为 AI 提供连接外部系统的标准化接口。教程将 MCP 比喻为\"AI 的 USB 接口\"——一个协议连接所有外部系统。MCP 解决的是 AI\"被困在代码编辑器里\"的问题，让 AI 能访问数据库、文档、Issue 等代码之外的信息。选项 A 把 MCP 误解为身份认证协议；选项 B 错误，MCP 是开放标准而非 Qoder 专有功能；选项 D 混淆了 MCP 与代码审查工具的定位。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Connect-Internal-Systems-296338da",
+    "module": "Qoder-Connect-Internal-Systems",
+    "moduleName": "怎么让 AI 连接内部系统",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "安全原则",
+    "stem": "连接外部系统时，以下哪项是教程强调的安全原则？",
+    "options": [
+      {
+        "key": "A",
+        "text": "为 AI 提供管理员权限，确保不会因权限不足而遗漏数据"
+      },
+      {
+        "key": "B",
+        "text": "优先使用读写权限，方便 AI 直接修改外部系统中的数据"
+      },
+      {
+        "key": "C",
+        "text": "使用黑名单控制，屏蔽明确禁止的工具，其余全部开放"
+      },
+      {
+        "key": "D",
+        "text": "最小权限——只开放 AI 需要的接口，只读优先于读写"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确强调三个安全原则：只读优先（AI 默认只能查询不能修改）、最小权限（只开放需要的接口）、白名单控制（明确指定可调用的工具）。选项 A 的管理员权限违反最小权限原则，选项 B 违反了只读优先原则，选项 C 的黑名单方式不如白名单安全——教程明确推荐白名单优于黑名单。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Connect-Internal-Systems-9f53cdf0",
+    "module": "Qoder-Connect-Internal-Systems",
+    "moduleName": "怎么让 AI 连接内部系统",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "传输方式选择",
+    "stem": "在 MCP 的三种传输方式中，STDIO 方式最适合哪种场景？",
+    "options": [
+      {
+        "key": "A",
+        "text": "连接本地数据库或本地文件系统等本地工具"
+      },
+      {
+        "key": "B",
+        "text": "处理大文件传输和长时间运行的数据任务"
+      },
+      {
+        "key": "C",
+        "text": "连接远程 GitHub API 进行 Issue 查询"
+      },
+      {
+        "key": "D",
+        "text": "需要跨多个云端服务器进行分布式调用"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "MCP 提供三种传输方式：STDIO 通过标准输入/输出通信，适合本地工具（如本地数据库、文件系统）；SSE 通过 HTTP 长连接，适合远程服务（如 GitHub API）；Streamable HTTP 通过 HTTP 流式传输，适合大文件和长任务。选项 C 适合 SSE，选项 B 适合 Streamable HTTP，选项 D 不是教程中描述的任何一种标准场景。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Connect-Internal-Systems-b079c7e4",
+    "module": "Qoder-Connect-Internal-Systems",
+    "moduleName": "怎么让 AI 连接内部系统",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "敏感信息处理",
+    "stem": "在 MCP 配置文件中处理数据库密码等敏感信息时，推荐的做法是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接写在配置文件中，只要不把配置文件提交到 Git 即可"
+      },
+      {
+        "key": "B",
+        "text": "先用 Base64 编码后再写入配置文件，防止明文直接泄露"
+      },
+      {
+        "key": "C",
+        "text": "不配置密码，让 MCP Server 以无认证方式连接数据库"
+      },
+      {
+        "key": "D",
+        "text": "通过环境变量引用（如 ${VAR_NAME}），避免凭据硬编码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确建议通过环境变量引用敏感信息，在 MCP 配置中用 `${VAR_NAME}` 格式引用，避免凭据泄露到 Git 仓库。选项 A 虽然提到不提交 Git，但硬编码本身就有风险（如误提交、代码审查时泄露）；选项 C 不配置密码会带来安全风险；选项 B 的 Base64 编码不是加密，不能真正保护敏感信息。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Connect-Internal-Systems-562d7426",
+    "module": "Qoder-Connect-Internal-Systems",
+    "moduleName": "怎么让 AI 连接内部系统",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "MCP 安全实践的综合判断",
+    "stem": "你的团队要让 AI 通过 MCP 连接公司的开发数据库来辅助编码。以下哪种做法最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "用管理员账号连接生产数据库，确保 AI 能查询到最新最完整的数据"
+      },
+      {
+        "key": "B",
+        "text": "给 AI 完整的数据库读写权限但限定只在工作时间内访问，以此来平衡功能需求和数据安全"
+      },
+      {
+        "key": "C",
+        "text": "创建只读数据库用户、只连接开发环境、查询结果加 LIMIT 避免撑爆上下文窗口"
+      },
+      {
+        "key": "D",
+        "text": "只连接生产数据库但设置每日查询次数上限，通过限流来保护数据安全"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "这道题考察对 MCP 安全原则的综合运用。选项 C 体现了三层安全实践：最小权限（只读用户）、环境隔离（开发环境而非生产）、资源保护（LIMIT 防止上下文窗口被撑爆）。选项 A 用管理员账号连接生产数据库，既违反最小权限又带来生产安全风险；选项 B 的读写权限对 AI 辅助编码来说不必要，且工作时间限定不是有效的安全措施；选项 D 连接生产数据库本身就存在风险，限流不能解决数据安全问题。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Connect-Internal-Systems-15653190",
+    "module": "Qoder-Connect-Internal-Systems",
+    "moduleName": "怎么让 AI 连接内部系统",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "集团内常用系统的接入优先级",
+    "stem": "你在用 Qoder 排查一个线上问题，需要查看应用的日志、主机状态和内部设计文档。教程中推荐的判断标准是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "优先接入代码仓库和 CI/CD 流水线，因为这些是日常开发最核心的基础设施"
+      },
+      {
+        "key": "B",
+        "text": "优先接入排查问题时日常会打开的系统，让 AI 能看到你能看到的信息"
+      },
+      {
+        "key": "C",
+        "text": "优先接入语雀知识库和内部设计文档，因为文档是解决问题的第一手来源"
+      },
+      {
+        "key": "D",
+        "text": "接入尽可能多的内部系统，确保 AI 拥有足够全面的上下文来做最准确的判断"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确给出判断标准：\"排查一个线上问题时你会打开哪些系统，就优先给 Qoder 接上哪些系统\"。例如日志查询用 Normandy CLI 或 log 命令、应用和主机查询用 Normandy CLI、设计文档用语雀 MCP Server。B 正确体现了这个按需接入的原则。A 太片面，排查线上问题不一定需要 CI/CD；C 也不全面，只接文档不够；D 违反最小权限原则，不应接入不需要的系统。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-f56aac86",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "纠正 AI 错误的基本认知",
+    "stem": "关于 AI 写错代码，以下哪种认知最准确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 犯错在所难免，关键在于发现后能否高效纠正"
+      },
+      {
+        "key": "B",
+        "text": "AI 犯错说明工具不好用，应该换一种 AI 工具"
+      },
+      {
+        "key": "C",
+        "text": "只要提示词写得够好够详细，AI 就完全不会犯任何错误"
+      },
+      {
+        "key": "D",
+        "text": "AI 犯错的代码应该全部手动重写，不能在上面修补"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出\"AI 犯错是常态，不是异常\"，即使最好的模型也会因理解偏差、上下文不足或需求模糊写出错误代码。关键不在于 AI 会不会犯错，而在于发现错误后能否高效纠正。B 是对工具的不合理期望；C 过于理想化，提示词再好也无法完全避免错误；D 全部重写成本过高，教程推荐保留正确部分。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-b826c5dd",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "错误范围判断",
+    "stem": "AI 帮你生成了一个完整的用户认证模块，你发现其中密码加密用了 MD5 而不是项目要求的 bcrypt，但整体架构、分层和接口设计都是正确的。此时最合理的纠正方式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "开一个新会话，重新描述整个需求让 AI 重新生成整个模块"
+      },
+      {
+        "key": "B",
+        "text": "告诉 AI 把 MD5 换成 bcrypt，让它在已有代码上局部修改"
+      },
+      {
+        "key": "C",
+        "text": "用 Revert 撤销整个模块，然后重新生成"
+      },
+      {
+        "key": "D",
+        "text": "手动把 MD5 相关代码全部删掉，然后完全靠自己手写 bcrypt 的实现"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "这是一个\"小范围错误\"——整体方案正确，只是局部细节（加密算法）有误。教程推荐小范围错误直接在对话中纠偏，这是最常见也最高效的方式。A 和 C 属于大范围错误的处理方式，对于局部修正来说成本过高且丢失了正确的上下文；D 放弃了 AI 辅助，效率最低。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-620060ad",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "四种纠正机制的分类",
+    "stem": "Qoder 的四种纠正机制按\"介入时机\"可以分为哪两类？",
+    "options": [
+      {
+        "key": "A",
+        "text": "\"自动修正（AI 自己修复）\"和\"手动修正（人工介入）\""
+      },
+      {
+        "key": "B",
+        "text": "\"针对代码产出的修正\"和\"针对对话流程的修正\""
+      },
+      {
+        "key": "C",
+        "text": "“事后修正（回退重来）”和“过程中修正（即时介入）”"
+      },
+      {
+        "key": "D",
+        "text": "\"IDE 专用\"和\"CLI 专用\""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程明确指出核心区别在于介入时机：编辑消息和 Revert 是\"事后修正\"——问题已经发生后回退重来；消息队列和引导是\"过程中修正\"——AI 还在执行时就介入。其他分类维度要么不准确，要么不是核心区分标准。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-5f81c2b6",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "编辑已发消息 vs Revert",
+    "stem": "你让 Agent 帮你实现一个数据导出功能，它用 CSV 格式实现了。你发现最初提示词写的是\"导出为 CSV\"，但项目实际需求是导出为 Excel。此时应该选择\"编辑已发消息\"还是\"Revert\"？为什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "选择 Revert，因为需要完全撤销当前改动"
+      },
+      {
+        "key": "B",
+        "text": "选择编辑已发消息，从源头修正提示词，让后续对话基于正确实现继续"
+      },
+      {
+        "key": "C",
+        "text": "两者效果差不多，选哪个取决于个人使用习惯"
+      },
+      {
+        "key": "D",
+        "text": "两个都不用，在对话中追加\"把 CSV 改成 Excel\"就行"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "问题根源是提示词描述不准确（写了 CSV 而不是 Excel），这正是\"编辑已发消息\"最适用的场景——从源头修正提示词，AI 基于正确提示词重新生成，后续对话上下文连贯。Revert 虽然也能回滚，但需要重新发送完整提示词，效率不如编辑消息。D 是在已有代码上打补丁，可能不够干净。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-f3ff9859",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "引导（Steer）vs 消息队列",
+    "stem": "Agent 正在逐个文件生成代码，你已经看出它使用的错误处理策略不对（用了 try-catch 而项目统一用 Result 类型）。此时\"引导\"和\"消息队列\"哪个更合适？为什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "引导更合适——执行中方向已走偏，需立即纠偏避免生成更多错误代码"
+      },
+      {
+        "key": "B",
+        "text": "消息队列更合适，等全部代码生成完毕后再统一修改，这样更加安全可控不易出错"
+      },
+      {
+        "key": "C",
+        "text": "两者本质效果一样，引导不过是消息队列的一种快捷入口"
+      },
+      {
+        "key": "D",
+        "text": "都不合适，应该用 Revert 全部撤销后重新执行任务"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "引导的核心价值是\"立即介入当前任务\"——Agent 正在执行中方向走偏了，用引导立即传达新方向，已生成的文件会被改写，未生成的文件直接用正确方式。如果用消息队列等它全部生成完再修正，等于让它先做完错误的事再返工，浪费时间。D 过于激进，执行中纠偏比重来更高效。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-88288f09",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "消息队列的顺序依赖",
+    "stem": "你在 Agent 执行期间依次排入队列两条消息：第一条是\"删除 src/utils/oldHelper.ts\"，第二条是\"在 oldHelper.ts 中添加一个 formatDate 函数\"。会发生什么？应该如何避免？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 会智能识别出操作之间的冲突并自动调整消息的执行顺序"
+      },
+      {
+        "key": "B",
+        "text": "先删文件再往里加函数导致报错，入队前应考虑消息间依赖"
+      },
+      {
+        "key": "C",
+        "text": "系统不会检查队列中消息间的逻辑依赖关系"
+      },
+      {
+        "key": "D",
+        "text": "Agent 会拒绝执行第二条消息并提示冲突"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确提醒\"Agent 按队列顺序依次执行消息\"，入队前要想清楚消息之间的依赖关系。这个案例中先删除再添加会产生错误，应该拖拽调整顺序（先添加再删除）或合并为一条消息。A 和 D 过于理想化，Agent 不会自动检测队列中的逻辑冲突；C 只描述了部分现象，没有说明具体后果和避免方法。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-d015b337",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "纠正策略的综合选择",
+    "stem": "你让 Agent 为项目添加了一组 REST API 端点。Agent 执行完毕后你发现三个问题：① 所有端点缺少统一的错误处理中间件；② 第二个端点的参数校验逻辑用了错误的库；③ 整个模块用了 Express 框架，但项目标准是 Koa。这三个问题的纠正策略应该如何组合？",
+    "options": [
+      {
+        "key": "A",
+        "text": "三个问题都在对话中追加修正：先加中间件、再换校验库、再换框架"
+      },
+      {
+        "key": "B",
+        "text": "问题③编辑已发消息指定 Koa 重新生成；问题①②在对话中追加修正指令"
+      },
+      {
+        "key": "C",
+        "text": "三个问题全部 Revert 后重新完整描述需求，一次性生成"
+      },
+      {
+        "key": "D",
+        "text": "问题③用 Revert 回滚，然后放弃 AI 辅助手动用 Koa 重写整个模块"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "三个问题的范围不同，需要分层处理。问题③是框架选择错误，属于\"大范围错误\"，适合用编辑已发消息从源头修正提示词（加上\"使用 Koa 框架\"），让 AI 重新生成。问题①和②是在正确框架上的局部修正，属于\"小范围错误\"，在对话中直接纠偏最高效。A 在错误框架上打补丁，越改越乱；C 全部重来效率最低，且重新描述可能还会遗漏细节；D 放弃了 AI 辅助，成本最高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Correct-AI-Mistakes-28d120b2",
+    "module": "Qoder-Correct-AI-Mistakes",
+    "moduleName": "AI 写错了怎么安全地纠正",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "Experts 模式下的纠正策略",
+    "stem": "你在 Experts 模式下让 AI 完成一个复杂的数据库迁移任务，执行到一半你发现迁移脚本的执行顺序有问题——应该先创建新表再迁移数据，但 AI 正在先迁移数据。此时你面临什么限制？应该如何应对？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Experts 模式和 Agent 模式一样完整支持 Revert 功能，直接回滚全部改动后重新执行任务"
+      },
+      {
+        "key": "B",
+        "text": "Experts 模式不支持 Revert，可用 Steer 纠偏，并将大任务拆成小轮次降低风险"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式没有任何纠正机制，只能等全部执行完后手动修复问题"
+      },
+      {
+        "key": "D",
+        "text": "关闭 Experts 模式切换到 Agent 模式，在新模式中继续之前的任务"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确指出\"Experts 模式暂不支持 Revert\"。但引导（Steer）是\"过程中修正\"的机制，可以立即将新指令传达给正在工作的 Agent，让它在执行中调整。事后层面，教程建议在该模式下\"将大任务拆分为多个小轮次\"，每轮完成后检查结果再继续，降低单次出错的影响。A 错误，Experts 模式不支持 Revert；C 错误，仍有引导和编辑消息可用；D 不现实，切换模式无法延续之前的任务上下文。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-b70c3971",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "报错信息提供方式",
+    "stem": "你用 Agent 模式调试一个 Spring Boot 启动失败的报错，以下哪种做法最能帮助 AI 准确定位问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只贴最后一行 `Application run failed`，因为最后一行是总结"
+      },
+      {
+        "key": "B",
+        "text": "从第一行 ERROR 到最后一个 Caused by 全部粘贴，提供完整堆栈"
+      },
+      {
+        "key": "C",
+        "text": "只贴自己写的代码部分，框架的报错信息不需要贴"
+      },
+      {
+        "key": "D",
+        "text": "用自己的话描述\"启动失败了\"，不需要贴原始报错"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "根因往往藏在堆栈中间的 Caused by 链里，而非最后一行的总结信息。AI 看到的上下文越完整，定位就越准确。A 只贴了总结行，丢失了关键的根因链；C 忽略了框架报错中的依赖关系信息；D 完全依赖 AI 猜测，没有任何依据。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-a794f432",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Ask 模式的适用场景",
+    "stem": "以下哪种情况最适合先用 Ask 模式分析，再用 Agent 模式修复？",
+    "options": [
+      {
+        "key": "A",
+        "text": "一个明确的拼写错误导致的编译失败，根因单一且报错清晰"
+      },
+      {
+        "key": "B",
+        "text": "一个 OOM 错误，可能由内存泄漏、配置不足等多种原因引起"
+      },
+      {
+        "key": "C",
+        "text": "一个配置文件路径写错导致的文件找不到异常，报错直接指明了路径"
+      },
+      {
+        "key": "D",
+        "text": "一个测试断言值写反了导致的测试失败，原因明确且改动很小"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Ask 模式适合报错信息模糊、有多种可能原因的场景。OOM 可能有内存泄漏、JVM 参数不足、大对象未释放等多种根因，需要先讨论排查方向再动手修复。A、C、D 的根因都很明确，直接用 Agent 修复即可，不需要先分析。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-0f20278d",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "调试的核心原则",
+    "stem": "用 AI 调试代码报错时，以下哪个顺序最符合推荐的工作流程？",
+    "options": [
+      {
+        "key": "A",
+        "text": "先修复 → 再验证 → 最后分析原因"
+      },
+      {
+        "key": "B",
+        "text": "先修复 → 再定位 → 最后验证"
+      },
+      {
+        "key": "C",
+        "text": "先验证 → 再定位 → 最后修复"
+      },
+      {
+        "key": "D",
+        "text": "先定位 → 再修复 → 最后验证"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确指出核心原则是\"先定位，再修复，最后验证\"。先让 AI 分析原因、确认方向，再动手修复，最后运行测试或重启验证修复生效。其他选项要么修复前不分析原因（容易改错方向），要么验证放在修复之前（逻辑不通）。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-96289702",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Agent 调试中的验证闭环",
+    "stem": "Agent 帮你修复了一个单元测试失败的 bug，修改了一个工具函数的返回值。你接下来最应该做什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接信任 Agent 的修改，不做任何验证就继续下一个任务"
+      },
+      {
+        "key": "B",
+        "text": "仔细检查 Agent 具体改了什么代码，确认修改逻辑合理后就继续下一个任务"
+      },
+      {
+        "key": "C",
+        "text": "让 Agent 运行相关单元测试验证修复生效，再启动项目确认整体可用"
+      },
+      {
+        "key": "D",
+        "text": "手动在终端重新跑一遍完整的 CI 流水线来验证整个项目"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "验证是调试闭环中不能省的最后一步。教程推荐的最佳实践是修复后让 Agent 运行相关单元测试验证，测试通过后再启动项目确认整体可用。A 完全跳过验证，风险很高；B 只看了代码没实际运行验证；D 跑完整 CI 流水线对于局部修复来说成本过高，不是最佳实践。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-6783b355",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "迭代修复中控制改动范围",
+    "stem": "Agent 第一轮修复了一个数据库连接配置的 bug，测试通过了。第二轮迭代时你发现 Agent 开始修改大量与 bug 无关的文件。此时最合理的做法是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 Agent 继续自由修改，也许它是在优化其他潜在的问题"
+      },
+      {
+        "key": "B",
+        "text": "用 git diff 检查改动，必要时回退并给 Agent 更精确的提示"
+      },
+      {
+        "key": "C",
+        "text": "关闭当前对话开一个新会话，从头重新描述原来的 bug"
+      },
+      {
+        "key": "D",
+        "text": "手动逐个文件撤销 Agent 的全部修改，逐个恢复之后再检查整个项目是否正常"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程明确提醒\"Agent 第二轮开始改大量无关文件时要警惕\"，推荐用 git diff 检查改动范围，必要时 git stash 回退并给更精确的提示。A 放任不管可能导致项目被意外重构；C 丢掉了第一轮的正确修复；D 手动逐文件撤销既低效又容易遗漏。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-4e169fdf",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "复杂报错的分步追问策略",
+    "stem": "你遇到一个模糊的 `Connection refused` 错误，不确定是网络问题、配置问题还是服务未启动。以下哪种向 AI 提问的策略效果最好？",
+    "options": [
+      {
+        "key": "A",
+        "text": "直接说\"帮我修好这个报错\"，让 AI 一次性把问题全部解决"
+      },
+      {
+        "key": "B",
+        "text": "把报错信息丢给 AI 后不再追问，全程等它自己处理完毕"
+      },
+      {
+        "key": "C",
+        "text": "先问错误类型，再问常见原因，最后问针对自己场景的排查修复方法"
+      },
+      {
+        "key": "D",
+        "text": "同时在多个对话窗口提问同一个问题，看哪个回答更好"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程推荐的策略是\"逐步收敛\"——先了解错误类型，再了解常见原因，最后针对具体场景排查修复。这种分步追问比一股脑让 AI \"帮我修好\"效果更好，因为每一步都在缩小范围、确认方向。A 太笼统，AI 可能猜错方向；B 缺乏互动，AI 可能做出错误假设；D 浪费时间且没有聚焦。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Debug-Errors-c440e2b4",
+    "module": "Qoder-Debug-Errors",
+    "moduleName": "代码出错了怎么快速定位",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "调试策略的综合选择",
+    "stem": "你的团队刚上线了一个微服务，运行一周后开始出现间歇性的 500 错误——大约每 50 个请求出现 1-2 次。报错日志显示是数据库连接超时，但不稳定复现。团队里有三种意见：① 加大连接池和超时时间；② 排查是否有慢查询或连接泄漏；③ 直接重启服务观察。你使用 Qoder 调试这类问题时，最合理的方法论是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 Agent 直接按意见①修改连接池配置，因为这样最快见效"
+      },
+      {
+        "key": "B",
+        "text": "先用 Ask 模式分析可能原因和排查思路，再用 Agent 针对性排查修复"
+      },
+      {
+        "key": "C",
+        "text": "让 Agent 依次逐个尝试三种意见对应的方案，哪个方案能解决问题最终就采用哪个"
+      },
+      {
+        "key": "D",
+        "text": "这类间歇性问题不适合用 AI 调试，只能靠人工经验排查定位"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "这是一个典型的\"有多种可能原因的复杂问题\"——正是教程推荐先用 Ask 分析再修复的场景。间歇性问题的根因不明确（可能是连接池耗尽、慢查询、网络抖动等），先用 Ask 分析原因和排查思路，再用 Agent 针对性排查，避免盲目修改。A 只试了一种方案，可能方向就错了；C 的\"试错法\"没有分析过程，效率低且可能引入新问题；D 低估了 AI 的分析能力，AI 擅长梳理多种可能原因并给出排查路径。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-0367ce4e",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Skills 和 Hooks 的分工",
+    "stem": "在 Qoder 的工作流封装体系中，Skills 和 Hooks 各自负责什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "两者功能完全相同，只是命名不同，可以互换使用"
+      },
+      {
+        "key": "B",
+        "text": "Skills 专门负责管理权限配置，Hooks 则专门负责生成具体代码"
+      },
+      {
+        "key": "C",
+        "text": "Skills 封装\"什么时候做\"，Hooks 封装\"做什么\""
+      },
+      {
+        "key": "D",
+        "text": "Skills 封装工作流步骤与标准，Hooks 封装事件触发时机"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确指出 Skills 封装\"做什么\"——定义工作流的步骤和标准，Hooks 封装\"什么时候做\"——在合适的时机（文件保存、代码提交等）自动触发。两者配合实现自动化工作流：Skills 定义流程内容，Hooks 定义触发时机。选项 C 把分工搞反了，选项 A 和 B 曲解了两者的功能。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-31f08ec1",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Skill 的核心文件",
+    "stem": "创建一个 Qoder Skill 时，必须包含的核心文件是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "`index.js`——编写 Skill 的执行逻辑代码"
+      },
+      {
+        "key": "B",
+        "text": "`package.json`——定义依赖和脚本命令"
+      },
+      {
+        "key": "C",
+        "text": "`SKILL.md`——定义工作流、输入输出和示例"
+      },
+      {
+        "key": "D",
+        "text": "`Dockerfile`——定义 Skill 的运行环境"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Skill 的核心是 `SKILL.md` 文件，放在 `.qoder/skills/<skill-name>/` 目录下。这个文件定义了 Skill 的名称、描述、工作流程、输出规范和示例。不需要编写代码或配置依赖——Skill 是通过 Markdown 文件来定义工作流的，而不是通过编程实现。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-b63cf706",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "调用 Skill 的方式",
+    "stem": "以下哪种方式可以调用一个已创建的 Skill？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只能通过斜杠命令（如 `/code-review`）调用"
+      },
+      {
+        "key": "B",
+        "text": "斜杠命令、@ 提及、自然语言三种方式都可以调用"
+      },
+      {
+        "key": "C",
+        "text": "必须在终端中执行 shell 脚本"
+      },
+      {
+        "key": "D",
+        "text": "需要重启 IDE 后在设置面板中手动触发"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程介绍了三种调用方式：斜杠命令（`/code-review`）、@ 提及（`@code-review 请审查这个文件`）、自然语言（AI 自动识别意图并调用对应 Skill）。三种方式都能触发同一个 Skill，用户可以根据场景选择最方便的方式。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-2235cd04",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "SKILL.md 为什么要提供示例",
+    "stem": "在 SKILL.md 中提供正反两面示例的主要目的是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "单纯增加文件的整体篇幅长度，让 Skill 的文档从外观上看起来显得更加专业完整"
+      },
+      {
+        "key": "B",
+        "text": "示例只是可选的文档说明，对 AI 的实际输出没有影响"
+      },
+      {
+        "key": "C",
+        "text": "让 AI 知道\"好的结果\"和\"差的结果\"分别长什么样，从而输出更稳定一致"
+      },
+      {
+        "key": "D",
+        "text": "示例主要用于给团队新成员做培训参考，和 AI 执行过程无关"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程踩坑提醒明确指出：没有 examples 时，AI 每次输出的格式和内容差异很大。提供正反两面的示例，让 AI 知道什么是好的输出、什么是差的输出，输出才能稳定可靠。示例越具体，输出越稳定。选项 B 和 D 低估了示例对 AI 输出质量的实际影响。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-ee0290e0",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "创建 Skill 的推荐方式",
+    "stem": "你想为团队创建一个代码审查 Skill。根据教程，实际创建时最推荐的方式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "从零开始手写 SKILL.md，这样能完全掌控技能的每一个细节"
+      },
+      {
+        "key": "B",
+        "text": "直接复制其他开源项目的 SKILL.md 文件，只修改名称后就直接投入使用"
+      },
+      {
+        "key": "C",
+        "text": "用 shell 脚本实现完整的工作流逻辑，不需要使用 Skill 机制"
+      },
+      {
+        "key": "D",
+        "text": "用内置的 skill-creator 技能一句话生成，再审阅微调"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确指出实际创建时不建议从零手写——手写技能常见的问题是描述不够具体、缺少触发条件和示例，效果不稳定且维护成本高。推荐用内置的 skill-creator 技能\"用技能生成技能\"：一句话说清要求与期望、级别（项目级/个人级）和触发场景，它会按官方最佳实践生成目录结构和 SKILL.md，你只需审阅微调。选项 A 正是教程不推荐的做法；选项 B 的直接复制不经调整，难以匹配团队自己的流程和标准；选项 C 用 shell 脚本替代 Skill 失去了 AI 工作流封装的优势。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-6433383c",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Hook 脚本的合理设计",
+    "stem": "团队配置了一个 Hook：每次文件编辑后自动运行代码审查脚本。上线后开发者抱怨严重——Hook 每次都要跑 3 分钟，严重拖慢开发节奏。最合理的解决方式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只处理变更的文件，严重问题才阻塞，警告级别只记录不阻塞"
+      },
+      {
+        "key": "B",
+        "text": "直接删除 Hook，放弃自动化审查"
+      },
+      {
+        "key": "C",
+        "text": "把 Hook 改成每小时运行一次，减少触发频率"
+      },
+      {
+        "key": "D",
+        "text": "要求所有开发者适应 3 分钟等待，因为代码质量更重要"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程踩坑提醒指出，Hook 脚本阻塞开发流程是常见问题。解法是：只处理变更的文件（减少审查范围）、严重问题才阻塞（如安全漏洞）、警告级别只记录不阻塞（如命名规范建议）。选项 B 过于极端，放弃了自动化价值；选项 C 失去了实时性；选项 D 忽视了开发者体验，会导致团队抵触。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-a33db86e",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "工作流封装的整体策略",
+    "stem": "一个团队有五个重复性工作流：代码审查、测试用例生成、API 文档生成、部署检查、Changelog 生成。团队想把它们全部封装成 AI 技能。以下哪种策略最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "五个流程全部塞进一个 Skill，命名为\"团队工作流\"，一个命令搞定所有事"
+      },
+      {
+        "key": "B",
+        "text": "每个流程各自创建一个 Skill，遵循单一职责原则，需要时按需组合调用"
+      },
+      {
+        "key": "C",
+        "text": "只封装代码审查一个流程，其他流程太简单不需要封装"
+      },
+      {
+        "key": "D",
+        "text": "把所有流程写成一个长的 shell 脚本，不用 Skill 机制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程踩坑提醒强调\"单一职责原则\"：一个 Skill 承担太多职责会导致每个都做得不好。正确做法是为每个工作流创建独立的 Skill（如 `/code-review`、`/generate-tests`、`/generate-docs`、`/deploy-check`、`/changelog`），每个 Skill 聚焦一个流程，步骤和标准定义得更精确。需要时可以按需组合调用。选项 A 违反单一职责；选项 C 低估了重复工作流的封装价值；选项 D 用 shell 脚本替代 Skill 失去了 AI 工作流封装的优势。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Encapsulate-Workflows-72843ad0",
+    "module": "Qoder-Encapsulate-Workflows",
+    "moduleName": "重复的工作流怎么封装成 AI 技能",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Skill 的作用域与优先级",
+    "stem": "团队用 /skill-creator 生成了一个项目级代码审查 Skill，同时你个人也创建了一个同名的个人级 Skill。当你在这个项目中触发该 Skill 时，会发生什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "项目级 Skill 优先生效，个人级被忽略，因为项目级随 Git 共享、优先级更高"
+      },
+      {
+        "key": "B",
+        "text": "个人级 Skill 优先生效，因为个人配置始终优先于项目配置"
+      },
+      {
+        "key": "C",
+        "text": "两个 Skill 会同时触发，产生冲突导致 AI 输出不确定"
+      },
+      {
+        "key": "D",
+        "text": "Qoder 会报错并拒绝执行，要求你手动删除其中一个同名 Skill"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程说明 Skill 分为两个作用域：项目级（生成到 `.qoder/skills/`，随 Git 与团队共享）和个人级（生成到 `~/.qoder/skills/`，自己的所有项目可用）。同名时项目级优先，因为项目级 Skill 针对特定项目的规范和流程设计，应该优先于通用的个人级 Skill。B 错误，个人级优先级更低而非更高；C 错误，不会同时触发；D 错误，Qoder 能自动处理优先级，不会报错。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-ce6696bb",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Agent 模式与 Ask 模式的区别",
+    "stem": "你需要让 AI 帮你实现一个新的 API 接口。关于 Agent 模式和 Ask 模式的选择，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式可以修改代码和运行命令，适合端到端实现功能"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式具备自主决策能力，可直接改代码、跑命令、调度工具"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式只会给出建议不会修改任何文件，因此只适合用来讨论技术方案"
+      },
+      {
+        "key": "D",
+        "text": "两种模式的功能完全相同，只是界面展示方式有所不同"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Agent 模式具备自主决策、环境感知与工具调度能力——它不只给建议，而是直接动手改代码、跑命令、调工具，端到端完成任务。Ask 模式则以只读方式分析代码，不会修改文件。A 选项将两种模式的能力搞反了；C 选项描述的是 Ask 模式的特征；D 选项错误，两种模式的能力有本质区别。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-632cb2d9",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Diff 审阅的核心操作",
+    "stem": "在 Agent 模式下，AI 完成了代码修改后，你在 Diff 视图中审阅变更。以下关于 Diff 审阅的描述，正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只能一次性全部接受或者全部拒绝，完全无法针对单个修改点做单独选择"
+      },
+      {
+        "key": "B",
+        "text": "Diff 视图只显示新增的代码行，不显示删除的代码行"
+      },
+      {
+        "key": "C",
+        "text": "可逐处接受或拒绝修改，也支持 Reject All 批量拒绝"
+      },
+      {
+        "key": "D",
+        "text": "审阅必须在所有文件修改完成后才能开始，无法中途查看"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Diff 视图支持逐处审阅——对每个修改点可以单独接受或拒绝，也可以用 Reject All 一次性拒绝所有变更。新增行以绿色显示、删除行以红色显示。A 选项错误，Diff 审阅支持逐处操作；B 选项错误，Diff 同时显示新增和删除的行；D 选项错误，文件状态变为\"已应用\"后即可逐个查看。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-31620d77",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "需求描述的最佳实践",
+    "stem": "你想让 Agent 模式帮你实现一个用户注册接口。以下哪种需求描述方式最有效？",
+    "options": [
+      {
+        "key": "A",
+        "text": "“帮我在项目里加一个用户注册的新功能，要能接收用户在页面上提交的用户名等信息，然后把这些信息保存到数据库里”"
+      },
+      {
+        "key": "B",
+        "text": "“写一个 POST 接口来处理用户在前端页面提交的注册请求，要求包含必要的参数校验、异常处理逻辑和配套的单元测试，代码风格要与项目现有代码保持一致”"
+      },
+      {
+        "key": "C",
+        "text": "“参考其他成熟项目的注册功能实现方式，帮我写一个类似的用户注册接口，具体的技术选型和实现细节你自己看着办就行”"
+      },
+      {
+        "key": "D",
+        "text": "“POST /api/users/register，接收用户名、邮箱、密码，密码用 BCrypt 加密，重复返回 409，成功返回 201”"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程强调\"需求描述要像给同事派任务，不是给 AI 许愿\"。D 选项明确了接口路径、请求方式、字段、加密方式、异常处理和状态码，描述最具体，Agent 生成的代码最接近预期。A 选项过于模糊；B 选项缺少字段定义和具体行为描述；C 选项没有给出任何具体约束，Agent 只能凭空猜测。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-4da2866c",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "计划制定的作用",
+    "stem": "你用 Agent 模式实现一个中等复杂度的功能，Agent 在动手前生成了一份待办事项计划。关于这份计划，以下说法最合理的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "计划是对齐预期的最佳时机，应检查是否遗漏关键步骤，必要时调整后再执行"
+      },
+      {
+        "key": "B",
+        "text": "计划只是形式，可以直接跳过审阅让 Agent 开始执行"
+      },
+      {
+        "key": "C",
+        "text": "计划一旦生成之后就不应该再修改，否则会打乱 Agent 后续的整体执行逻辑"
+      },
+      {
+        "key": "D",
+        "text": "只有非常复杂的任务才需要生成计划，中小任务不需要"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出\"先审阅计划，再让它动手\"——计划是你对齐预期的最佳时机。如果漏了关键步骤（如数据校验、异常处理），在这时候补充比代码写完再推翻的成本低得多。B 选项跳过了最关键的审阅环节；C 选项错误，教程说明可以通过自然语言调整计划；D 选项错误，Agent 会根据请求的复杂度智能判断是否需要先出计划，也可以用 `/plan` 显式调用。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-9820f9db",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "命令执行的确认机制",
+    "stem": "在 Agent 模式中，Agent 自动选择并运行终端命令（如编译、测试）。关于命令执行的确认机制，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "所有命令包括编译和测试都会自动执行，不需要确认"
+      },
+      {
+        "key": "B",
+        "text": "命令默认需确认后执行，信任命令可加入允许列表自动执行"
+      },
+      {
+        "key": "C",
+        "text": "所有命令都需要用户手动输入，Agent 不能自动选择命令"
+      },
+      {
+        "key": "D",
+        "text": "只能执行测试类命令，不能执行编译或构建类的命令"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Agent 根据需要自主选择终端命令，默认需你确认后才能执行。你可以在设置中添加自动执行允许列表（如 `mvn test`、`npm run lint`），把信任命令加入列表以减少重复确认。A 选项错误，默认需要确认；C 选项错误，Agent 能自动选择合适的命令；D 选项错误，Agent 可以根据需要执行各种终端命令。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-4cc8f158",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Diff 审阅的重点关注项",
+    "stem": "在审阅 Agent 生成的代码变更时，教程建议重点关注哪些方面？",
+    "options": [
+      {
+        "key": "A",
+        "text": "接口签名是否一致、异常处理是否完整、测试覆盖是否充分"
+      },
+      {
+        "key": "B",
+        "text": "变量的命名是否足够简短易记、整体的代码风格是否统一而且美观"
+      },
+      {
+        "key": "C",
+        "text": "生成的代码行数是否足够多、注释说明是否足够充足"
+      },
+      {
+        "key": "D",
+        "text": "是否采用了最新版本的技术框架和流行的设计模式"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确建议 Diff 审阅重点关注三个方面：接口签名是否与现有代码一致、异常处理是否完整、测试覆盖是否充分。这些直接影响代码的正确性和可维护性。C 选项的代码行数和注释不是审阅重点；B 选项的变量命名长度和美观度过于主观；D 选项追求最新技术框架不符合工程实践，应保持与现有项目一致。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-1d7895a3",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "端到端开发的完整协作策略",
+    "stem": "你负责为项目添加一个\"订单退款\"功能，涉及 Controller、Service、Repository、DTO 和测试。你决定用 Agent 模式端到端实现。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "把完整需求一次性描述给 Agent，让它自动完成所有代码和测试，最后统一审查一次"
+      },
+      {
+        "key": "B",
+        "text": "让 Agent 先生成代码，你审阅并修改不满意的部分，然后让 Agent 运行测试和修复 Bug"
+      },
+      {
+        "key": "C",
+        "text": "自己先写好所有代码框架，只让 Agent 填充业务逻辑部分，最后自己跑测试"
+      },
+      {
+        "key": "D",
+        "text": "分步描述需求，先审阅 Agent 的计划，再逐步审阅代码变更，测试失败就把错误反馈给它迭代修复"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程推荐的完整协作流程是\"像项目经理一样与 AI 协作\"：需求描述具体→让 AI 先出方案→逐步审阅变更→迭代而非一次到位。测试不通过时将错误信息反馈给 Agent，让它分析并修复，通常 2-3 轮可以解决。A 选项违反了\"逐步审阅\"和\"迭代修复\"的原则，最后统一审查成本太高；C 选项没有充分利用 Agent 的端到端能力，框架设计本可以让 Agent 完成；B 选项颠倒了协作关系——应该是 AI 写代码、你审阅，而不是你手动修改。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-End-to-End-Feature-4a0c1a1b",
+    "module": "Qoder-End-to-End-Feature",
+    "moduleName": "小功能端到端实现",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Browser Agent 在端到端交付中的角色",
+    "stem": "你完成了一个带前端页面的小功能开发，代码和测试都通过了。教程推荐用 Browser Agent 做下一步的可视化自检，以下哪项描述最符合其正确使用方式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 Browser Agent 用真实账号登录系统并提交表单，确认数据能正确保存到数据库中"
+      },
+      {
+        "key": "B",
+        "text": "让 Agent 打开页面复现核心操作流程，只读验证页面状态是否符合预期，不执行写操作"
+      },
+      {
+        "key": "C",
+        "text": "将页面测试全部交给 Browser Agent 自动完成，包括登录、支付、删除等高风险操作"
+      },
+      {
+        "key": "D",
+        "text": "Browser Agent 主要用于自动化部署流程，不适合用于前端页面的可视化效果验证"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程强调 Browser Agent 适合做\"开发后的可视化自检\"——打开页面、点击、填写表单、滚动、截图反馈页面状态，但涉及登录、支付、删除、提交等写操作时不要让它自动执行。应在提示词中写明\"只读验证\"\"不要提交表单\"等边界。A 违反了写操作边界；C 更危险，把高风险操作全部交给 AI；D 定位错误，Browser Agent 正是为前端验证设计的。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-2cff78f6",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Rules 系统的核心目的",
+    "stem": "团队发现 AI 生成的代码不符合内部编码规范（如命名约定、分层架构）。Qoder 的 Rules 配置系统主要解决什么问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "把团队规范写成文件，让 AI 在生成代码时自动参考"
+      },
+      {
+        "key": "B",
+        "text": "自动生成一份完整的团队编码规范文档，供团队成员参考"
+      },
+      {
+        "key": "C",
+        "text": "替代 Linter 工具进行代码检查"
+      },
+      {
+        "key": "D",
+        "text": "自动修复代码中的 Bug 和安全漏洞"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Rules 系统的核心思路是\"把规范'喂'给 AI\"——将团队规范写成 Markdown 文件存放在 `.qoder/rules/` 目录下，AI 在生成代码时自动参考这些规范。D 自动修复 Bug 不是 Rules 的功能；C 不正确，Rules 是事前约束而非事后检查，不能替代 Linter；B 规范文档需要人工编写，Rules 不会自动生成规范文档。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-3e08b2e5",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Always 规则的特点",
+    "stem": "以下关于 Always 类型规则的描述，哪项是正确的？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只在用户手动引用时生效"
+      },
+      {
+        "key": "B",
+        "text": "始终生效，适合放置通用编码规范"
+      },
+      {
+        "key": "C",
+        "text": "仅在编辑 Java 文件时生效"
+      },
+      {
+        "key": "D",
+        "text": "由 AI 自行判断是否需要引用"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "Always 规则始终生效，是团队的\"铁律\"，适合放置命名约定、代码风格等通用编码规范。A 描述的是 Manual 类型；C 描述的是 Auto Attached 类型（通过 glob 模式匹配特定文件）；D 描述的是 Agent Requested 类型。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-f3165ce0",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "规则冲突的处理",
+    "stem": "团队的 Always 规则要求\"字段命名用驼峰\"，而数据库实体类的 Auto Attached 规则要求\"字段用下划线命名\"，AI 生成代码时表现混乱。最合理的解决方式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "删除 Auto Attached 规则，全部统一用驼峰"
+      },
+      {
+        "key": "B",
+        "text": "在规则中显式说明例外：数据库实体类字段用下划线，其他用驼峰"
+      },
+      {
+        "key": "C",
+        "text": "改用 Manual 类型，每次都由用户手动判断应该引用哪一条规则"
+      },
+      {
+        "key": "D",
+        "text": "两条规则都原样保留不动，让 AI 根据对话的上下文自行判断优先级"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程踩坑提醒明确指出：Always 说\"驼峰命名\"、Auto Attached 又说\"下划线命名\"，AI 分不清场景，正确做法是在规则中显式说明例外（如\"数据库实体类字段使用下划线，其他使用驼峰\"）。A 删除实体类规则不可行——数据库字段确实需要下划线命名；C 的手动引用操作成本高，也失去了自动生效的价值；D 放任不管正是导致 AI 混乱的根源，冲突不会自行消失。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-c2d5105d",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "四种规则类型的选择",
+    "stem": "团队有一条规范：\"RESTful API 设计时遵循统一的 URL 命名和 HTTP 方法约定\"。这条规范并非每次编码都需要，但在设计 API 时很重要。最适合配置为哪种规则类型？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Always——确保团队铁律始终生效，每次生成代码都自动参考"
+      },
+      {
+        "key": "B",
+        "text": "Auto Attached——按 glob 模式匹配文件类型自动加载"
+      },
+      {
+        "key": "C",
+        "text": "Manual——每次需要时由用户手动引用对应规则"
+      },
+      {
+        "key": "D",
+        "text": "Agent Requested——由 AI 判断对话内容相关时自动引用"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Agent Requested 类型的规则由 AI 根据对话内容判断是否引用，适合场景性规范如 API 设计、数据库操作规范等。这条规范不是每次编码都需要（不适合 Always），也不是按文件类型触发的（不适合 Auto Attached），更不需要每次手动引用（Manual 操作成本高）。Agent Requested 让 AI 在涉及 API 设计时自动引用，既精准又不浪费上下文。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-aef61e0b",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Always 规则的内容控制",
+    "stem": "一位工程师想把团队所有编码规范（命名约定、分层架构、异常处理、并发规范、日志规范、注释规范等共 3000 字）全部写在 Always 规则中。这种做法最可能导致什么问题？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 的上下文被大量规则占满，反而记不住重点"
+      },
+      {
+        "key": "B",
+        "text": "规则文件太大，IDE 加载缓慢"
+      },
+      {
+        "key": "C",
+        "text": "团队成员无法修改这么长的规则文件"
+      },
+      {
+        "key": "D",
+        "text": "Always 规则有字数硬限制，超过会报错"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出 Always 规则应控制在 500 字以内，只放\"铁律\"。上下文被占满后 AI 的注意力被分散，核心规范反而容易被忽略。文件级规范应放 Auto Attached，不常用的放 Manual。B 中 IDE 加载性能不是主要问题；C 不是长度限制的原因；D 教程中未提到硬限制的报错机制。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-af1a9cee",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Auto Attached 规则的 glob 模式配置",
+    "stem": "团队配置了一条 Java 文件规范，使用 Auto Attached 类型，glob 模式写为 `*.java`。但发现子目录中的 Java 文件没有生效。最可能的原因是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Auto Attached 类型的规则本身不支持 Java 文件"
+      },
+      {
+        "key": "B",
+        "text": "`*.java` 不匹配子目录，应改为 `**/*.java`"
+      },
+      {
+        "key": "C",
+        "text": "Java 文件规范应该配置为 Always 类型才能生效"
+      },
+      {
+        "key": "D",
+        "text": "规则文件没有存放在 `.qoder/rules/` 的正确目录中"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程踩坑提醒中明确指出 glob 模式的区别：`**/*.java` 匹配子目录，而 `*.java` 不匹配子目录。这是常见的配置错误。A 不正确，Auto Attached 支持任意文件类型；C 不正确，Java 文件规范属于文件级规范，Auto Attached 是正确的选择；D 与 glob 模式配置错误无关。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Enforce-Team-Standards-21cdbb2c",
+    "module": "Qoder-Enforce-Team-Standards",
+    "moduleName": "怎么让 AI 生成代码符合团队规范",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "团队规范落地的整体策略",
+    "stem": "一个 20 人的团队刚开始使用 AI 编程工具，发现成员们各自让 AI 生成的代码风格差异很大——有人用 `Result<T>` 包装返回值，有人直接返回对象；有人按三层架构分层，有人全部写在 Controller 里。团队负责人想建立一套机制让 AI 生成的代码统一符合团队规范，以下哪种策略最有效？",
+    "options": [
+      {
+        "key": "A",
+        "text": "配置事后 Linter 检查，每次 AI 生成代码后自动运行 Checkstyle 和 ESLint"
+      },
+      {
+        "key": "B",
+        "text": "制定一份详细的编码规范文档，要求每个成员每次开始 AI 对话前手动复制关键章节到提示词"
+      },
+      {
+        "key": "C",
+        "text": "核心规范写入 Always，文件级配 Auto Attached，场景性用 AR，规则提交 Git 共享"
+      },
+      {
+        "key": "D",
+        "text": "指定一位资深工程师审查所有 AI 生成的代码，确保每一行代码都符合团队编码规范"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "这个问题需要综合判断团队规范落地的最佳实践。C 方案完整覆盖了教程提出的核心思路：规范文件化（写成 Markdown 文件）、分层管理（四种规则类型各司其职）、版本控制共享（提交 Git + PR 审核）、适度原则（Always 控制在 500 字内）。B 回到了\"每次重复说明\"的低效模式；A 事后 Linter 只能检查格式层面，无法约束架构层面的分层和设计模式；D 完全依赖人工审查，成本高且不可持续。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Multi-File-Refactor-ac778627",
+    "module": "Qoder-Multi-File-Refactor",
+    "moduleName": "跨文件重构怎么安全地做",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "重构前的确认步骤",
+    "stem": "用 Agent 模式做跨文件重构时，以下哪个做法最稳妥？",
+    "options": [
+      {
+        "key": "A",
+        "text": "先让 AI 列出所有受影响的文件和位置，确认范围后再让它执行修改"
+      },
+      {
+        "key": "B",
+        "text": "直接让 AI 执行重构，相信它能处理所有关联文件"
+      },
+      {
+        "key": "C",
+        "text": "自己手动列出所有要改的文件，然后告诉 AI 逐个修改"
+      },
+      {
+        "key": "D",
+        "text": "每次只让 AI 修改一个文件，改完之后手动检查其他所有文件是否需要修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程推荐的做法是\"先让 AI 侦察，你来确认范围\"——先让 AI 列出影响范围，你审查确认后再让它执行。B 跳过了审查环节，可能遗漏或误改文件；C 把 AI 最擅长的搜索工作揽给了自己；D 效率极低且容易遗漏间接引用。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Multi-File-Refactor-164058d4",
+    "module": "Qoder-Multi-File-Refactor",
+    "moduleName": "跨文件重构怎么安全地做",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Diff 审阅策略",
+    "stem": "跨文件重构完成后，审阅 Diff 视图的推荐顺序是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "按文件名的字母顺序逐个审阅，确保不遗漏任何一个文件"
+      },
+      {
+        "key": "B",
+        "text": "先审阅测试文件确认预期行为没有变化，再逐个查看核心文件，最后再看各个调用方文件"
+      },
+      {
+        "key": "C",
+        "text": "按调用链顺序审阅——先看被修改的源文件，再看直接调用方，最后看测试文件"
+      },
+      {
+        "key": "D",
+        "text": "直接用\"全部接受\"批量通过，因为 AI 的修改通常是正确的"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程明确推荐\"按调用链顺序审阅\"——先审阅被修改的源文件确认新接口定义正确，再审阅各调用方文件，最后看测试文件。这样审阅有条理，容易发现接口定义和调用方之间的不一致。D 跳过审阅有风险，AI 在边界场景可能犯错。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Multi-File-Refactor-b5e30581",
+    "module": "Qoder-Multi-File-Refactor",
+    "moduleName": "跨文件重构怎么安全地做",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "重构与新建的本质区别",
+    "stem": "跨文件重构和新建功能在方法论上的核心区别是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "重构涉及的代码量通常更大，新建功能的代码量相对更小"
+      },
+      {
+        "key": "B",
+        "text": "重构只需要改代码不需要跑测试，新建功能则必须跑完整测试"
+      },
+      {
+        "key": "C",
+        "text": "重构必须在不破坏现有功能的前提下改进，需要调用链思维和更严格的审查"
+      },
+      {
+        "key": "D",
+        "text": "重构类的任务只能在 IDE 中操作，新建功能则只能通过 CLI 来完成"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程明确指出重构是\"从有到好\"，必须在不破坏现有功能的前提下改进，因此需要调用链思维（追踪所有关联文件）和更严格的审查（确认每个调用方行为正常）。A 错误，代码量不是本质区别；B 错误，重构更需要跑测试；D 错误，两种模式 IDE 和 CLI 都支持。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Multi-File-Refactor-c1cd928d",
+    "module": "Qoder-Multi-File-Refactor",
+    "moduleName": "跨文件重构怎么安全地做",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "复杂重构的执行策略",
+    "stem": "你需要同时修改项目中 5 个函数的签名，以下哪种执行策略最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "在一次对话中同时描述 5 个签名修改，让 Agent 一次性全部完成"
+      },
+      {
+        "key": "B",
+        "text": "让 Agent 先修改测试文件，再修改源文件"
+      },
+      {
+        "key": "C",
+        "text": "先用 Revert 回滚所有函数，然后一次性重新实现"
+      },
+      {
+        "key": "D",
+        "text": "一次改一个函数签名，每个改完审阅确认后再改下一个"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程明确建议\"一次改一个，每个改完审阅确认后再改下一个\"。一次性提太多需求，Agent 的任务拆解容易出错，你也难以审阅。A 一次性改 5 个函数，审阅难度和出错概率都很高；C 逻辑不通，函数签名不需要\"回滚后重新实现\"；B 应该先改源文件再适配测试文件，顺序反了。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Multi-File-Refactor-c0ff8e63",
+    "module": "Qoder-Multi-File-Refactor",
+    "moduleName": "跨文件重构怎么安全地做",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "重构后的风险判断",
+    "stem": "你用 Agent 完成了一次跨文件重命名重构（将 `getData` 改为 `fetchUserOrderHistory`），涉及 15 个文件，Diff 审阅全部通过，单元测试全部绿色。但上线后某个通过插件系统动态调用 `getData` 的模块报错了。这个案例说明的最重要的方法论教训是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "静态搜索无法覆盖运行时动态调用，重构后还需集成测试和运行时验证来兜底"
+      },
+      {
+        "key": "B",
+        "text": "不应该做这类跨文件重命名重构，函数名保持简短不变更安全"
+      },
+      {
+        "key": "C",
+        "text": "Agent 的静态代码搜索能力还不够强大，不应该轻易信任它给出的任何搜索结果"
+      },
+      {
+        "key": "D",
+        "text": "应该在 Diff 审阅阶段逐行检查每个文件的每一处调用点"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程明确指出\"Agent 的修改覆盖了静态搜索到的调用点，但项目中可能存在运行时动态调用（反射、插件系统、eval），这些是静态搜索无法发现的\"。单元测试全部绿色但运行时出错，恰恰说明需要集成测试和运行时验证作为额外防线。C 过于极端，Agent 的静态搜索能力本身是可靠的；B 因噎废食，重构的价值不应因动态调用的风险而被否定；D 不现实，静态审查无法发现运行时动态绑定。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Parallel-Full-Stack-Development-d727df82",
+    "module": "Qoder-Parallel-Full-Stack-Development",
+    "moduleName": "前后端同时开发怎么协调",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Experts 模式的适用场景",
+    "stem": "以下哪个场景最适合使用 Qoder 的 Experts 模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "修改一个 React 组件的 CSS 样式以适配移动端布局"
+      },
+      {
+        "key": "B",
+        "text": "修复后端一个已定位的 NullPointerException"
+      },
+      {
+        "key": "C",
+        "text": "给一个已有函数添加一行日志输出，记录参数输入"
+      },
+      {
+        "key": "D",
+        "text": "开发完整的用户管理模块（前端 React + 后端 API）"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "Experts 模式的优势在多技术栈并行开发场景中才能体现，如前端 React + 后端 Spring Boot 同时推进。选项 A、B、C 都是单技术栈的简单任务，直接用 Agent 模式更高效。教程明确指出：单技术栈复杂任务用 Spec 驱动，多技术栈并行才用 Experts 模式。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Parallel-Full-Stack-Development-ce20506a",
+    "module": "Qoder-Parallel-Full-Stack-Development",
+    "moduleName": "前后端同时开发怎么协调",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Lead Agent 的角色定位",
+    "stem": "在 Experts 模式中，Lead Agent 的核心职责是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只负责最终的代码审查，不参与任务分配和调度"
+      },
+      {
+        "key": "B",
+        "text": "亲自动手编写所有的前端和后端代码"
+      },
+      {
+        "key": "C",
+        "text": "理解需求、拆解任务和协调调度，即项目经理角色"
+      },
+      {
+        "key": "D",
+        "text": "管理 Git 仓库的分支版本控制与合并策略"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "Lead Agent 在 Experts 模式中扮演项目经理角色，负责理解需求、拆解任务、协调调度多个专家智能体。实际的编码工作由全栈工程师等专家子智能体完成，代码审查由代码审查员负责。Lead Agent 不亲自写代码，而是做任务规划和协调。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Parallel-Full-Stack-Development-99e817be",
+    "module": "Qoder-Parallel-Full-Stack-Development",
+    "moduleName": "前后端同时开发怎么协调",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "需求描述的关键要素",
+    "stem": "在 Experts 模式下描述需求时，以下哪种做法最有效？",
+    "options": [
+      {
+        "key": "A",
+        "text": "只描述业务需求，如\"做一个用户列表页面\"，让 AI 自行决定技术方案"
+      },
+      {
+        "key": "B",
+        "text": "明确写出前端技术栈、后端技术栈、接口 URL 路径、请求参数和响应格式"
+      },
+      {
+        "key": "C",
+        "text": "先让 AI 写后端，写完后再告诉 AI 前端需要什么字段"
+      },
+      {
+        "key": "D",
+        "text": "一次性描述整个管理系统的全部功能，让 Lead Agent 自行安排优先级"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程强调需求描述要同时覆盖前端和后端，明确写出技术栈、URL、请求参数和响应格式，减少前后端对齐偏差。选项 A 过于模糊，AI 可能选择不合适的技术栈；选项 C 是串行思路，失去了并行的意义；选项 D 一次塞太多功能会加重 Lead Agent 的协调负担，教程建议每个任务控制在 2-3 个页面 + 对应后端接口。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Parallel-Full-Stack-Development-1a00c77f",
+    "module": "Qoder-Parallel-Full-Stack-Development",
+    "moduleName": "前后端同时开发怎么协调",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "并行开发前为什么要先定义接口契约",
+    "stem": "AI 并行开发前后端时，先定义\"接口契约\"的核心原因是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "接口契约只需要在后端完成后补写，不需要提前定义"
+      },
+      {
+        "key": "B",
+        "text": "接口契约主要是为了给项目经理审批用，和开发效率无关"
+      },
+      {
+        "key": "C",
+        "text": "接口契约让前后端按同一份“合同”各自独立开发，减少联调偏差"
+      },
+      {
+        "key": "D",
+        "text": "接口契约的作用是让 AI 自动生成数据库表结构，与前后端开发无关"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "接口契约是前后端的\"合同\"——约定好 URL 路径、请求参数、响应格式后，双方按合同各自开发，互不依赖。这是并行开发的基础，没有契约就容易各写各的，联调时问题丛生。选项 A 是传统串行的做法，正是并行开发要避免的；选项 B 和 D 曲解了接口契约的用途。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Parallel-Full-Stack-Development-b48054fc",
+    "module": "Qoder-Parallel-Full-Stack-Development",
+    "moduleName": "前后端同时开发怎么协调",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "选择 Spec 驱动还是 Experts 模式",
+    "stem": "一个团队要同时推进三个项目：项目 A 是纯前端的管理后台重构（Vue 3 + TypeScript），项目 B 是带前端的新用户中心（React + Spring Boot + MyBatis Plus），项目 C 是后端微服务的性能优化（Java 单技术栈）。针对这三个项目，哪种模式选择策略最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "三个项目都用 Experts 模式，因为都是复杂任务需要并行推进"
+      },
+      {
+        "key": "B",
+        "text": "项目 A 和 C 用 Experts 模式提升并行度，项目 B 用 Spec 驱动保证输出质量"
+      },
+      {
+        "key": "C",
+        "text": "三个项目都用 Spec 驱动，保持一致的开发流程和输出质量"
+      },
+      {
+        "key": "D",
+        "text": "项目 A 和 C 用 Spec 驱动，项目 B 用 Experts 模式"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "选择依据是\"单技术栈复杂任务 → Spec 驱动；多技术栈并行 → Experts 模式\"。项目 A 是纯前端单技术栈，适合 Spec 驱动；项目 B 涉及 React + Spring Boot + MyBatis Plus 多技术栈，需要前后端并行，适合 Experts 模式；项目 C 是纯后端单技术栈，适合 Spec 驱动。选项 A、C 没有区分场景，选项 B 把判断搞反了——项目 A、C 都是单技术栈，用 Experts 模式无法发挥多技术栈并行的优势。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Parallel-Full-Stack-Development-9785e849",
+    "module": "Qoder-Parallel-Full-Stack-Development",
+    "moduleName": "前后端同时开发怎么协调",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Worktree 执行环境的适用场景",
+    "stem": "你想同时让 AI 重构支付模块和实现用户列表页面，两个任务互不相关但都想尽快完成。教程中 Worktree 模式在这种场景下的核心优势是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "每个任务在独立的 Git 工作区副本中执行，主工作区保持干净且互不干扰"
+      },
+      {
+        "key": "B",
+        "text": "所有任务共享同一个工作区，方便任务之间互相引用和依赖彼此的代码变更"
+      },
+      {
+        "key": "C",
+        "text": "AI 会自动合并所有任务的结果，无需人工审查即可直接提交到主分支上"
+      },
+      {
+        "key": "D",
+        "text": "Worktree 只在云端运行，不会在本地创建额外的文件目录或占用磁盘空间"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程中 Worktree 模式基于 Git worktree，为每个任务创建独立的工作区副本，Agent 在隔离环境中执行，主工作区保持干净，多个 Worktree 可并行运行。特别适合并行多任务和高风险重构场景——不满意可以直接删掉工作树，主工作区毫发无损。B 错误，Worktree 是隔离而非共享；C 错误，完成后需人工审查并选择\"移交到本地\"或直接提交；D 错误，Worktree 在本地创建，项目较大时需注意磁盘占用。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Understand-Unfamiliar-Code-484331a8",
+    "module": "Qoder-Understand-Unfamiliar-Code",
+    "moduleName": "快速上手新代码库",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "Ask 模式的核心特征",
+    "stem": "你刚接手一个陌生的项目，想快速理解某段代码的逻辑。关于 Qoder 的 Ask 模式，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式以只读方式分析代码，给出解释和方案，不会修改仓库文件"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式会直接修改代码文件来添加注释，帮助你理解代码"
+      },
+      {
+        "key": "C",
+        "text": "Ask 模式只能分析单个文件，无法理解跨文件的调用关系"
+      },
+      {
+        "key": "D",
+        "text": "Ask 模式会自动运行项目代码并输出实际执行结果，方便你直接验证逻辑"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "Ask 模式的核心定位是\"只读技术顾问\"——它以只读方式理解你的问题和代码上下文，给出解释、方案对比和排错思路，但不会修改仓库文件。B 选项错误，Ask 模式不会修改任何文件；C 选项错误，通过 `@` 引用多个文件或符号，Ask 模式可以分析跨文件关系；D 选项错误，运行代码是 Agent 模式的能力，Ask 模式不负责执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Understand-Unfamiliar-Code-664a8b37",
+    "module": "Qoder-Understand-Unfamiliar-Code",
+    "moduleName": "快速上手新代码库",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "用 @ 引用的目的",
+    "stem": "在 Ask 模式中提问时，使用 `@` 引用文件或符号的主要目的是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 获得直接修改被引用文件内容的权限"
+      },
+      {
+        "key": "B",
+        "text": "将被引用的文件发送给团队其他成员共享查看"
+      },
+      {
+        "key": "C",
+        "text": "自动为被引用的文件生成配套的单元测试用例"
+      },
+      {
+        "key": "D",
+        "text": "将引用内容作为上下文提供给 AI，使回答更精准"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "`@` 引用的作用是将被引用的文件或符号内容作为上下文发送给 AI，让 AI 基于具体的代码文本回答问题，而不是泛泛而谈。A 选项错误，Ask 模式不会修改文件；C 选项错误，`@` 引用本身不会触发生成测试；B 选项错误，`@` 引用是向 AI 提供上下文的方式，不是文件共享功能。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Understand-Unfamiliar-Code-4d8365af",
+    "module": "Qoder-Understand-Unfamiliar-Code",
+    "moduleName": "快速上手新代码库",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "Repo Wiki 的正确使用方式",
+    "stem": "你加入了一个新团队，项目代码仓库已经存在 `.qoder/repowiki/` 目录。关于 Repo Wiki 的使用，以下做法最合理的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "删除旧的 Wiki 并重新生成，确保获得最新版本"
+      },
+      {
+        "key": "B",
+        "text": "忽略 Wiki，因为 AI 可以直接阅读代码，Wiki 没有额外价值"
+      },
+      {
+        "key": "C",
+        "text": "直接使用已有的 Wiki 了解项目架构，如果内容过时再更新"
+      },
+      {
+        "key": "D",
+        "text": "将 Wiki 文件从 Git 中移除，因为它是个人工具产物，不应共享"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程建议将 `.qoder/repowiki/` 提交到 Git，团队每个人都能直接使用已有 Wiki，不需要重新生成——\"一个人的 10 分钟，省下团队所有人的重复劳动\"。A 选项浪费团队已有的知识资产；B 选项错误，没有 Wiki 时 AI 只能基于代码文本回答，生成 Wiki 后回答质量显著提升；D 选项与最佳实践相反，Wiki 应该提交到 Git 实现团队共享。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Understand-Unfamiliar-Code-458706f9",
+    "module": "Qoder-Understand-Unfamiliar-Code",
+    "moduleName": "快速上手新代码库",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "理解陌生代码的提问策略",
+    "stem": "你需要理解一个 2000 行的订单处理函数。以下哪种提问策略最有效？",
+    "options": [
+      {
+        "key": "A",
+        "text": "一次性提问\"帮我解释整个项目\"，获取全局概述后再深入细节"
+      },
+      {
+        "key": "B",
+        "text": "直接问\"这个函数第 1523 行的 Bug 在哪里\"，快速定位具体问题"
+      },
+      {
+        "key": "C",
+        "text": "完全不使用 AI 辅助，先自己耐心逐行阅读所有代码，遇到完全不能理解的部分再去问 AI"
+      },
+      {
+        "key": "D",
+        "text": "先让 AI 生成项目架构概览，再聚焦订单模块的职责，最后深入具体函数的实现逻辑"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程强调理解陌生代码的核心方法是\"分层推进\"——先要全局地图（架构概览），再聚焦感兴趣的模块（订单模块），最后深入具体实现。每轮对话只聚焦一个问题，确认理解了再推进下一层。A 选项一次性提问太宽泛，AI 会给出泛泛而谈的概述；B 选项跳过了理解全局和模块的过程，直接问细节容易遗漏上下文；C 选项完全放弃 AI 的辅助效率优势。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Understand-Unfamiliar-Code-7a045dc7",
+    "module": "Qoder-Understand-Unfamiliar-Code",
+    "moduleName": "快速上手新代码库",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "接手陌生项目的完整策略",
+    "stem": "你被紧急调去修复一个核心模块的 Bug，该模块的原始开发者已离职，README 长期未更新。你决定用 AI 辅助工具来快速上手。以下哪种工作流程最合理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "先生成结构化文档了解全局架构，再用只读模式逐层追问定位问题，确认方案后切换到可编辑模式修改"
+      },
+      {
+        "key": "B",
+        "text": "直接让 AI 自动扫描并修复所有潜在 Bug，然后逐一审查修复结果"
+      },
+      {
+        "key": "C",
+        "text": "让 AI 一次性阅读整个代码仓库并生成详细的修复报告，然后按照报告逐一执行修复"
+      },
+      {
+        "key": "D",
+        "text": "跳过文档生成步骤，直接向 AI 描述你观察到的 Bug 现象，让 AI 猜测可能的原因并给出修复代码"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "这考察的是接手陌生代码的完整方法论。教程强调的正确流程是：先生成 Repo Wiki 获取全局地图（约 10 分钟），再用 Ask 模式（只读）配合 `@` 引用逐层追问定位问题，确认方案后切换到 Agent 模式执行修改。B 选项违反了\"先理解再行动\"的原则，不应在不了解项目的情况下直接让 AI 修改代码；C 选项的\"一次性阅读整个仓库\"违背了分层推进的原则，且 AI 无法一次处理所有信息；D 选项跳过了生成 Wiki 的步骤，没有 Wiki 时 AI 只能基于代码文本回答，回答质量会显著下降。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-6f7daec1",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "NEXT 代码建议的触发方式",
+    "stem": "关于 Qoder 的 NEXT 代码建议功能，以下描述正确的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "输入时自动预测代码意图并展示建议，按 Tab 接受"
+      },
+      {
+        "key": "B",
+        "text": "需要手动输入特定命令才能触发代码建议"
+      },
+      {
+        "key": "C",
+        "text": "只能进行单词级别的补全，无法预测整段代码"
+      },
+      {
+        "key": "D",
+        "text": "每次的代码建议都需要在专门的弹窗中逐一确认后才能插入代码"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "NEXT 代码建议在你打字时基于当前文件的完整代码上下文、最近的修改和光标位置，动态预测编码意图并给出整段代码变更建议。按 Tab 接受，按 Esc 拒绝。B 选项错误，NEXT 是自动触发的，不需要手动命令；C 选项错误，NEXT 不是逐词补全，而是整段预测，包括多行编辑和跨文件引用；D 选项错误，只需按 Tab 即可接受，无需弹窗确认。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-26b09d13",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "提升 NEXT 预测准确性的技巧",
+    "stem": "你正在写一段较复杂的业务逻辑，担心 NEXT 无法准确预测你的编码意图。教程推荐的做法是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "先写一行注释描述意图，让 NEXT 基于注释预测实现"
+      },
+      {
+        "key": "B",
+        "text": "连续快速按 Tab 键，多次尝试直到 NEXT 给出理想的预测结果"
+      },
+      {
+        "key": "C",
+        "text": "把整个需求文档粘贴到代码文件的开头，为 NEXT 提供完整而充分的背景信息"
+      },
+      {
+        "key": "D",
+        "text": "关闭再重新打开编辑器，强制刷新 NEXT 的上下文"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程踩坑提醒\"善用注释驱动 NEXT\"——不确定 NEXT 能否准确预测时，先写一行注释描述意图，再让 NEXT 基于注释生成代码，比直接写代码再等预测更精准。B 反复按 Tab 不会改变预测质量，反而可能误接受错误代码；C 把需求文档贴进代码文件会污染代码，也不是 NEXT 的上下文机制；D 重启编辑器无法提升预测的准确性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-d800172b",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "NEXT 和 Inline Chat 的适用场景",
+    "stem": "你正在为一个 Spring Boot 项目新增用户管理模块。以下关于 NEXT 和 Inline Chat 的选择，最合理的是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "所有代码都用 NEXT 逐行生成，因为它能够感知完整的项目代码上下文信息"
+      },
+      {
+        "key": "B",
+        "text": "Inline Chat 生成 Entity 类，NEXT 预测 Repository 方法"
+      },
+      {
+        "key": "C",
+        "text": "所有代码都统一用 Inline Chat 一次性整体生成，因为这样的开发效率是最高的"
+      },
+      {
+        "key": "D",
+        "text": "两者的功能重叠度很高，随意选择其中一个使用即可，完全无需按场景区分使用"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "NEXT 和 Inline Chat 各有适用场景。NEXT 适合编码过程中持续的建议，比如写完一个方法后预测下一个类似方法；Inline Chat 适合在目标位置用自然语言一次性生成整段代码，比如从零创建 Entity 类。A 选项错误，NEXT 不适合从零生成完整类定义；C 选项错误，复杂的跨层代码不适合一次全部生成，教程建议逐层生成并逐层检查；D 选项错误，两者定位不同，需要按场景区分选择。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2cfc657b",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "提升 AI 生成代码质量的关键操作",
+    "stem": "你用 Inline Chat 让 AI 生成一个 Controller 类，但生成的代码字段名和项目中已有的 Entity 不匹配。最有效的改进方式是？",
+    "options": [
+      {
+        "key": "A",
+        "text": "关闭 Inline Chat，改用 NEXT 代码建议重新生成整个 Controller 类"
+      },
+      {
+        "key": "B",
+        "text": "手动修改生成的代码，逐一调整不匹配的字段名和类型"
+      },
+      {
+        "key": "C",
+        "text": "在 Inline Chat 中用 `@` 引用 Entity 文件，让 AI 感知字段定义"
+      },
+      {
+        "key": "D",
+        "text": "在提示词中详细描述每个字段的名称、类型和注解"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程明确指出，在行间会话中用 `@` 引用对应的 Entity 或 Repository 文件，可以让 AI 感知字段定义和方法签名，避免类型不匹配或方法名拼写错误。这体现了\"先让 AI 看懂你的代码，再让它动手写\"的核心思路。B 选项是低效的手动修补；A 选项 NEXT 更适合编码过程中的预测，不适合从零生成整段代码；D 选项虽然可行，但不如直接引用文件高效准确。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-Qoder-Write-Boilerplate-Code-2131b638",
+    "module": "Qoder-Write-Boilerplate-Code",
+    "moduleName": "重复的样板代码不想写",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "样板代码生成的方法论",
+    "stem": "你的团队要在一个微服务项目中新增 5 个类似的业务模块，每个模块都包含 Entity、Repository、Service、Controller、DTO 和测试。你决定用 AI 工具来加速。以下哪种工作方式最符合教程推荐的方法论？",
+    "options": [
+      {
+        "key": "A",
+        "text": "让 AI 一次性生成所有 5 个模块的全部代码，然后统一审查和调试"
+      },
+      {
+        "key": "B",
+        "text": "先让 AI 生成所有模块的 Entity，再一次性生成所有 Repository，以此类推按层批量推进"
+      },
+      {
+        "key": "C",
+        "text": "完全手写第一个模块确保质量，然后让 AI 复制粘贴到其他模块并替换类名"
+      },
+      {
+        "key": "D",
+        "text": "先完成一个模块，用 AI 参考该模块的风格逐层生成其余模块，每层生成后审查确认再进入下一层"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的核心方法论是\"给足上下文、提供参考、小步迭代、人类把关\"。先完成一个模块作为参考样本，然后让 AI 参考已有代码的风格逐层生成，每层生成后审查确认再进入下一层，这确保了代码风格一致且错误不会层层放大。A 选项一次生成太多代码，审查成本高且容易遗漏问题；C 选项放弃了 AI 的生成能力，只是简单的复制粘贴；B 选项的批量推进方式缺少\"参考已有代码\"的上下文，且一次生成所有同类文件难以保证一致性。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-b7f0a4d4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "只读任务的模式选择",
+    "stem": "你只是想理解一段不熟悉的代码逻辑，不需要 AI 做任何修改。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ask 模式——只读问答模式，AI 负责解释代码但不修改文件"
+      },
+      {
+        "key": "B",
+        "text": "Agent 模式——让 AI 在理解代码的同时自动优化代码结构"
+      },
+      {
+        "key": "C",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份代码分析报告再决定"
+      },
+      {
+        "key": "D",
+        "text": "CLI Print 模式——通过命令行快速输出代码解释"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "教程的决策流程第一步明确指出：任务是只读的（理解代码、学习新库、排查问题思路）→ Ask 模式。Ask 模式的核心特点是不修改文件，以解释和建议为主。选项 B 的 Agent 模式会修改文件，不符合\"只读\"需求；选项 C 的 Spec 模式适合大型需求对齐，理解代码逻辑不需要这么重的流程；选项 D 的 CLI Print 模式是为 CI/CD 自动化设计的，不适合交互式代码理解。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d4b46ba2",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "小型明确任务的模式选择",
+    "stem": "你需要修复一个明确的 Bug——某个按钮点击后没有响应，问题定位在前端组件中。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest Agent + Spec 模式——先让 AI 写一份 Bug 分析报告"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——先问 AI 这个 Bug 可能的原因，再手动修复"
+      },
+      {
+        "key": "C",
+        "text": "Agent 模式——任务小且明确，Agent 可以自主完成修改"
+      },
+      {
+        "key": "D",
+        "text": "Quest Experts 模式——让多个 Agent 并行排查不同可能性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第二步指出：任务小且明确（一个功能实现、几个文件的重构、一个 Bug 修复）→ Agent 模式。经验法则也说明修改 1-3 个文件适合 Agent 模式。选项 A 的 Spec 模式对修复一个小 Bug 来说过于重量级；选项 B 的 Ask 模式不会修改文件，还需手动操作；选项 D 的 Experts 模式适合前后端并行开发，一个小组件 Bug 不需要多 Agent 并行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-4ed528e4",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "CI/CD 场景的模式选择",
+    "stem": "你需要在公司的 CI/CD 流水线中集成自动代码审查功能，每次提交代码时自动运行。应该选择哪种模式？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——让 AI 自主审查代码并提交审查意见"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式——让 AI 以只读方式分析代码质量并给出建议"
+      },
+      {
+        "key": "C",
+        "text": "CLI Print 模式——非交互式运行，输出可被流水线脚本捕获和处理"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——让 AI 先对齐审查标准再执行审查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "教程的决策流程第五步指出：任务在 CI/CD 流水线中（自动化代码审查、测试生成）→ CLI Print 模式。CLI Print 模式的核心特点是非交互式、输出可被脚本捕获，适合自动化流水线场景。选项 A 的 Agent 模式是交互式的，不适合 CI/CD 自动化；选项 B 的 Ask 模式也是交互式的；选项 D 的 Spec 模式流程太重，不适合流水线中的快速自动化执行。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d97f5b1a",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "medium",
+    "difficultyLabel": "中等",
+    "isMultiSelect": false,
+    "title": "大型需求对齐的模式选择",
+    "stem": "你接到一个大型功能需求，涉及 15 个文件的修改，需要需求对齐和明确的验收标准。最合适的模式是什么？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Agent 模式——不写任何文档直接让 AI 开始实现，边做边调整"
+      },
+      {
+        "key": "B",
+        "text": "CLI Print 模式——通过脚本非交互式地批量处理文件修改"
+      },
+      {
+        "key": "C",
+        "text": "Quest Experts 模式——让多个 Agent 分头并行处理不同文件"
+      },
+      {
+        "key": "D",
+        "text": "Quest Agent + Spec 模式——先对齐需求和验收标准，再生成代码"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "教程的经验法则指出修改 10+ 个文件适合 Quest Agent + Spec 模式，决策流程第四步也明确：任务大且需要质量控制（大型需求、需要需求对齐和验收标准）→ Quest Agent + Spec。这个模式的核心优势是先对齐需求再生成代码，避免大规模返工。选项 A 的 Agent 模式适合小到中型任务，15 个文件超出其最佳范围；选项 C 的 Experts 模式侧重前后端并行开发而非需求对齐；选项 B 的 CLI Print 模式用于 CI/CD 自动化。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-d5c18edb",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "hard",
+    "difficultyLabel": "困难",
+    "isMultiSelect": false,
+    "title": "多模式综合决策",
+    "stem": "以下关于 Qoder 各模式选择的说法中，哪一项全部正确？",
+    "options": [
+      {
+        "key": "A",
+        "text": "前后端同时开发用 Quest Experts 模式；不确定时默认用 Agent 模式；大规模重构涉及 12 个文件用 Quest Agent + Spec 模式"
+      },
+      {
+        "key": "B",
+        "text": "理解代码用 Ask 模式；修复一个 Bug 用 Agent 模式；CI/CD 自动化用 Quest Experts 模式"
+      },
+      {
+        "key": "C",
+        "text": "不确定时默认用 Quest Agent + Spec 模式因为它最安全；前后端并行用 Agent 模式；修改 5 个文件用 Quest Experts 模式"
+      },
+      {
+        "key": "D",
+        "text": "只读问答用 Agent 模式；大型需求用 Quest Agent + Spec 模式；小任务用 Ask 模式让 AI 解释后手动修改"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "选项 A 三项全部符合教程建议：前后端同时开发→Quest Experts（决策流程第三步），不确定时默认 Agent 模式（教程明确说明\"万能默认选项\"），12 个文件的大规模重构→Quest Agent + Spec（经验法则中 10+ 文件）。选项 B 中 CI/CD 自动化应该用 CLI Print 而非 Experts；选项 C 中不确定时应默认 Agent 而非 Spec，前后端并行应该用 Experts 而非 Agent，5 个文件应该用 Agent 而非 Experts；选项 D 中只读问答应该用 Ask 而非 Agent，小任务应该用 Agent 而非 Ask。\n\n---",
+    "source": ""
+  },
+  {
+    "id": "T-index-ac54c18c",
+    "module": "index",
+    "moduleName": "模式选择指南",
+    "difficulty": "easy",
+    "difficultyLabel": "简单",
+    "isMultiSelect": false,
+    "title": "不同工作模式的 Credits 消耗差异",
+    "stem": "教程中介绍了 Qoder 各工作模式的 Credits 消耗量级。当你只是想让 AI 解释一段代码而不修改任何文件，应该优先选择哪个模式以节省 Credits？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Quest 模式，因为它的功能最全面，能自动处理各种场景"
+      },
+      {
+        "key": "B",
+        "text": "Ask 模式，每次请求约 3-4 Credits，是消耗最低的工作模式"
+      },
+      {
+        "key": "C",
+        "text": "Experts 模式，因为多智能体协作可以分摊成本"
+      },
+      {
+        "key": "D",
+        "text": "Agent 模式，每次请求约 7-12 Credits，性价比最高"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation": "教程给出的 Credits 消耗量级：Ask 模式约 3-4 Credits/请求，Agent 模式约 7-12 Credits/请求，Quest 模式约 50-75 Credits/请求。对于只读问答场景（解释代码、讨论方案），Ask 模式最合适且消耗最低。A 错误，Quest 消耗最高而非最省；C 错误，Experts 模式属于 Quest，消耗更高；D 错误，Agent 模式会修改文件且消耗比 Ask 高。\n\n---",
+    "source": ""
+  }
+]

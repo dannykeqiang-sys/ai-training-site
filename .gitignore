@@ -3,3 +3,6 @@ videos/
 
 # macOS
 .DS_Store
+*.md
+
+# Exclude report files

@@ -74,6 +74,7 @@ a { color: inherit; }
 .chapter-card .cc-name { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
 .chapter-card .cc-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
 .chapter-card .cc-lock { position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--text-faint); background: var(--bg-side); border-radius: 10px; padding: 2px 10px; }
+.chapter-card .cc-go { position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--blue); background: var(--blue-light); border-radius: 10px; padding: 2px 10px; font-weight: 500; }
 .exam-stats { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--text-dim); margin-bottom: 16px; }
 .exam-stats span { display: flex; align-items: center; gap: 6px; }
 .history-link { font-size: 14px; color: var(--blue); cursor: pointer; text-decoration: underline; }
@@ -356,23 +357,23 @@ a { color: inherit; }
         <div class="cc-name">通识</div>
         <div class="cc-desc">8 大知识域 · 32 个知识点</div>
       </div>
-      <div class="chapter-card locked">
+      <div class="chapter-card" onclick="openChapterExam('ch2')">
         <div class="cc-emoji">🔧</div>
         <div class="cc-name">AI 编码方法论与实战</div>
         <div class="cc-desc">AI 编码方法论，以真实开发场景和痛点为线索，系统学习 AI 编码的思维方式，并用 Qoder 演示每种思路的落地</div>
-        <span class="cc-lock">🔒 即将开放</span>
+        <span class="cc-go">🎯 去考试 →</span>
       </div>
-      <div class="chapter-card locked">
+      <div class="chapter-card" onclick="openChapterExam('ch3')">
         <div class="cc-emoji">📐</div>
         <div class="cc-name">规范与实践</div>
         <div class="cc-desc">AI Coding 工程实践、运维规范、性能优化、踩坑案例、团队制度</div>
-        <span class="cc-lock">🔒 即将开放</span>
+        <span class="cc-go">🎯 去考试 →</span>
       </div>
-      <div class="chapter-card locked">
+      <div class="chapter-card" onclick="openChapterExam('ch4')">
         <div class="cc-emoji">🎯</div>
         <div class="cc-name">专用领域</div>
         <div class="cc-desc">AI 前端研发、AI 测试、算法、Agent 框架</div>
-        <span class="cc-lock">🔒 即将开放</span>
+        <span class="cc-go">🎯 去考试 →</span>
       </div>
     </div>
     <div class="exam-stats">
@@ -727,19 +728,30 @@ function selectOption(el, prefix) {
 }
 
 /* ===== EXAM ===== */
+let pendingExamChapter = null;
+function openChapterExam(ch) {
+  pendingExamChapter = ch;
+  navigate('exam');
+}
 const examChapters = [
   { id:'ch1', name:'第一章 · 通识', desc:'LLM 基础、提示工程、AI 工具概览、安全伦理、研发新范式、RAG、SFT、Agent、Harness', count:189, modules:32, available:true },
-  { id:'ch2', name:'第二章 · AI 编码方法论与实战', desc:'将在下一阶段开放', count:107, modules:16, available:false },
-  { id:'ch3', name:'第三章 · 规范与实践', desc:'将在下一阶段开放', count:88, modules:14, available:false },
-  { id:'ch4', name:'第四章 · 专用领域', desc:'将在下一阶段开放', count:147, modules:11, available:false },
+  { id:'ch2', name:'第二章 · AI 编码方法论与实战', desc:'AI 编码方法论，以真实开发场景和痛点为线索，系统学习 AI 编码的思维方式，并用 Qoder 演示每种思路的落地', count:149, modules:16, available:true },
+  { id:'ch3', name:'第三章 · 规范与实践', desc:'需求拆解、上下文设计、代码质量、测试、审查、协作、运维、故障诊断', count:144, modules:14, available:true },
+  { id:'ch4', name:'第四章 · 专用领域', desc:'AI 前端研发、AI 测试、算法、Agent 框架', count:175, modules:11, available:true },
 ];
 function renderExamSelect() {
+  if (pendingExamChapter) {
+    const ch = pendingExamChapter;
+    pendingExamChapter = null;
+    startExam(ch);
+    return;
+  }
   document.getElementById('exam-select').style.display = 'block';
   document.getElementById('exam-taking').classList.remove('active');
   document.getElementById('exam-result').classList.remove('active');
   const wrap = document.getElementById('exam-chapters');
   wrap.innerHTML = examChapters.map(c => `
-    <div class="exam-chapter ${c.available ? 'available' : 'locked'}" ${c.available ? 'onclick="startExam()"' : ''}>
+    <div class="exam-chapter ${c.available ? 'available' : 'locked'}" ${c.available ? `onclick="startExam('${c.id}')"` : ''}>
       <div class="ec-info">
         <div class="ec-name">${c.name}</div>
         <div class="ec-desc">${c.desc}</div>
@@ -753,8 +765,11 @@ function shuffle(arr) {
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 }
-function startExam() {
-  state.examQuestions = shuffle(DATA.questions).slice(0, 30);
+function startExam(chapter) {
+  chapter = chapter || 'ch1';
+  const bank = (DATA.questionsByChapter && DATA.questionsByChapter[chapter]) || DATA.questions;
+  state.examChapter = chapter;
+  state.examQuestions = shuffle(bank).slice(0, 30);
   state.examAnswers = {};
   state.examSubmitted = false;
   document.getElementById('exam-select').style.display = 'none';
@@ -799,7 +814,7 @@ function submitExam() {
     <div class="result-label">${pass ? '🎉 恭喜通过！' : '😢 未通过'}</div>
     <div class="result-sub">答对 ${correct} / 30 题 · ${pass ? '已达到 90 分通过线' : '距离 90 分通过线还差 ' + (90 - score) + ' 分，再试一次吧'}</div>
     <div class="result-actions">
-      <button class="btn-primary" onclick="startExam()">再考一次</button>
+      <button class="btn-primary" onclick="startExam(state.examChapter)">再考一次</button>
       <button class="btn-secondary" onclick="renderExamSelect()">返回选择</button>
     </div>
     <div class="result-review">
